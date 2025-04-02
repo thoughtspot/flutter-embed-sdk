@@ -3845,7 +3845,7 @@ enum LogLevel {
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SessionInterface {
     
-  SessionInterface__acSession acSession;
+  SessionInterfaceAcSession acSession;
     
   int genNo;
     
@@ -3951,7 +3951,7 @@ class LiveboardViewConfig {
     
   String? locale;
     
-  LiveboardViewConfig__additionalFlags? additionalFlags;
+  LiveboardViewConfigAdditionalFlags? additionalFlags;
     
   CustomisationsInterface? customizations;
     
@@ -4127,7 +4127,7 @@ class customCssInterface {
     
   Map<String, String>? variables;
     
-  customCssInterface__rules_UNSTABLE? rules_UNSTABLE;
+  CustomCssInterfaceRules_UNSTABLE? rules_UNSTABLE;
 
   customCssInterface(
     {
@@ -4205,7 +4205,7 @@ class CustomisationsInterface {
     
   CustomStyles? style;
     
-  CustomisationsInterface__content? content;
+  CustomisationsInterfaceContent? content;
     
   String? iconSpriteUrl;
 
@@ -4242,7 +4242,7 @@ class EmbedConfig {
     
   String? authEndpoint;
   @JsonKey(ignore: true)  
-  EmbedConfig__getAuthToken? getAuthToken;
+  EmbedConfigGetAuthToken? getAuthToken;
     
   String? username;
     
@@ -4280,7 +4280,7 @@ class EmbedConfig {
     
   CustomisationsInterface? customizations;
     
-  EmbedConfig__authTriggerContainer? authTriggerContainer;
+  EmbedConfigAuthTriggerContainer? authTriggerContainer;
     
   bool? useEventForSAMLPopup;
     
@@ -4288,7 +4288,7 @@ class EmbedConfig {
     
   bool? blockNonEmbedFullAppAccess;
     
-  EmbedConfig__hostConfig? hostConfig;
+  EmbedConfigHostConfig? hostConfig;
     
   String? pendoTrackingKey;
     
@@ -4308,9 +4308,9 @@ class EmbedConfig {
     
   bool? disableLoginFailurePage;
     
-  EmbedConfig__additionalFlags? additionalFlags;
+  EmbedConfigAdditionalFlags? additionalFlags;
     
-  EmbedConfig__customVariablesForThirdPartyTools? customVariablesForThirdPartyTools;
+  EmbedConfigCustomVariablesForThirdPartyTools? customVariablesForThirdPartyTools;
     
   bool? disablePreauthCache;
 
@@ -4424,11 +4424,11 @@ class LayoutConfig {
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class FrameParams {
     
-  FrameParams__width? width;
+  FrameParamsWidth? width;
     
-  FrameParams__height? height;
+  FrameParamsHeight? height;
     
-  FrameParams__loading? loading;
+  FrameParamsLoading? loading;
 
   FrameParams(
     {
@@ -4477,7 +4477,7 @@ class ViewConfig {
     
   String? locale;
     
-  ViewConfig__additionalFlags? additionalFlags;
+  ViewConfigAdditionalFlags? additionalFlags;
     
   CustomisationsInterface? customizations;
     
@@ -4611,7 +4611,7 @@ class ViewConfig {
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RuntimeFilter {
     
-  List<RuntimeFilter__values> values;
+  List<RuntimeFilterValues> values;
     
   RuntimeFilterOp operator;
     
@@ -4641,7 +4641,7 @@ class RuntimeFilter {
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RuntimeParameter {
     
-  RuntimeParameter__value value;
+  RuntimeParameterValue value;
     
   String name;
 
@@ -4664,7 +4664,7 @@ class RuntimeParameter {
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class AnswerServiceType {
   @JsonKey(ignore: true)  
-  AnswerServiceType__getAnswer? getAnswer;
+  AnswerServiceTypeGetAnswer? getAnswer;
 
   AnswerServiceType(
     {
@@ -4683,9 +4683,9 @@ class AnswerServiceType {
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ColumnValue {
     
-  ColumnValue__value value;
+  ColumnValueValue value;
     
-  ColumnValue__column column;
+  ColumnValueColumn column;
 
   ColumnValue(
     {
@@ -4733,9 +4733,9 @@ class CustomActionPayload {
     
   SessionInterface session;
     
-  CustomActionPayload__embedAnswerData embedAnswerData;
+  CustomActionPayloadEmbedAnswerData embedAnswerData;
     
-  CustomActionPayload__contextMenuPoints? contextMenuPoints;
+  CustomActionPayloadContextMenuPoints? contextMenuPoints;
     
   String? vizId;
 
@@ -4762,11 +4762,11 @@ class CustomActionPayload {
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class DefaultAppInitData {
     
-  DefaultAppInitData__customVariablesForThirdPartyTools customVariablesForThirdPartyTools;
+  DefaultAppInitDataCustomVariablesForThirdPartyTools customVariablesForThirdPartyTools;
     
   List<String> hiddenHomeLeftNavItems;
     
-  DefaultAppInitData__hostConfig hostConfig;
+  DefaultAppInitDataHostConfig hostConfig;
     
   List<String> reorderedHomepageModules;
     
@@ -4811,13 +4811,13 @@ class DefaultAppInitData {
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class SessionInterface__acSession {
+class SessionInterfaceAcSession {
     
   int genNo;
     
   String sessionId;
 
-  SessionInterface__acSession(
+  SessionInterfaceAcSession(
     {
     
     required this.genNo,
@@ -4826,76 +4826,76 @@ class SessionInterface__acSession {
     }
   );
 
-    factory SessionInterface__acSession.fromJson(Map<String, dynamic> json) => _$SessionInterface__acSessionFromJson(json);
+    factory SessionInterfaceAcSession.fromJson(Map<String, dynamic> json) => _$SessionInterfaceAcSessionFromJson(json);
 
-    Map<String, dynamic> toJson() => _$SessionInterface__acSessionToJson(this);
+    Map<String, dynamic> toJson() => _$SessionInterfaceAcSessionToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class LiveboardViewConfig__additionalFlags {
+class LiveboardViewConfigAdditionalFlags {
 
-  LiveboardViewConfig__additionalFlags(
+  LiveboardViewConfigAdditionalFlags(
     
   );
 
-    factory LiveboardViewConfig__additionalFlags.fromJson(Map<String, dynamic> json) => _$LiveboardViewConfig__additionalFlagsFromJson(json);
+    factory LiveboardViewConfigAdditionalFlags.fromJson(Map<String, dynamic> json) => _$LiveboardViewConfigAdditionalFlagsFromJson(json);
 
-    Map<String, dynamic> toJson() => _$LiveboardViewConfig__additionalFlagsToJson(this);
+    Map<String, dynamic> toJson() => _$LiveboardViewConfigAdditionalFlagsToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class customCssInterface__rules_UNSTABLE {
+class CustomCssInterfaceRules_UNSTABLE {
 
-  customCssInterface__rules_UNSTABLE(
+  CustomCssInterfaceRules_UNSTABLE(
     
   );
 
-    factory customCssInterface__rules_UNSTABLE.fromJson(Map<String, dynamic> json) => _$customCssInterface__rules_UNSTABLEFromJson(json);
+    factory CustomCssInterfaceRules_UNSTABLE.fromJson(Map<String, dynamic> json) => _$CustomCssInterfaceRules_UNSTABLEFromJson(json);
 
-    Map<String, dynamic> toJson() => _$customCssInterface__rules_UNSTABLEToJson(this);
+    Map<String, dynamic> toJson() => _$CustomCssInterfaceRules_UNSTABLEToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CustomisationsInterface__content__strings {
+class CustomisationsInterfaceContentStrings {
 
-  CustomisationsInterface__content__strings(
+  CustomisationsInterfaceContentStrings(
     
   );
 
-    factory CustomisationsInterface__content__strings.fromJson(Map<String, dynamic> json) => _$CustomisationsInterface__content__stringsFromJson(json);
+    factory CustomisationsInterfaceContentStrings.fromJson(Map<String, dynamic> json) => _$CustomisationsInterfaceContentStringsFromJson(json);
 
-    Map<String, dynamic> toJson() => _$CustomisationsInterface__content__stringsToJson(this);
+    Map<String, dynamic> toJson() => _$CustomisationsInterfaceContentStringsToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CustomisationsInterface__content {
+class CustomisationsInterfaceContent {
     
-  CustomisationsInterface__content__strings? strings;
+  CustomisationsInterfaceContentStrings? strings;
 
-  CustomisationsInterface__content(
+  CustomisationsInterfaceContent(
     {
     
      this.strings
     }
   );
 
-    factory CustomisationsInterface__content.fromJson(Map<String, dynamic> json) => _$CustomisationsInterface__contentFromJson(json);
+    factory CustomisationsInterfaceContent.fromJson(Map<String, dynamic> json) => _$CustomisationsInterfaceContentFromJson(json);
 
-    Map<String, dynamic> toJson() => _$CustomisationsInterface__contentToJson(this);
+    Map<String, dynamic> toJson() => _$CustomisationsInterfaceContentToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class EmbedConfig__hostConfig {
+class EmbedConfigHostConfig {
     
   String hostClusterName;
     
@@ -4903,7 +4903,7 @@ class EmbedConfig__hostConfig {
     
   String hostUserGuid;
 
-  EmbedConfig__hostConfig(
+  EmbedConfigHostConfig(
     {
     
     required this.hostClusterName,
@@ -4914,63 +4914,63 @@ class EmbedConfig__hostConfig {
     }
   );
 
-    factory EmbedConfig__hostConfig.fromJson(Map<String, dynamic> json) => _$EmbedConfig__hostConfigFromJson(json);
+    factory EmbedConfigHostConfig.fromJson(Map<String, dynamic> json) => _$EmbedConfigHostConfigFromJson(json);
 
-    Map<String, dynamic> toJson() => _$EmbedConfig__hostConfigToJson(this);
+    Map<String, dynamic> toJson() => _$EmbedConfigHostConfigToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class EmbedConfig__additionalFlags {
+class EmbedConfigAdditionalFlags {
 
-  EmbedConfig__additionalFlags(
+  EmbedConfigAdditionalFlags(
     
   );
 
-    factory EmbedConfig__additionalFlags.fromJson(Map<String, dynamic> json) => _$EmbedConfig__additionalFlagsFromJson(json);
+    factory EmbedConfigAdditionalFlags.fromJson(Map<String, dynamic> json) => _$EmbedConfigAdditionalFlagsFromJson(json);
 
-    Map<String, dynamic> toJson() => _$EmbedConfig__additionalFlagsToJson(this);
+    Map<String, dynamic> toJson() => _$EmbedConfigAdditionalFlagsToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class EmbedConfig__customVariablesForThirdPartyTools {
+class EmbedConfigCustomVariablesForThirdPartyTools {
 
-  EmbedConfig__customVariablesForThirdPartyTools(
+  EmbedConfigCustomVariablesForThirdPartyTools(
     
   );
 
-    factory EmbedConfig__customVariablesForThirdPartyTools.fromJson(Map<String, dynamic> json) => _$EmbedConfig__customVariablesForThirdPartyToolsFromJson(json);
+    factory EmbedConfigCustomVariablesForThirdPartyTools.fromJson(Map<String, dynamic> json) => _$EmbedConfigCustomVariablesForThirdPartyToolsFromJson(json);
 
-    Map<String, dynamic> toJson() => _$EmbedConfig__customVariablesForThirdPartyToolsToJson(this);
+    Map<String, dynamic> toJson() => _$EmbedConfigCustomVariablesForThirdPartyToolsToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class ViewConfig__additionalFlags {
+class ViewConfigAdditionalFlags {
 
-  ViewConfig__additionalFlags(
+  ViewConfigAdditionalFlags(
     
   );
 
-    factory ViewConfig__additionalFlags.fromJson(Map<String, dynamic> json) => _$ViewConfig__additionalFlagsFromJson(json);
+    factory ViewConfigAdditionalFlags.fromJson(Map<String, dynamic> json) => _$ViewConfigAdditionalFlagsFromJson(json);
 
-    Map<String, dynamic> toJson() => _$ViewConfig__additionalFlagsToJson(this);
+    Map<String, dynamic> toJson() => _$ViewConfigAdditionalFlagsToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class ColumnValue__value__Type__4__v {
+class ColumnValueValueType4V {
     
   int e;
     
   int s;
 
-  ColumnValue__value__Type__4__v(
+  ColumnValueValueType4V(
     {
     
     required this.e,
@@ -4979,34 +4979,34 @@ class ColumnValue__value__Type__4__v {
     }
   );
 
-    factory ColumnValue__value__Type__4__v.fromJson(Map<String, dynamic> json) => _$ColumnValue__value__Type__4__vFromJson(json);
+    factory ColumnValueValueType4V.fromJson(Map<String, dynamic> json) => _$ColumnValueValueType4VFromJson(json);
 
-    Map<String, dynamic> toJson() => _$ColumnValue__value__Type__4__vToJson(this);
+    Map<String, dynamic> toJson() => _$ColumnValueValueType4VToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class ColumnValue__value__Type__4 {
+class ColumnValueValueType4 {
     
-  ColumnValue__value__Type__4__v v;
+  ColumnValueValueType4V v;
 
-  ColumnValue__value__Type__4(
+  ColumnValueValueType4(
     {
     
     required this.v
     }
   );
 
-    factory ColumnValue__value__Type__4.fromJson(Map<String, dynamic> json) => _$ColumnValue__value__Type__4FromJson(json);
+    factory ColumnValueValueType4.fromJson(Map<String, dynamic> json) => _$ColumnValueValueType4FromJson(json);
 
-    Map<String, dynamic> toJson() => _$ColumnValue__value__Type__4ToJson(this);
+    Map<String, dynamic> toJson() => _$ColumnValueValueType4ToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class ColumnValue__column {
+class ColumnValueColumn {
     
   String dataType;
     
@@ -5014,7 +5014,7 @@ class ColumnValue__column {
     
   String id;
 
-  ColumnValue__column(
+  ColumnValueColumn(
     {
     
     required this.dataType,
@@ -5025,65 +5025,65 @@ class ColumnValue__column {
     }
   );
 
-    factory ColumnValue__column.fromJson(Map<String, dynamic> json) => _$ColumnValue__columnFromJson(json);
+    factory ColumnValueColumn.fromJson(Map<String, dynamic> json) => _$ColumnValueColumnFromJson(json);
 
-    Map<String, dynamic> toJson() => _$ColumnValue__columnToJson(this);
+    Map<String, dynamic> toJson() => _$ColumnValueColumnToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CustomActionPayload__embedAnswerData__sources__header {
+class CustomActionPayloadEmbedAnswerDataSourcesHeader {
     
   String guid;
 
-  CustomActionPayload__embedAnswerData__sources__header(
+  CustomActionPayloadEmbedAnswerDataSourcesHeader(
     {
     
     required this.guid
     }
   );
 
-    factory CustomActionPayload__embedAnswerData__sources__header.fromJson(Map<String, dynamic> json) => _$CustomActionPayload__embedAnswerData__sources__headerFromJson(json);
+    factory CustomActionPayloadEmbedAnswerDataSourcesHeader.fromJson(Map<String, dynamic> json) => _$CustomActionPayloadEmbedAnswerDataSourcesHeaderFromJson(json);
 
-    Map<String, dynamic> toJson() => _$CustomActionPayload__embedAnswerData__sources__headerToJson(this);
+    Map<String, dynamic> toJson() => _$CustomActionPayloadEmbedAnswerDataSourcesHeaderToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CustomActionPayload__embedAnswerData__sources {
+class CustomActionPayloadEmbedAnswerDataSources {
     
-  CustomActionPayload__embedAnswerData__sources__header header;
+  CustomActionPayloadEmbedAnswerDataSourcesHeader header;
 
-  CustomActionPayload__embedAnswerData__sources(
+  CustomActionPayloadEmbedAnswerDataSources(
     {
     
     required this.header
     }
   );
 
-    factory CustomActionPayload__embedAnswerData__sources.fromJson(Map<String, dynamic> json) => _$CustomActionPayload__embedAnswerData__sourcesFromJson(json);
+    factory CustomActionPayloadEmbedAnswerDataSources.fromJson(Map<String, dynamic> json) => _$CustomActionPayloadEmbedAnswerDataSourcesFromJson(json);
 
-    Map<String, dynamic> toJson() => _$CustomActionPayload__embedAnswerData__sourcesToJson(this);
+    Map<String, dynamic> toJson() => _$CustomActionPayloadEmbedAnswerDataSourcesToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CustomActionPayload__embedAnswerData {
+class CustomActionPayloadEmbedAnswerData {
     
   List<dynamic> data;
     
   List<dynamic> columns;
     
-  CustomActionPayload__embedAnswerData__sources sources;
+  CustomActionPayloadEmbedAnswerDataSources sources;
     
   String id;
     
   String name;
 
-  CustomActionPayload__embedAnswerData(
+  CustomActionPayloadEmbedAnswerData(
     {
     
     required this.data,
@@ -5098,21 +5098,21 @@ class CustomActionPayload__embedAnswerData {
     }
   );
 
-    factory CustomActionPayload__embedAnswerData.fromJson(Map<String, dynamic> json) => _$CustomActionPayload__embedAnswerDataFromJson(json);
+    factory CustomActionPayloadEmbedAnswerData.fromJson(Map<String, dynamic> json) => _$CustomActionPayloadEmbedAnswerDataFromJson(json);
 
-    Map<String, dynamic> toJson() => _$CustomActionPayload__embedAnswerDataToJson(this);
+    Map<String, dynamic> toJson() => _$CustomActionPayloadEmbedAnswerDataToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CustomActionPayload__contextMenuPoints {
+class CustomActionPayloadContextMenuPoints {
     
   List<VizPoint> selectedPoints;
     
   VizPoint clickedPoint;
 
-  CustomActionPayload__contextMenuPoints(
+  CustomActionPayloadContextMenuPoints(
     {
     
     required this.selectedPoints,
@@ -5121,132 +5121,132 @@ class CustomActionPayload__contextMenuPoints {
     }
   );
 
-    factory CustomActionPayload__contextMenuPoints.fromJson(Map<String, dynamic> json) => _$CustomActionPayload__contextMenuPointsFromJson(json);
+    factory CustomActionPayloadContextMenuPoints.fromJson(Map<String, dynamic> json) => _$CustomActionPayloadContextMenuPointsFromJson(json);
 
-    Map<String, dynamic> toJson() => _$CustomActionPayload__contextMenuPointsToJson(this);
+    Map<String, dynamic> toJson() => _$CustomActionPayloadContextMenuPointsToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class DefaultAppInitData__customVariablesForThirdPartyTools {
+class DefaultAppInitDataCustomVariablesForThirdPartyTools {
 
-  DefaultAppInitData__customVariablesForThirdPartyTools(
+  DefaultAppInitDataCustomVariablesForThirdPartyTools(
     
   );
 
-    factory DefaultAppInitData__customVariablesForThirdPartyTools.fromJson(Map<String, dynamic> json) => _$DefaultAppInitData__customVariablesForThirdPartyToolsFromJson(json);
+    factory DefaultAppInitDataCustomVariablesForThirdPartyTools.fromJson(Map<String, dynamic> json) => _$DefaultAppInitDataCustomVariablesForThirdPartyToolsFromJson(json);
 
-    Map<String, dynamic> toJson() => _$DefaultAppInitData__customVariablesForThirdPartyToolsToJson(this);
+    Map<String, dynamic> toJson() => _$DefaultAppInitDataCustomVariablesForThirdPartyToolsToJson(this);
 }
 
 
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class DefaultAppInitData__hostConfig {
+class DefaultAppInitDataHostConfig {
 
-  DefaultAppInitData__hostConfig(
+  DefaultAppInitDataHostConfig(
     
   );
 
-    factory DefaultAppInitData__hostConfig.fromJson(Map<String, dynamic> json) => _$DefaultAppInitData__hostConfigFromJson(json);
+    factory DefaultAppInitDataHostConfig.fromJson(Map<String, dynamic> json) => _$DefaultAppInitDataHostConfigFromJson(json);
 
-    Map<String, dynamic> toJson() => _$DefaultAppInitData__hostConfigToJson(this);
+    Map<String, dynamic> toJson() => _$DefaultAppInitDataHostConfigToJson(this);
 }
 
 
 
-abstract class EmbedConfig__getAuthToken {
+abstract class EmbedConfigGetAuthToken {
   Future<dynamic> operate(
   );
 }
 
 
-abstract class AnswerServiceType__getAnswer {
+abstract class AnswerServiceTypeGetAnswer {
   dynamic operate(
     int batchSize,
     int offset
   );
 }
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class EmbedConfig__authTriggerContainer {
+class EmbedConfigAuthTriggerContainer {
   String value;
 
-  EmbedConfig__authTriggerContainer(this.value);
+  EmbedConfigAuthTriggerContainer(this.value);
 
-  factory EmbedConfig__authTriggerContainer.fromJson(String json) => EmbedConfig__authTriggerContainer(json);
+  factory EmbedConfigAuthTriggerContainer.fromJson(String json) => EmbedConfigAuthTriggerContainer(json);
 
   String toJson() => value;
 
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class FrameParams__width {
+class FrameParamsWidth {
   String value;
 
-  FrameParams__width(this.value);
+  FrameParamsWidth(this.value);
 
-  factory FrameParams__width.fromJson(String json) => FrameParams__width(json);
+  factory FrameParamsWidth.fromJson(String json) => FrameParamsWidth(json);
 
   String toJson() => value;
 
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class FrameParams__height {
+class FrameParamsHeight {
   String value;
 
-  FrameParams__height(this.value);
+  FrameParamsHeight(this.value);
 
-  factory FrameParams__height.fromJson(String json) => FrameParams__height(json);
+  factory FrameParamsHeight.fromJson(String json) => FrameParamsHeight(json);
 
   String toJson() => value;
 
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class FrameParams__loading {
+class FrameParamsLoading {
   String value;
 
-  FrameParams__loading(this.value);
+  FrameParamsLoading(this.value);
 
-  factory FrameParams__loading.fromJson(String json) => FrameParams__loading(json);
+  factory FrameParamsLoading.fromJson(String json) => FrameParamsLoading(json);
 
   String toJson() => value;
 
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class RuntimeFilter__values {
+class RuntimeFilterValues {
   String value;
 
-  RuntimeFilter__values(this.value);
+  RuntimeFilterValues(this.value);
 
-  factory RuntimeFilter__values.fromJson(String json) => RuntimeFilter__values(json);
+  factory RuntimeFilterValues.fromJson(String json) => RuntimeFilterValues(json);
 
   String toJson() => value;
 
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class RuntimeParameter__value {
+class RuntimeParameterValue {
   String value;
 
-  RuntimeParameter__value(this.value);
+  RuntimeParameterValue(this.value);
 
-  factory RuntimeParameter__value.fromJson(String json) => RuntimeParameter__value(json);
+  factory RuntimeParameterValue.fromJson(String json) => RuntimeParameterValue(json);
 
   String toJson() => value;
 
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class ColumnValue__value {
+class ColumnValueValue {
   String value;
 
-  ColumnValue__value(this.value);
+  ColumnValueValue(this.value);
 
-  factory ColumnValue__value.fromJson(String json) => ColumnValue__value(json);
+  factory ColumnValueValue.fromJson(String json) => ColumnValueValue(json);
 
   String toJson() => value;
 

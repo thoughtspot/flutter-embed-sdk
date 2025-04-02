@@ -8,7 +8,7 @@ part of 'types.dart';
 
 SessionInterface _$SessionInterfaceFromJson(Map<String, dynamic> json) =>
     SessionInterface(
-      acSession: SessionInterface__acSession.fromJson(
+      acSession: SessionInterfaceAcSession.fromJson(
         json['acSession'] as Map<String, dynamic>,
       ),
       genNo: (json['genNo'] as num).toInt(),
@@ -90,7 +90,7 @@ LiveboardViewConfig _$LiveboardViewConfigFromJson(
   additionalFlags:
       json['additionalFlags'] == null
           ? null
-          : LiveboardViewConfig__additionalFlags.fromJson(
+          : LiveboardViewConfigAdditionalFlags.fromJson(
             json['additionalFlags'] as Map<String, dynamic>,
           ),
   customizations:
@@ -370,7 +370,7 @@ customCssInterface _$customCssInterfaceFromJson(Map<String, dynamic> json) =>
       rules_UNSTABLE:
           json['rules_UNSTABLE'] == null
               ? null
-              : customCssInterface__rules_UNSTABLE.fromJson(
+              : CustomCssInterfaceRules_UNSTABLE.fromJson(
                 json['rules_UNSTABLE'] as Map<String, dynamic>,
               ),
     );
@@ -408,7 +408,7 @@ CustomisationsInterface _$CustomisationsInterfaceFromJson(
   content:
       json['content'] == null
           ? null
-          : CustomisationsInterface__content.fromJson(
+          : CustomisationsInterfaceContent.fromJson(
             json['content'] as Map<String, dynamic>,
           ),
   iconSpriteUrl: json['iconSpriteUrl'] as String?,
@@ -453,7 +453,7 @@ EmbedConfig _$EmbedConfigFromJson(Map<String, dynamic> json) => EmbedConfig(
   authTriggerContainer:
       json['authTriggerContainer'] == null
           ? null
-          : EmbedConfig__authTriggerContainer.fromJson(
+          : EmbedConfigAuthTriggerContainer.fromJson(
             json['authTriggerContainer'] as String,
           ),
   useEventForSAMLPopup: json['useEventForSAMLPopup'] as bool?,
@@ -462,7 +462,7 @@ EmbedConfig _$EmbedConfigFromJson(Map<String, dynamic> json) => EmbedConfig(
   hostConfig:
       json['hostConfig'] == null
           ? null
-          : EmbedConfig__hostConfig.fromJson(
+          : EmbedConfigHostConfig.fromJson(
             json['hostConfig'] as Map<String, dynamic>,
           ),
   pendoTrackingKey: json['pendoTrackingKey'] as String?,
@@ -477,13 +477,13 @@ EmbedConfig _$EmbedConfigFromJson(Map<String, dynamic> json) => EmbedConfig(
   additionalFlags:
       json['additionalFlags'] == null
           ? null
-          : EmbedConfig__additionalFlags.fromJson(
+          : EmbedConfigAdditionalFlags.fromJson(
             json['additionalFlags'] as Map<String, dynamic>,
           ),
   customVariablesForThirdPartyTools:
       json['customVariablesForThirdPartyTools'] == null
           ? null
-          : EmbedConfig__customVariablesForThirdPartyTools.fromJson(
+          : EmbedConfigCustomVariablesForThirdPartyTools.fromJson(
             json['customVariablesForThirdPartyTools'] as Map<String, dynamic>,
           ),
   disablePreauthCache: json['disablePreauthCache'] as bool?,
@@ -585,15 +585,15 @@ FrameParams _$FrameParamsFromJson(Map<String, dynamic> json) => FrameParams(
   width:
       json['width'] == null
           ? null
-          : FrameParams__width.fromJson(json['width'] as String),
+          : FrameParamsWidth.fromJson(json['width'] as String),
   height:
       json['height'] == null
           ? null
-          : FrameParams__height.fromJson(json['height'] as String),
+          : FrameParamsHeight.fromJson(json['height'] as String),
   loading:
       json['loading'] == null
           ? null
-          : FrameParams__loading.fromJson(json['loading'] as String),
+          : FrameParamsLoading.fromJson(json['loading'] as String),
 );
 
 Map<String, dynamic> _$FrameParamsToJson(FrameParams instance) =>
@@ -640,7 +640,7 @@ ViewConfig _$ViewConfigFromJson(Map<String, dynamic> json) => ViewConfig(
   additionalFlags:
       json['additionalFlags'] == null
           ? null
-          : ViewConfig__additionalFlags.fromJson(
+          : ViewConfigAdditionalFlags.fromJson(
             json['additionalFlags'] as Map<String, dynamic>,
           ),
   customizations:
@@ -787,7 +787,7 @@ RuntimeFilter _$RuntimeFilterFromJson(Map<String, dynamic> json) =>
     RuntimeFilter(
       values:
           (json['values'] as List<dynamic>)
-              .map((e) => RuntimeFilter__values.fromJson(e as String))
+              .map((e) => RuntimeFilterValues.fromJson(e as String))
               .toList(),
       operator: $enumDecode(_$RuntimeFilterOpEnumMap, json['operator']),
       columnName: json['columnName'] as String,
@@ -820,7 +820,7 @@ const _$RuntimeFilterOpEnumMap = {
 
 RuntimeParameter _$RuntimeParameterFromJson(Map<String, dynamic> json) =>
     RuntimeParameter(
-      value: RuntimeParameter__value.fromJson(json['value'] as String),
+      value: RuntimeParameterValue.fromJson(json['value'] as String),
       name: json['name'] as String,
     );
 
@@ -834,8 +834,8 @@ Map<String, dynamic> _$AnswerServiceTypeToJson(AnswerServiceType instance) =>
     <String, dynamic>{};
 
 ColumnValue _$ColumnValueFromJson(Map<String, dynamic> json) => ColumnValue(
-  value: ColumnValue__value.fromJson(json['value'] as String),
-  column: ColumnValue__column.fromJson(json['column'] as Map<String, dynamic>),
+  value: ColumnValueValue.fromJson(json['value'] as String),
+  column: ColumnValueColumn.fromJson(json['column'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$ColumnValueToJson(ColumnValue instance) =>
@@ -866,13 +866,13 @@ CustomActionPayload _$CustomActionPayloadFromJson(Map<String, dynamic> json) =>
       session: SessionInterface.fromJson(
         json['session'] as Map<String, dynamic>,
       ),
-      embedAnswerData: CustomActionPayload__embedAnswerData.fromJson(
+      embedAnswerData: CustomActionPayloadEmbedAnswerData.fromJson(
         json['embedAnswerData'] as Map<String, dynamic>,
       ),
       contextMenuPoints:
           json['contextMenuPoints'] == null
               ? null
-              : CustomActionPayload__contextMenuPoints.fromJson(
+              : CustomActionPayloadContextMenuPoints.fromJson(
                 json['contextMenuPoints'] as Map<String, dynamic>,
               ),
       vizId: json['vizId'] as String?,
@@ -891,14 +891,14 @@ Map<String, dynamic> _$CustomActionPayloadToJson(
 DefaultAppInitData _$DefaultAppInitDataFromJson(Map<String, dynamic> json) =>
     DefaultAppInitData(
       customVariablesForThirdPartyTools:
-          DefaultAppInitData__customVariablesForThirdPartyTools.fromJson(
+          DefaultAppInitDataCustomVariablesForThirdPartyTools.fromJson(
             json['customVariablesForThirdPartyTools'] as Map<String, dynamic>,
           ),
       hiddenHomeLeftNavItems:
           (json['hiddenHomeLeftNavItems'] as List<dynamic>)
               .map((e) => e as String)
               .toList(),
-      hostConfig: DefaultAppInitData__hostConfig.fromJson(
+      hostConfig: DefaultAppInitDataHostConfig.fromJson(
         json['hostConfig'] as Map<String, dynamic>,
       ),
       reorderedHomepageModules:
@@ -934,178 +934,175 @@ Map<String, dynamic> _$DefaultAppInitDataToJson(DefaultAppInitData instance) =>
       'customisations': instance.customisations.toJson(),
     };
 
-SessionInterface__acSession _$SessionInterface__acSessionFromJson(
+SessionInterfaceAcSession _$SessionInterfaceAcSessionFromJson(
   Map<String, dynamic> json,
-) => SessionInterface__acSession(
+) => SessionInterfaceAcSession(
   genNo: (json['genNo'] as num).toInt(),
   sessionId: json['sessionId'] as String,
 );
 
-Map<String, dynamic> _$SessionInterface__acSessionToJson(
-  SessionInterface__acSession instance,
+Map<String, dynamic> _$SessionInterfaceAcSessionToJson(
+  SessionInterfaceAcSession instance,
 ) => <String, dynamic>{
   'genNo': instance.genNo,
   'sessionId': instance.sessionId,
 };
 
-LiveboardViewConfig__additionalFlags
-_$LiveboardViewConfig__additionalFlagsFromJson(Map<String, dynamic> json) =>
-    LiveboardViewConfig__additionalFlags();
+LiveboardViewConfigAdditionalFlags _$LiveboardViewConfigAdditionalFlagsFromJson(
+  Map<String, dynamic> json,
+) => LiveboardViewConfigAdditionalFlags();
 
-Map<String, dynamic> _$LiveboardViewConfig__additionalFlagsToJson(
-  LiveboardViewConfig__additionalFlags instance,
+Map<String, dynamic> _$LiveboardViewConfigAdditionalFlagsToJson(
+  LiveboardViewConfigAdditionalFlags instance,
 ) => <String, dynamic>{};
 
-customCssInterface__rules_UNSTABLE _$customCssInterface__rules_UNSTABLEFromJson(
+CustomCssInterfaceRules_UNSTABLE _$CustomCssInterfaceRules_UNSTABLEFromJson(
   Map<String, dynamic> json,
-) => customCssInterface__rules_UNSTABLE();
+) => CustomCssInterfaceRules_UNSTABLE();
 
-Map<String, dynamic> _$customCssInterface__rules_UNSTABLEToJson(
-  customCssInterface__rules_UNSTABLE instance,
+Map<String, dynamic> _$CustomCssInterfaceRules_UNSTABLEToJson(
+  CustomCssInterfaceRules_UNSTABLE instance,
 ) => <String, dynamic>{};
 
-CustomisationsInterface__content__strings
-_$CustomisationsInterface__content__stringsFromJson(
-  Map<String, dynamic> json,
-) => CustomisationsInterface__content__strings();
+CustomisationsInterfaceContentStrings
+_$CustomisationsInterfaceContentStringsFromJson(Map<String, dynamic> json) =>
+    CustomisationsInterfaceContentStrings();
 
-Map<String, dynamic> _$CustomisationsInterface__content__stringsToJson(
-  CustomisationsInterface__content__strings instance,
+Map<String, dynamic> _$CustomisationsInterfaceContentStringsToJson(
+  CustomisationsInterfaceContentStrings instance,
 ) => <String, dynamic>{};
 
-CustomisationsInterface__content _$CustomisationsInterface__contentFromJson(
+CustomisationsInterfaceContent _$CustomisationsInterfaceContentFromJson(
   Map<String, dynamic> json,
-) => CustomisationsInterface__content(
+) => CustomisationsInterfaceContent(
   strings:
       json['strings'] == null
           ? null
-          : CustomisationsInterface__content__strings.fromJson(
+          : CustomisationsInterfaceContentStrings.fromJson(
             json['strings'] as Map<String, dynamic>,
           ),
 );
 
-Map<String, dynamic> _$CustomisationsInterface__contentToJson(
-  CustomisationsInterface__content instance,
+Map<String, dynamic> _$CustomisationsInterfaceContentToJson(
+  CustomisationsInterfaceContent instance,
 ) => <String, dynamic>{
   if (instance.strings?.toJson() case final value?) 'strings': value,
 };
 
-EmbedConfig__hostConfig _$EmbedConfig__hostConfigFromJson(
+EmbedConfigHostConfig _$EmbedConfigHostConfigFromJson(
   Map<String, dynamic> json,
-) => EmbedConfig__hostConfig(
+) => EmbedConfigHostConfig(
   hostClusterName: json['hostClusterName'] as String,
   hostClusterId: json['hostClusterId'] as String,
   hostUserGuid: json['hostUserGuid'] as String,
 );
 
-Map<String, dynamic> _$EmbedConfig__hostConfigToJson(
-  EmbedConfig__hostConfig instance,
+Map<String, dynamic> _$EmbedConfigHostConfigToJson(
+  EmbedConfigHostConfig instance,
 ) => <String, dynamic>{
   'hostClusterName': instance.hostClusterName,
   'hostClusterId': instance.hostClusterId,
   'hostUserGuid': instance.hostUserGuid,
 };
 
-EmbedConfig__additionalFlags _$EmbedConfig__additionalFlagsFromJson(
+EmbedConfigAdditionalFlags _$EmbedConfigAdditionalFlagsFromJson(
   Map<String, dynamic> json,
-) => EmbedConfig__additionalFlags();
+) => EmbedConfigAdditionalFlags();
 
-Map<String, dynamic> _$EmbedConfig__additionalFlagsToJson(
-  EmbedConfig__additionalFlags instance,
+Map<String, dynamic> _$EmbedConfigAdditionalFlagsToJson(
+  EmbedConfigAdditionalFlags instance,
 ) => <String, dynamic>{};
 
-EmbedConfig__customVariablesForThirdPartyTools
-_$EmbedConfig__customVariablesForThirdPartyToolsFromJson(
+EmbedConfigCustomVariablesForThirdPartyTools
+_$EmbedConfigCustomVariablesForThirdPartyToolsFromJson(
   Map<String, dynamic> json,
-) => EmbedConfig__customVariablesForThirdPartyTools();
+) => EmbedConfigCustomVariablesForThirdPartyTools();
 
-Map<String, dynamic> _$EmbedConfig__customVariablesForThirdPartyToolsToJson(
-  EmbedConfig__customVariablesForThirdPartyTools instance,
+Map<String, dynamic> _$EmbedConfigCustomVariablesForThirdPartyToolsToJson(
+  EmbedConfigCustomVariablesForThirdPartyTools instance,
 ) => <String, dynamic>{};
 
-ViewConfig__additionalFlags _$ViewConfig__additionalFlagsFromJson(
+ViewConfigAdditionalFlags _$ViewConfigAdditionalFlagsFromJson(
   Map<String, dynamic> json,
-) => ViewConfig__additionalFlags();
+) => ViewConfigAdditionalFlags();
 
-Map<String, dynamic> _$ViewConfig__additionalFlagsToJson(
-  ViewConfig__additionalFlags instance,
+Map<String, dynamic> _$ViewConfigAdditionalFlagsToJson(
+  ViewConfigAdditionalFlags instance,
 ) => <String, dynamic>{};
 
-ColumnValue__value__Type__4__v _$ColumnValue__value__Type__4__vFromJson(
+ColumnValueValueType4V _$ColumnValueValueType4VFromJson(
   Map<String, dynamic> json,
-) => ColumnValue__value__Type__4__v(
+) => ColumnValueValueType4V(
   e: (json['e'] as num).toInt(),
   s: (json['s'] as num).toInt(),
 );
 
-Map<String, dynamic> _$ColumnValue__value__Type__4__vToJson(
-  ColumnValue__value__Type__4__v instance,
+Map<String, dynamic> _$ColumnValueValueType4VToJson(
+  ColumnValueValueType4V instance,
 ) => <String, dynamic>{'e': instance.e, 's': instance.s};
 
-ColumnValue__value__Type__4 _$ColumnValue__value__Type__4FromJson(
+ColumnValueValueType4 _$ColumnValueValueType4FromJson(
   Map<String, dynamic> json,
-) => ColumnValue__value__Type__4(
-  v: ColumnValue__value__Type__4__v.fromJson(json['v'] as Map<String, dynamic>),
+) => ColumnValueValueType4(
+  v: ColumnValueValueType4V.fromJson(json['v'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$ColumnValue__value__Type__4ToJson(
-  ColumnValue__value__Type__4 instance,
+Map<String, dynamic> _$ColumnValueValueType4ToJson(
+  ColumnValueValueType4 instance,
 ) => <String, dynamic>{'v': instance.v.toJson()};
 
-ColumnValue__column _$ColumnValue__columnFromJson(Map<String, dynamic> json) =>
-    ColumnValue__column(
+ColumnValueColumn _$ColumnValueColumnFromJson(Map<String, dynamic> json) =>
+    ColumnValueColumn(
       dataType: json['dataType'] as String,
       name: json['name'] as String,
       id: json['id'] as String,
     );
 
-Map<String, dynamic> _$ColumnValue__columnToJson(
-  ColumnValue__column instance,
-) => <String, dynamic>{
-  'dataType': instance.dataType,
-  'name': instance.name,
-  'id': instance.id,
-};
+Map<String, dynamic> _$ColumnValueColumnToJson(ColumnValueColumn instance) =>
+    <String, dynamic>{
+      'dataType': instance.dataType,
+      'name': instance.name,
+      'id': instance.id,
+    };
 
-CustomActionPayload__embedAnswerData__sources__header
-_$CustomActionPayload__embedAnswerData__sources__headerFromJson(
+CustomActionPayloadEmbedAnswerDataSourcesHeader
+_$CustomActionPayloadEmbedAnswerDataSourcesHeaderFromJson(
   Map<String, dynamic> json,
-) => CustomActionPayload__embedAnswerData__sources__header(
+) => CustomActionPayloadEmbedAnswerDataSourcesHeader(
   guid: json['guid'] as String,
 );
 
-Map<String, dynamic>
-_$CustomActionPayload__embedAnswerData__sources__headerToJson(
-  CustomActionPayload__embedAnswerData__sources__header instance,
+Map<String, dynamic> _$CustomActionPayloadEmbedAnswerDataSourcesHeaderToJson(
+  CustomActionPayloadEmbedAnswerDataSourcesHeader instance,
 ) => <String, dynamic>{'guid': instance.guid};
 
-CustomActionPayload__embedAnswerData__sources
-_$CustomActionPayload__embedAnswerData__sourcesFromJson(
+CustomActionPayloadEmbedAnswerDataSources
+_$CustomActionPayloadEmbedAnswerDataSourcesFromJson(
   Map<String, dynamic> json,
-) => CustomActionPayload__embedAnswerData__sources(
-  header: CustomActionPayload__embedAnswerData__sources__header.fromJson(
+) => CustomActionPayloadEmbedAnswerDataSources(
+  header: CustomActionPayloadEmbedAnswerDataSourcesHeader.fromJson(
     json['header'] as Map<String, dynamic>,
   ),
 );
 
-Map<String, dynamic> _$CustomActionPayload__embedAnswerData__sourcesToJson(
-  CustomActionPayload__embedAnswerData__sources instance,
+Map<String, dynamic> _$CustomActionPayloadEmbedAnswerDataSourcesToJson(
+  CustomActionPayloadEmbedAnswerDataSources instance,
 ) => <String, dynamic>{'header': instance.header.toJson()};
 
-CustomActionPayload__embedAnswerData
-_$CustomActionPayload__embedAnswerDataFromJson(Map<String, dynamic> json) =>
-    CustomActionPayload__embedAnswerData(
-      data: json['data'] as List<dynamic>,
-      columns: json['columns'] as List<dynamic>,
-      sources: CustomActionPayload__embedAnswerData__sources.fromJson(
-        json['sources'] as Map<String, dynamic>,
-      ),
-      id: json['id'] as String,
-      name: json['name'] as String,
-    );
+CustomActionPayloadEmbedAnswerData _$CustomActionPayloadEmbedAnswerDataFromJson(
+  Map<String, dynamic> json,
+) => CustomActionPayloadEmbedAnswerData(
+  data: json['data'] as List<dynamic>,
+  columns: json['columns'] as List<dynamic>,
+  sources: CustomActionPayloadEmbedAnswerDataSources.fromJson(
+    json['sources'] as Map<String, dynamic>,
+  ),
+  id: json['id'] as String,
+  name: json['name'] as String,
+);
 
-Map<String, dynamic> _$CustomActionPayload__embedAnswerDataToJson(
-  CustomActionPayload__embedAnswerData instance,
+Map<String, dynamic> _$CustomActionPayloadEmbedAnswerDataToJson(
+  CustomActionPayloadEmbedAnswerData instance,
 ) => <String, dynamic>{
   'data': instance.data,
   'columns': instance.columns,
@@ -1114,9 +1111,9 @@ Map<String, dynamic> _$CustomActionPayload__embedAnswerDataToJson(
   'name': instance.name,
 };
 
-CustomActionPayload__contextMenuPoints
-_$CustomActionPayload__contextMenuPointsFromJson(Map<String, dynamic> json) =>
-    CustomActionPayload__contextMenuPoints(
+CustomActionPayloadContextMenuPoints
+_$CustomActionPayloadContextMenuPointsFromJson(Map<String, dynamic> json) =>
+    CustomActionPayloadContextMenuPoints(
       selectedPoints:
           (json['selectedPoints'] as List<dynamic>)
               .map((e) => VizPoint.fromJson(e as Map<String, dynamic>))
@@ -1126,78 +1123,74 @@ _$CustomActionPayload__contextMenuPointsFromJson(Map<String, dynamic> json) =>
       ),
     );
 
-Map<String, dynamic> _$CustomActionPayload__contextMenuPointsToJson(
-  CustomActionPayload__contextMenuPoints instance,
+Map<String, dynamic> _$CustomActionPayloadContextMenuPointsToJson(
+  CustomActionPayloadContextMenuPoints instance,
 ) => <String, dynamic>{
   'selectedPoints': instance.selectedPoints.map((e) => e.toJson()).toList(),
   'clickedPoint': instance.clickedPoint.toJson(),
 };
 
-DefaultAppInitData__customVariablesForThirdPartyTools
-_$DefaultAppInitData__customVariablesForThirdPartyToolsFromJson(
+DefaultAppInitDataCustomVariablesForThirdPartyTools
+_$DefaultAppInitDataCustomVariablesForThirdPartyToolsFromJson(
   Map<String, dynamic> json,
-) => DefaultAppInitData__customVariablesForThirdPartyTools();
+) => DefaultAppInitDataCustomVariablesForThirdPartyTools();
 
 Map<String, dynamic>
-_$DefaultAppInitData__customVariablesForThirdPartyToolsToJson(
-  DefaultAppInitData__customVariablesForThirdPartyTools instance,
+_$DefaultAppInitDataCustomVariablesForThirdPartyToolsToJson(
+  DefaultAppInitDataCustomVariablesForThirdPartyTools instance,
 ) => <String, dynamic>{};
 
-DefaultAppInitData__hostConfig _$DefaultAppInitData__hostConfigFromJson(
+DefaultAppInitDataHostConfig _$DefaultAppInitDataHostConfigFromJson(
   Map<String, dynamic> json,
-) => DefaultAppInitData__hostConfig();
+) => DefaultAppInitDataHostConfig();
 
-Map<String, dynamic> _$DefaultAppInitData__hostConfigToJson(
-  DefaultAppInitData__hostConfig instance,
+Map<String, dynamic> _$DefaultAppInitDataHostConfigToJson(
+  DefaultAppInitDataHostConfig instance,
 ) => <String, dynamic>{};
 
-EmbedConfig__authTriggerContainer _$EmbedConfig__authTriggerContainerFromJson(
+EmbedConfigAuthTriggerContainer _$EmbedConfigAuthTriggerContainerFromJson(
   Map<String, dynamic> json,
-) => EmbedConfig__authTriggerContainer(json['value'] as String);
+) => EmbedConfigAuthTriggerContainer(json['value'] as String);
 
-Map<String, dynamic> _$EmbedConfig__authTriggerContainerToJson(
-  EmbedConfig__authTriggerContainer instance,
+Map<String, dynamic> _$EmbedConfigAuthTriggerContainerToJson(
+  EmbedConfigAuthTriggerContainer instance,
 ) => <String, dynamic>{'value': instance.value};
 
-FrameParams__width _$FrameParams__widthFromJson(Map<String, dynamic> json) =>
-    FrameParams__width(json['value'] as String);
+FrameParamsWidth _$FrameParamsWidthFromJson(Map<String, dynamic> json) =>
+    FrameParamsWidth(json['value'] as String);
 
-Map<String, dynamic> _$FrameParams__widthToJson(FrameParams__width instance) =>
+Map<String, dynamic> _$FrameParamsWidthToJson(FrameParamsWidth instance) =>
     <String, dynamic>{'value': instance.value};
 
-FrameParams__height _$FrameParams__heightFromJson(Map<String, dynamic> json) =>
-    FrameParams__height(json['value'] as String);
+FrameParamsHeight _$FrameParamsHeightFromJson(Map<String, dynamic> json) =>
+    FrameParamsHeight(json['value'] as String);
 
-Map<String, dynamic> _$FrameParams__heightToJson(
-  FrameParams__height instance,
+Map<String, dynamic> _$FrameParamsHeightToJson(FrameParamsHeight instance) =>
+    <String, dynamic>{'value': instance.value};
+
+FrameParamsLoading _$FrameParamsLoadingFromJson(Map<String, dynamic> json) =>
+    FrameParamsLoading(json['value'] as String);
+
+Map<String, dynamic> _$FrameParamsLoadingToJson(FrameParamsLoading instance) =>
+    <String, dynamic>{'value': instance.value};
+
+RuntimeFilterValues _$RuntimeFilterValuesFromJson(Map<String, dynamic> json) =>
+    RuntimeFilterValues(json['value'] as String);
+
+Map<String, dynamic> _$RuntimeFilterValuesToJson(
+  RuntimeFilterValues instance,
 ) => <String, dynamic>{'value': instance.value};
 
-FrameParams__loading _$FrameParams__loadingFromJson(
+RuntimeParameterValue _$RuntimeParameterValueFromJson(
   Map<String, dynamic> json,
-) => FrameParams__loading(json['value'] as String);
+) => RuntimeParameterValue(json['value'] as String);
 
-Map<String, dynamic> _$FrameParams__loadingToJson(
-  FrameParams__loading instance,
+Map<String, dynamic> _$RuntimeParameterValueToJson(
+  RuntimeParameterValue instance,
 ) => <String, dynamic>{'value': instance.value};
 
-RuntimeFilter__values _$RuntimeFilter__valuesFromJson(
-  Map<String, dynamic> json,
-) => RuntimeFilter__values(json['value'] as String);
+ColumnValueValue _$ColumnValueValueFromJson(Map<String, dynamic> json) =>
+    ColumnValueValue(json['value'] as String);
 
-Map<String, dynamic> _$RuntimeFilter__valuesToJson(
-  RuntimeFilter__values instance,
-) => <String, dynamic>{'value': instance.value};
-
-RuntimeParameter__value _$RuntimeParameter__valueFromJson(
-  Map<String, dynamic> json,
-) => RuntimeParameter__value(json['value'] as String);
-
-Map<String, dynamic> _$RuntimeParameter__valueToJson(
-  RuntimeParameter__value instance,
-) => <String, dynamic>{'value': instance.value};
-
-ColumnValue__value _$ColumnValue__valueFromJson(Map<String, dynamic> json) =>
-    ColumnValue__value(json['value'] as String);
-
-Map<String, dynamic> _$ColumnValue__valueToJson(ColumnValue__value instance) =>
+Map<String, dynamic> _$ColumnValueValueToJson(ColumnValueValue instance) =>
     <String, dynamic>{'value': instance.value};
