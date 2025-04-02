@@ -1,39 +1,96 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# ThoughtSpot Flutter Embed SDK
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+## Overview
+The **ThoughtSpot Flutter Embed SDK** allows developers to seamlessly integrate ThoughtSpot's analytics and insights into Flutter applications.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+## Installation
+Add the following dependency to your `pubspec.yaml`:
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  flutter_embed_sdk: ^0.0.0-alpha.0
 ```
 
-## Additional information
+Then, run:
+```sh
+flutter pub get
+```
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## Platform-Specific Configuration
+Since this SDK uses WebView, platform-specific permissions are required for **Android** and **iOS**.
+
+### Android Setup
+Modify `android/app/src/main/AndroidManifest.xml` to enable Internet access:
+
+```xml
+<manifest>
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+```
+
+### iOS Setup
+Modify `ios/Runner/Info.plist` to allow WebView content loading:
+
+```xml
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
+```
+
+## Usage
+Here’s how to embed ThoughtSpot using the SDK:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:thoughtspot_flutter_embed/thoughtspot_flutter_embed.dart';
+
+class GetAuthToken extends EmbedConfigGetAuthToken {
+  @override
+  Future<String> operate() async {
+    return '<YOUR_AUTH_TOKEN>';
+  }
+}
+
+class ThoughtSpotEmbedDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    EmbedConfig embedConfig = EmbedConfig(
+      authType: AuthType.TrustedAuthTokenCookieless,
+      thoughtSpotHost: '<YOUR_THOUGHTSPOT_HOST>',
+      getAuthToken: GetAuthToken(),
+    );
+
+    LiveboardViewConfig liveboardViewConfig = LiveboardViewConfig(
+      liveboardId: 'bea79810-145f-4ad0-a02c-4177a6e7d861',
+      customizations: CustomisationsInterface(
+        style: CustomStyles(
+          customCSS: customCssInterface(
+            variables: {
+              "--ts-var-root-background": "#e76262",
+              "--ts-var-root-color": "#021e76",
+              "--ts-var-viz-background": "#d3f6ae",
+            },
+          ),
+        ),
+      ),
+    );
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text("ThoughtSpot Embed"),
+      ),
+      body: LiveboardEmbed(
+        embedConfig: embedConfig,
+        viewConfig: liveboardViewConfig,
+      ),
+    );
+  }
+}
+```
+
+## License
+This project is licensed under the **ThoughtSpot Development Tools End User License Agreement**.
+
