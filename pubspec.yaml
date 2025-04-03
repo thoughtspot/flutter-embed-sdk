@@ -1,11 +1,11 @@
 name: flutter_embed_sdk
 description: "ThoughtSpot's Flutter Embed SDK"
-version: 0.0.0-alpha.1
+version: 0.0.0-alpha.2
 repository: https://github.com/thoughtspot/flutter-embed-sdk
 
 environment:
-  sdk: ^3.7.2
-  flutter: ">=1.17.0"
+  sdk: ^3.5.0
+  flutter: ">=3.24.0"
 
 dependencies:
   flutter:
