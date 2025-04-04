@@ -10,7 +10,7 @@ Add the following dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_embed_sdk: ^0.0.1
+  flutter_embed_sdk: ^0.0.0
 ```
 
 Then, run:
