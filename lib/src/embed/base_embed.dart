@@ -153,4 +153,9 @@ abstract class BaseController {
 abstract class BaseEmbed<T extends BaseController> extends StatelessWidget {
   final T controller;
   const BaseEmbed({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return WebViewWidget(controller: controller._webViewController);
+  }
 }

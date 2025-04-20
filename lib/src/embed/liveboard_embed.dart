@@ -26,9 +26,4 @@ class LiveboardController extends BaseController {
 
 class LiveboardEmbed extends BaseEmbed<LiveboardController> {
   const LiveboardEmbed({super.key, required super.controller});
-
-  @override
-  Widget build(BuildContext context) {
-    return WebViewWidget(controller: controller._webViewController);
-  }
 }
