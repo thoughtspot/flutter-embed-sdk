@@ -22,7 +22,6 @@ for arg in "$@"; do
 done
 
 # Run tests
-flutter pub get
 if $RUN_COVERAGE; then
   flutter test --coverage
   genhtml coverage/lcov.info --output-directory coverage/html
