@@ -1,55 +1,50 @@
 #!/bin/bash
 
-# Exit on any error
-set -e
+# Default values
+RUN_COVERAGE=false
 
-# Colors for output
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NC='\033[0m' # No Color
-BOLD='\033[1m'
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --coverage)
+            RUN_COVERAGE=true
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
 
-echo -e "${BOLD}Running Flutter tests with coverage...${NC}"
+# Run tests
+if [ "$RUN_COVERAGE" = true ]; then
+    # Ensure coverage package is installed
+    flutter pub get
 
-# Run Flutter tests with coverage
-flutter test --coverage --reporter expanded
+    # Run tests with coverage
+    flutter test --coverage
 
-# Generate coverage report using lcov configuration
-lcov --config-file .lcovrc --capture --directory . --output-file coverage/lcov.info
+    # Convert coverage data to LCOV format
+    dart run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o coverage/lcov.info -i .
 
-# Generate HTML report
-genhtml coverage/lcov.info --output-directory coverage/html
+    # Generate HTML report
+    genhtml coverage/lcov.info --output-directory coverage/html
 
-# Display coverage summary
-echo -e "\n${BOLD}Coverage Report Summary:${NC}"
-lcov --config-file .lcovrc --summary coverage/lcov.info
+    # Print coverage summary and details
+    lcov --config-file .lcovrc --summary coverage/lcov.info
+    lcov --config-file .lcovrc --list coverage/lcov.info
 
-# Check coverage threshold
-COVERAGE_THRESHOLD=80
-COVERAGE=$(lcov --config-file .lcovrc --summary coverage/lcov.info | grep "lines" | cut -d ' ' -f 4 | cut -d '%' -f 1)
-echo -e "\n${BOLD}Test coverage: ${NC}$COVERAGE%"
-if (( $(echo "$COVERAGE < $COVERAGE_THRESHOLD" | bc -l) )); then
-  echo -e "${RED}Warning: Test coverage is below $COVERAGE_THRESHOLD% threshold${NC}"
-  echo -e "\nTo improve coverage:"
-  echo "1. Add tests for untested files"
-  echo "2. Add tests for untested methods"
-  echo "3. Add edge cases to existing tests"
-  echo -e "\nSee the HTML report for detailed coverage information"
-  
-  # Show files with low coverage
-  echo -e "\n${BOLD}Files with low coverage:${NC}"
-  lcov --config-file .lcovrc --list coverage/lcov.info | awk '/^  lines.*%/ { if ($2 < 80) print FILENAME ": " $0 }' RS="Processing file" FS="\n" || true
-  exit 1
+    # Get the coverage percentage and check against threshold
+    COVERAGE=$(lcov --config-file .lcovrc --summary coverage/lcov.info | grep "lines" | cut -d ":" -f 2 | cut -d "%" -f 1 | tr -d " ")
+    THRESHOLD=80
+
+    if (( $(echo "$COVERAGE >= $THRESHOLD" | bc -l) )); then
+        echo -e "\033[32mCoverage: $COVERAGE% ✓\033[0m"
+    else
+        echo -e "\033[31mCoverage: $COVERAGE% ✗ (threshold: $THRESHOLD%)\033[0m"
+        exit 1
+    fi
 else
-  echo -e "${GREEN}Coverage is above the $COVERAGE_THRESHOLD% threshold${NC}"
-fi
-
-# Open coverage report in browser (macOS)
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  echo -e "\n${BOLD}Opening coverage report in browser...${NC}"
-  open coverage/html/index.html
-fi
-
-# Display final coverage report
-echo -e "\n${BOLD}Final Coverage Report:${NC}"
-lcov --config-file .lcovrc --list coverage/lcov.info 
+    flutter test
+fi 

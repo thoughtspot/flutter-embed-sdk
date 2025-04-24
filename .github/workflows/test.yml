@@ -26,5 +26,5 @@ jobs:
 
       - name: Run Tests with Coverage
         run: |
-          chmod +x script/test
-          ./script/test --coverage
+          chmod +x scripts/test
+          ./scripts/test --coverage
