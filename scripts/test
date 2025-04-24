@@ -2,16 +2,16 @@
 
 set -e
 
-# 🎨 Colors
+# Colors
 RED='\033[31m'
 GREEN='\033[32m'
 NC='\033[0m' # No Color
 
-# 🛠️ Config
+# Config
 THRESHOLD=80
 RUN_COVERAGE=false
 
-# 🔍 Parse arguments
+# Parse arguments
 for arg in "$@"; do
   if [[ "$arg" == "--coverage" ]]; then
     RUN_COVERAGE=true
@@ -21,7 +21,7 @@ for arg in "$@"; do
   fi
 done
 
-# 🚀 Run tests
+# Run tests
 flutter pub get
 if $RUN_COVERAGE; then
   flutter test --coverage
@@ -31,7 +31,7 @@ if $RUN_COVERAGE; then
   lcov --config-file .lcovrc --summary coverage/lcov.info
   lcov --config-file .lcovrc --list coverage/lcov.info
 
-  # 📊 Summary + check threshold
+  # Summary + check threshold
   COVERAGE=$(lcov --config-file .lcovrc --summary coverage/lcov.info | grep "lines" | awk -F: '{print $2}' | cut -d "%" -f 1 | tr -d " ")
 
   printf "Coverage: %.2f%% " "$COVERAGE"
