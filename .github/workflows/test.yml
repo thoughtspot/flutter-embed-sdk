@@ -1,4 +1,4 @@
-name: Test
+name: Flutter Tests and Coverage
 
 on:
   push:
@@ -7,36 +7,24 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  test-and-coverage:
+    name: Run Tests and Generate Coverage
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.19.0"
+          flutter-version: "3.27.0"
           channel: "stable"
-      - name: Install dependencies
+
+      - name: Install Dependencies
         run: flutter pub get
-      - name: Run tests with coverage
+
+      - name: Run Tests with Coverage
         run: |
-          flutter test --coverage
-          dart run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o coverage/lcov.info -i .
-          genhtml coverage/lcov.info --output-directory coverage/html
-      - name: Upload coverage reports
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-report
-          path: coverage/html
-      - name: Check coverage
-        run: |
-          lcov --config-file .lcovrc --summary coverage/lcov.info
-          lcov --config-file .lcovrc --list coverage/lcov.info
-          COVERAGE=$(lcov --config-file .lcovrc --summary coverage/lcov.info | grep "lines" | cut -d ":" -f 2 | cut -d "%" -f 1 | tr -d " ")
-          THRESHOLD=80
-          if (( $(echo "$COVERAGE >= $THRESHOLD" | bc -l) )); then
-            echo -e "\033[32mCoverage: $COVERAGE% ✓\033[0m"
-          else
-            echo -e "\033[31mCoverage: $COVERAGE% ✗ (threshold: $THRESHOLD%)\033[0m"
-            exit 1
-          fi
+          chmod +x script/test
+          ./script/test --coverage
