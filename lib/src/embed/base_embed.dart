@@ -1,6 +1,7 @@
 library;
 
 import 'dart:convert';
+import 'dart:developer';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ part './liveboard_embed.dart';
 
 abstract class BaseController {
   final EmbedConfig embedConfig;
-  final String _url = 'https://mobile-embed-shell.vercel.app';
+  final String _url = 'http://localhost:8080';
 
   late final WebViewController _webViewController;
 
@@ -41,6 +42,8 @@ abstract class BaseController {
         onMessageReceived: _handleMessage,
       )
       ..loadRequest(Uri.parse(_url));
+
+      log("hi");
     return controller;
   }
 
