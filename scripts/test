@@ -1,50 +1,46 @@
 #!/bin/bash
 
-# Default values
+set -e
+
+# 🎨 Colors
+RED='\033[31m'
+GREEN='\033[32m'
+NC='\033[0m' # No Color
+
+# 🛠️ Config
+THRESHOLD=80
 RUN_COVERAGE=false
 
-# Parse arguments
-while [[ $# -gt 0 ]]; do
-    case $1 in
-        --coverage)
-            RUN_COVERAGE=true
-            shift
-            ;;
-        *)
-            echo "Unknown option: $1"
-            exit 1
-            ;;
-    esac
+# 🔍 Parse arguments
+for arg in "$@"; do
+  if [[ "$arg" == "--coverage" ]]; then
+    RUN_COVERAGE=true
+  else
+    echo "Unknown option: $arg"
+    exit 1
+  fi
 done
 
-# Run tests
-if [ "$RUN_COVERAGE" = true ]; then
-    # Ensure coverage package is installed
-    flutter pub get
+# 🚀 Run tests
+flutter pub get
+if $RUN_COVERAGE; then
+  flutter test --coverage
+  genhtml coverage/lcov.info --output-directory coverage/html
 
-    # Run tests with coverage
-    flutter test --coverage
+  # Print coverage summary and details
+  lcov --config-file .lcovrc --summary coverage/lcov.info
+  lcov --config-file .lcovrc --list coverage/lcov.info
 
-    # Convert coverage data to LCOV format
-    dart run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o coverage/lcov.info -i .
+  # 📊 Summary + check threshold
+  COVERAGE=$(lcov --config-file .lcovrc --summary coverage/lcov.info | grep "lines" | awk -F: '{print $2}' | cut -d "%" -f 1 | tr -d " ")
 
-    # Generate HTML report
-    genhtml coverage/lcov.info --output-directory coverage/html
-
-    # Print coverage summary and details
-    lcov --config-file .lcovrc --summary coverage/lcov.info
-    lcov --config-file .lcovrc --list coverage/lcov.info
-
-    # Get the coverage percentage and check against threshold
-    COVERAGE=$(lcov --config-file .lcovrc --summary coverage/lcov.info | grep "lines" | cut -d ":" -f 2 | cut -d "%" -f 1 | tr -d " ")
-    THRESHOLD=80
-
-    if (( $(echo "$COVERAGE >= $THRESHOLD" | bc -l) )); then
-        echo -e "\033[32mCoverage: $COVERAGE% ✓\033[0m"
-    else
-        echo -e "\033[31mCoverage: $COVERAGE% ✗ (threshold: $THRESHOLD%)\033[0m"
-        exit 1
-    fi
+  printf "Coverage: %.2f%% " "$COVERAGE"
+  if (( $(echo "$COVERAGE >= $THRESHOLD" | bc -l) )); then
+    echo -e "${GREEN}✓${NC}"
+  else
+    echo -e "${RED}✗ (threshold: $THRESHOLD%)${NC}"
+    exit 1
+  fi
 else
-    flutter test
-fi 
+  flutter test
+fi
