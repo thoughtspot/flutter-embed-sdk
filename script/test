@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Default values
+RUN_COVERAGE=false
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --coverage)
+            RUN_COVERAGE=true
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# Run tests
+if [ "$RUN_COVERAGE" = true ]; then
+    flutter test --coverage
+
+    # Convert coverage data to LCOV format
+    dart run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o coverage/lcov.info -i .
+
+    # Generate HTML report
+    genhtml coverage/lcov.info --output-directory coverage/html
+
+    # Print coverage summary and details
+    lcov --config-file .lcovrc --summary coverage/lcov.info
+    lcov --config-file .lcovrc --list coverage/lcov.info
+
+    # Get the coverage percentage and check against threshold
+    COVERAGE=$(lcov --config-file .lcovrc --summary coverage/lcov.info | grep "lines" | cut -d ":" -f 2 | cut -d "%" -f 1 | tr -d " ")
+    THRESHOLD=80
+
+    if (( $(echo "$COVERAGE >= $THRESHOLD" | bc -l) )); then
+        echo -e "\033[32mCoverage: $COVERAGE% ✓\033[0m"
+    else
+        echo -e "\033[31mCoverage: $COVERAGE% ✗ (threshold: $THRESHOLD%)\033[0m"
+        exit 1
+    fi
+else
+    flutter test
+fi 

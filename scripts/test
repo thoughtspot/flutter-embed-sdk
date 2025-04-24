@@ -11,19 +11,45 @@ BOLD='\033[1m'
 
 echo -e "${BOLD}Running Flutter tests with coverage...${NC}"
 
-# Run tests with coverage and show detailed output
-if flutter test --coverage --reporter expanded; then
-    echo -e "\n${GREEN}✓ Tests completed successfully${NC}\n"
+# Run Flutter tests with coverage
+flutter test --coverage --reporter expanded
+
+# Generate coverage report using lcov configuration
+lcov --config-file .lcovrc --capture --directory . --output-file coverage/lcov.info
+
+# Generate HTML report
+genhtml coverage/lcov.info --output-directory coverage/html
+
+# Display coverage summary
+echo -e "\n${BOLD}Coverage Report Summary:${NC}"
+lcov --config-file .lcovrc --summary coverage/lcov.info
+
+# Check coverage threshold
+COVERAGE_THRESHOLD=80
+COVERAGE=$(lcov --config-file .lcovrc --summary coverage/lcov.info | grep "lines" | cut -d ' ' -f 4 | cut -d '%' -f 1)
+echo -e "\n${BOLD}Test coverage: ${NC}$COVERAGE%"
+if (( $(echo "$COVERAGE < $COVERAGE_THRESHOLD" | bc -l) )); then
+  echo -e "${RED}Warning: Test coverage is below $COVERAGE_THRESHOLD% threshold${NC}"
+  echo -e "\nTo improve coverage:"
+  echo "1. Add tests for untested files"
+  echo "2. Add tests for untested methods"
+  echo "3. Add edge cases to existing tests"
+  echo -e "\nSee the HTML report for detailed coverage information"
+  
+  # Show files with low coverage
+  echo -e "\n${BOLD}Files with low coverage:${NC}"
+  lcov --config-file .lcovrc --list coverage/lcov.info | awk '/^  lines.*%/ { if ($2 < 80) print FILENAME ": " $0 }' RS="Processing file" FS="\n" || true
+  exit 1
 else
-    echo -e "\n${RED}✗ Tests failed${NC}\n"
-    exit 1
+  echo -e "${GREEN}Coverage is above the $COVERAGE_THRESHOLD% threshold${NC}"
 fi
 
-echo -e "${BOLD}Generating coverage report (excluding types folder)...${NC}"
+# Open coverage report in browser (macOS)
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  echo -e "\n${BOLD}Opening coverage report in browser...${NC}"
+  open coverage/html/index.html
+fi
 
-# Remove types folder from coverage report
-lcov --remove coverage/lcov.info 'lib/src/types/*' -o coverage/lcov.info > /dev/null
-
-echo -e "${BOLD}Coverage Report:${NC}\n"
-# Display coverage report
-lcov --list coverage/lcov.info 
+# Display final coverage report
+echo -e "\n${BOLD}Final Coverage Report:${NC}"
+lcov --config-file .lcovrc --list coverage/lcov.info 

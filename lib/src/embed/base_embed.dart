@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_embed_sdk/flutter_embed_sdk.dart';
 import 'package:flutter_embed_sdk/src/types/common-types.dart';
 import 'package:flutter_embed_sdk/src/utils.dart';
+import 'package:flutter_embed_sdk/src/utils/logger.dart';
 
 part './liveboard_embed.dart';
 
@@ -42,8 +43,6 @@ abstract class BaseController {
         onMessageReceived: _handleMessage,
       )
       ..loadRequest(Uri.parse(_url));
-
-      log("hi");
     return controller;
   }
 
@@ -82,35 +81,51 @@ abstract class BaseController {
   }
 
   void _handleMessage(JavaScriptMessage message) {
-    Map<String, dynamic> jsonObject = jsonDecode(message.message);
+    try {
+      Map<String, dynamic> jsonObject = jsonDecode(message.message);
+      Logger.debug('Received message: $jsonObject');
 
-    String messageType = jsonObject['type'];
+      // Handle missing message type
+      if (!jsonObject.containsKey('type')) {
+        Logger.warning('Received message without type field');
+        return;
+      }
 
-    // Cant use switch case because dart does'nt allow to use enum.value in switch case
-    if (messageType == IncomingShellMessageType.INIT_VERCEL_SHELL.value) {
-      _handleInit(jsonObject);
-    } else if (messageType ==
-        IncomingShellMessageType.REQUEST_AUTH_TOKEN.value) {
-      _handleRequestAuthToken(jsonObject);
-    } else if (messageType == IncomingShellMessageType.EMBED_EVENT.value) {
-      _handleEmbedEvent(jsonObject);
+      String messageType = jsonObject['type'];
+
+      // Cant use switch case because dart does'nt allow to use enum.value in switch case
+      if (messageType == IncomingShellMessageType.INIT_VERCEL_SHELL.value) {
+        _handleInit(jsonObject);
+      } else if (messageType ==
+          IncomingShellMessageType.REQUEST_AUTH_TOKEN.value) {
+        _handleRequestAuthToken(jsonObject);
+      } else if (messageType == IncomingShellMessageType.EMBED_EVENT.value) {
+        _handleEmbedEvent(jsonObject);
+      }
+    } catch (e, stackTrace) {
+      // Handle JSON parsing errors and other exceptions gracefully
+      Logger.error('Error handling message', e, stackTrace);
     }
   }
 
   void _handleEmbedEvent(Map<String, dynamic> message) {
-    final eventName = message['eventName'];
-    final payload = message['data'];
+    try {
+      final eventName = message['eventName'];
+      final payload = message['data'];
 
-    // For responding
-    final eventId = message['eventId'];
-    final hasResponder = message['hasResponder'];
+      // For responding
+      final eventId = message['eventId'];
+      final hasResponder = message['hasResponder'];
 
-    final handlers = _handlers[eventName];
+      final handlers = _handlers[eventName];
 
-    if (handlers != null) {
-      for (var handler in handlers.toList()) {
-        handler(payload);
+      if (handlers != null) {
+        for (var handler in handlers.toList()) {
+          handler(payload);
+        }
       }
+    } catch (e, stackTrace) {
+      Logger.error('Error handling embed event', e, stackTrace);
     }
   }
 
@@ -138,6 +153,7 @@ abstract class BaseController {
     HostEvent event, [
     Map<String, dynamic>? data,
   ]) async {
+    Logger.debug('Triggering event: $event');
     String eventId = getUniqueId();
     Map<String, dynamic> embedEventPayload = {
       'eventName': event.value,
