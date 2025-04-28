@@ -27,10 +27,15 @@ jobs:
       - name: Install Flutter Dependencies
         run: flutter pub get
 
+      - name: Generate Mocks
+        run: |
+          chmod +x scripts/generate.sh
+          ./scripts/generate.sh
+
       - name: Run Tests with Coverage
         run: |
-          chmod +x scripts/test
-          ./scripts/test --coverage
+          chmod +x scripts/test.sh
+          ./scripts/test.sh --coverage
 
       - name: Upload Coverage Report Artifact
         if: always()

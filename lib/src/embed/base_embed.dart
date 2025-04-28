@@ -1,13 +1,12 @@
 library;
 
 import 'dart:convert';
-import 'dart:developer';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_embed_sdk/flutter_embed_sdk.dart';
 import 'package:flutter_embed_sdk/src/types/common-types.dart';
-import 'package:flutter_embed_sdk/src/utils.dart';
+import 'package:flutter_embed_sdk/src/utils/utils.dart';
 import 'package:flutter_embed_sdk/src/utils/logger.dart';
 
 part './liveboard_embed.dart';
@@ -15,12 +14,15 @@ part './liveboard_embed.dart';
 abstract class BaseController {
   final EmbedConfig embedConfig;
   final String _url = 'http://localhost:8080';
+  final Logger _logger = Logger();
 
   late final WebViewController _webViewController;
 
   final Map<String, List<Function(dynamic)>> _handlers = {};
 
   BaseController({required this.embedConfig}) {
+    _logger.setLogLevel(embedConfig.logLevel ?? LogLevel.ERROR);
+    _logger.debug('Initializing BaseController');
     _webViewController = _setWebViewController(WebViewController());
   }
 
@@ -83,11 +85,11 @@ abstract class BaseController {
   void _handleMessage(JavaScriptMessage message) {
     try {
       Map<String, dynamic> jsonObject = jsonDecode(message.message);
-      Logger.debug('Received message: $jsonObject');
+      _logger.debug('Received message: $jsonObject');
 
       // Handle missing message type
       if (!jsonObject.containsKey('type')) {
-        Logger.warning('Received message without type field');
+        _logger.warn('Received message without type field');
         return;
       }
 
@@ -104,7 +106,7 @@ abstract class BaseController {
       }
     } catch (e, stackTrace) {
       // Handle JSON parsing errors and other exceptions gracefully
-      Logger.error('Error handling message', e, stackTrace);
+      _logger.errorDebug('Error handling message', e, stackTrace);
     }
   }
 
@@ -125,7 +127,7 @@ abstract class BaseController {
         }
       }
     } catch (e, stackTrace) {
-      Logger.error('Error handling embed event', e, stackTrace);
+      _logger.errorDebug('Error handling embed event', e, stackTrace);
     }
   }
 
@@ -153,7 +155,8 @@ abstract class BaseController {
     HostEvent event, [
     Map<String, dynamic>? data,
   ]) async {
-    Logger.debug('Triggering event: $event');
+    _logger.error("message");
+    _logger.debug('Triggering event: $event');
     String eventId = getUniqueId();
     Map<String, dynamic> embedEventPayload = {
       'eventName': event.value,
