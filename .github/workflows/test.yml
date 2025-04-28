@@ -29,12 +29,13 @@ jobs:
           flutter pub get
           flutter pub global activate build_runner
           flutter pub global activate mockito
+          flutter pub global activate analyzer 6.4.0
 
       - name: Generate Mocks
         run: |
           chmod +x scripts/generate.sh
-          dart run build_runner clean
-          dart run build_runner build --delete-conflicting-outputs
+          flutter pub run build_runner clean
+          flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: Run Tests with Coverage
         run: |
