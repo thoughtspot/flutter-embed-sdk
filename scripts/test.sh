@@ -26,14 +26,20 @@ if $RUN_COVERAGE; then
   flutter test --coverage
   genhtml coverage/lcov.info --output-directory coverage/html
 
-  # Print coverage summary and details
-  lcov --config-file .lcovrc --summary coverage/lcov.info
-  lcov --config-file .lcovrc --list coverage/lcov.info
+  # Process coverage data
+  lcov --config-file .lcovrc --summary coverage/lcov.info > coverage/summary.txt
+  lcov --config-file .lcovrc --list coverage/lcov.info > coverage/detailed.txt
 
-  # Summary + check threshold
+  # Print coverage summary and details
+  echo "Coverage Summary:"
+  cat coverage/summary.txt
+  echo -e "\nDetailed Coverage:"
+  cat coverage/detailed.txt
+
+  # Get coverage percentage
   COVERAGE=$(lcov --config-file .lcovrc --summary coverage/lcov.info | grep "lines" | awk -F: '{print $2}' | cut -d "%" -f 1 | tr -d " ")
 
-  printf "Coverage: %.2f%% " "$COVERAGE"
+  printf "\nOverall Coverage: %.2f%% " "$COVERAGE"
   if (( $(echo "$COVERAGE >= $THRESHOLD" | bc -l) )); then
     echo -e "${GREEN}✓${NC}"
   else
