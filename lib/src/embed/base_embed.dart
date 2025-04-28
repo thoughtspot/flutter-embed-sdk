@@ -6,19 +6,23 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_embed_sdk/flutter_embed_sdk.dart';
 import 'package:flutter_embed_sdk/src/types/common-types.dart';
-import 'package:flutter_embed_sdk/src/utils.dart';
+import 'package:flutter_embed_sdk/src/utils/utils.dart';
+import 'package:flutter_embed_sdk/src/utils/logger.dart';
 
 part './liveboard_embed.dart';
 
 abstract class BaseController {
   final EmbedConfig embedConfig;
-  final String _url = 'https://mobile-embed-shell.vercel.app';
+  final String _url = 'http://localhost:8080';
+  final Logger _logger = Logger();
 
   late final WebViewController _webViewController;
 
   final Map<String, List<Function(dynamic)>> _handlers = {};
 
   BaseController({required this.embedConfig}) {
+    _logger.setLogLevel(embedConfig.logLevel ?? LogLevel.ERROR);
+    _logger.debug('Initializing BaseController');
     _webViewController = _setWebViewController(WebViewController());
   }
 
@@ -79,35 +83,51 @@ abstract class BaseController {
   }
 
   void _handleMessage(JavaScriptMessage message) {
-    Map<String, dynamic> jsonObject = jsonDecode(message.message);
+    try {
+      Map<String, dynamic> jsonObject = jsonDecode(message.message);
+      _logger.debug('Received message: $jsonObject');
 
-    String messageType = jsonObject['type'];
+      // Handle missing message type
+      if (!jsonObject.containsKey('type')) {
+        _logger.warn('Received message without type field');
+        return;
+      }
 
-    // Cant use switch case because dart does'nt allow to use enum.value in switch case
-    if (messageType == IncomingShellMessageType.INIT_VERCEL_SHELL.value) {
-      _handleInit(jsonObject);
-    } else if (messageType ==
-        IncomingShellMessageType.REQUEST_AUTH_TOKEN.value) {
-      _handleRequestAuthToken(jsonObject);
-    } else if (messageType == IncomingShellMessageType.EMBED_EVENT.value) {
-      _handleEmbedEvent(jsonObject);
+      String messageType = jsonObject['type'];
+
+      // Cant use switch case because dart does'nt allow to use enum.value in switch case
+      if (messageType == IncomingShellMessageType.INIT_VERCEL_SHELL.value) {
+        _handleInit(jsonObject);
+      } else if (messageType ==
+          IncomingShellMessageType.REQUEST_AUTH_TOKEN.value) {
+        _handleRequestAuthToken(jsonObject);
+      } else if (messageType == IncomingShellMessageType.EMBED_EVENT.value) {
+        _handleEmbedEvent(jsonObject);
+      }
+    } catch (e, stackTrace) {
+      // Handle JSON parsing errors and other exceptions gracefully
+      _logger.errorDebug('Error handling message', e, stackTrace);
     }
   }
 
   void _handleEmbedEvent(Map<String, dynamic> message) {
-    final eventName = message['eventName'];
-    final payload = message['data'];
+    try {
+      final eventName = message['eventName'];
+      final payload = message['data'];
 
-    // For responding
-    final eventId = message['eventId'];
-    final hasResponder = message['hasResponder'];
+      // For responding
+      final eventId = message['eventId'];
+      final hasResponder = message['hasResponder'];
 
-    final handlers = _handlers[eventName];
+      final handlers = _handlers[eventName];
 
-    if (handlers != null) {
-      for (var handler in handlers.toList()) {
-        handler(payload);
+      if (handlers != null) {
+        for (var handler in handlers.toList()) {
+          handler(payload);
+        }
       }
+    } catch (e, stackTrace) {
+      _logger.errorDebug('Error handling embed event', e, stackTrace);
     }
   }
 
@@ -135,6 +155,8 @@ abstract class BaseController {
     HostEvent event, [
     Map<String, dynamic>? data,
   ]) async {
+    _logger.error("message");
+    _logger.debug('Triggering event: $event');
     String eventId = getUniqueId();
     Map<String, dynamic> embedEventPayload = {
       'eventName': event.value,
@@ -153,4 +175,9 @@ abstract class BaseController {
 abstract class BaseEmbed<T extends BaseController> extends StatelessWidget {
   final T controller;
   const BaseEmbed({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return WebViewWidget(controller: controller._webViewController);
+  }
 }

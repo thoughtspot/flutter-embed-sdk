@@ -32,3 +32,13 @@ build/
 
 # FVM Version Cache
 .fvm/
+
+# Coverage related
+coverage/
+*.lcov
+*.info
+
+# Generated files
+*.mocks.dart
+*.g.dart
+*.freezed.dart

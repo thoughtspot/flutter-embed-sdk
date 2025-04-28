@@ -9,8 +9,7 @@ part of 'types.dart';
 SessionInterface _$SessionInterfaceFromJson(Map<String, dynamic> json) =>
     SessionInterface(
       acSession: SessionInterfaceAcSession.fromJson(
-        json['acSession'] as Map<String, dynamic>,
-      ),
+          json['acSession'] as Map<String, dynamic>),
       genNo: (json['genNo'] as num).toInt(),
       sessionId: json['sessionId'] as String,
     );
@@ -22,209 +21,205 @@ Map<String, dynamic> _$SessionInterfaceToJson(SessionInterface instance) =>
       'sessionId': instance.sessionId,
     };
 
-LiveboardViewConfig _$LiveboardViewConfigFromJson(
-  Map<String, dynamic> json,
-) => LiveboardViewConfig(
-  fullHeight: json['fullHeight'] as bool?,
-  defaultHeight: (json['defaultHeight'] as num?)?.toInt(),
-  enableVizTransformations: json['enableVizTransformations'] as bool?,
-  liveboardId: json['liveboardId'] as String?,
-  pinboardId: json['pinboardId'] as String?,
-  vizId: json['vizId'] as String?,
-  preventLiveboardFilterRemoval: json['preventLiveboardFilterRemoval'] as bool?,
-  visibleVizs:
-      (json['visibleVizs'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  preventPinboardFilterRemoval: json['preventPinboardFilterRemoval'] as bool?,
-  liveboardV2: json['liveboardV2'] as bool?,
-  activeTabId: json['activeTabId'] as String?,
-  hideTabPanel: json['hideTabPanel'] as bool?,
-  hideLiveboardHeader: json['hideLiveboardHeader'] as bool?,
-  showLiveboardTitle: json['showLiveboardTitle'] as bool?,
-  showLiveboardDescription: json['showLiveboardDescription'] as bool?,
-  isLiveboardHeaderSticky: json['isLiveboardHeaderSticky'] as bool?,
-  enableAskSage: json['enableAskSage'] as bool?,
-  enable2ColumnLayout: json['enable2ColumnLayout'] as bool?,
-  showPreviewLoader: json['showPreviewLoader'] as bool?,
-  isLiveboardCompactHeaderEnabled:
-      json['isLiveboardCompactHeaderEnabled'] as bool?,
-  showLiveboardVerifiedBadge: json['showLiveboardVerifiedBadge'] as bool?,
-  showLiveboardReverifyBanner: json['showLiveboardReverifyBanner'] as bool?,
-  hideIrrelevantChipsInLiveboardTabs:
-      json['hideIrrelevantChipsInLiveboardTabs'] as bool?,
-  oAuthPollingInterval: (json['oAuthPollingInterval'] as num?)?.toInt(),
-  isForceRedirect: json['isForceRedirect'] as bool?,
-  dataSourceId: json['dataSourceId'] as String?,
-  layoutConfig:
-      json['layoutConfig'] == null
+LiveboardViewConfig _$LiveboardViewConfigFromJson(Map<String, dynamic> json) =>
+    LiveboardViewConfig(
+      fullHeight: json['fullHeight'] as bool?,
+      defaultHeight: (json['defaultHeight'] as num?)?.toInt(),
+      enableVizTransformations: json['enableVizTransformations'] as bool?,
+      liveboardId: json['liveboardId'] as String?,
+      pinboardId: json['pinboardId'] as String?,
+      vizId: json['vizId'] as String?,
+      preventLiveboardFilterRemoval:
+          json['preventLiveboardFilterRemoval'] as bool?,
+      visibleVizs: (json['visibleVizs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      preventPinboardFilterRemoval:
+          json['preventPinboardFilterRemoval'] as bool?,
+      liveboardV2: json['liveboardV2'] as bool?,
+      activeTabId: json['activeTabId'] as String?,
+      hideTabPanel: json['hideTabPanel'] as bool?,
+      hideLiveboardHeader: json['hideLiveboardHeader'] as bool?,
+      showLiveboardTitle: json['showLiveboardTitle'] as bool?,
+      showLiveboardDescription: json['showLiveboardDescription'] as bool?,
+      isLiveboardHeaderSticky: json['isLiveboardHeaderSticky'] as bool?,
+      enableAskSage: json['enableAskSage'] as bool?,
+      enable2ColumnLayout: json['enable2ColumnLayout'] as bool?,
+      showPreviewLoader: json['showPreviewLoader'] as bool?,
+      isLiveboardCompactHeaderEnabled:
+          json['isLiveboardCompactHeaderEnabled'] as bool?,
+      showLiveboardVerifiedBadge: json['showLiveboardVerifiedBadge'] as bool?,
+      showLiveboardReverifyBanner: json['showLiveboardReverifyBanner'] as bool?,
+      hideIrrelevantChipsInLiveboardTabs:
+          json['hideIrrelevantChipsInLiveboardTabs'] as bool?,
+      oAuthPollingInterval: (json['oAuthPollingInterval'] as num?)?.toInt(),
+      isForceRedirect: json['isForceRedirect'] as bool?,
+      dataSourceId: json['dataSourceId'] as String?,
+      layoutConfig: json['layoutConfig'] == null
           ? null
           : LayoutConfig.fromJson(json['layoutConfig'] as Map<String, dynamic>),
-  frameParams:
-      json['frameParams'] == null
+      frameParams: json['frameParams'] == null
           ? null
           : FrameParams.fromJson(json['frameParams'] as Map<String, dynamic>),
-  theme: json['theme'] as String?,
-  styleSheet__unstable: json['styleSheet__unstable'] as String?,
-  disabledActions:
-      (json['disabledActions'] as List<dynamic>?)
+      theme: json['theme'] as String?,
+      styleSheet__unstable: json['styleSheet__unstable'] as String?,
+      disabledActions: (json['disabledActions'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$ActionEnumMap, e))
           .toList(),
-  disabledActionReason: json['disabledActionReason'] as String?,
-  hiddenActions:
-      (json['hiddenActions'] as List<dynamic>?)
+      disabledActionReason: json['disabledActionReason'] as String?,
+      hiddenActions: (json['hiddenActions'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$ActionEnumMap, e))
           .toList(),
-  visibleActions:
-      (json['visibleActions'] as List<dynamic>?)
+      visibleActions: (json['visibleActions'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$ActionEnumMap, e))
           .toList(),
-  showAlerts: json['showAlerts'] as bool?,
-  runtimeFilters:
-      (json['runtimeFilters'] as List<dynamic>?)
+      showAlerts: json['showAlerts'] as bool?,
+      runtimeFilters: (json['runtimeFilters'] as List<dynamic>?)
           ?.map((e) => RuntimeFilter.fromJson(e as Map<String, dynamic>))
           .toList(),
-  runtimeParameters:
-      (json['runtimeParameters'] as List<dynamic>?)
+      runtimeParameters: (json['runtimeParameters'] as List<dynamic>?)
           ?.map((e) => RuntimeParameter.fromJson(e as Map<String, dynamic>))
           .toList(),
-  locale: json['locale'] as String?,
-  additionalFlags:
-      json['additionalFlags'] == null
+      locale: json['locale'] as String?,
+      additionalFlags: json['additionalFlags'] == null
           ? null
           : LiveboardViewConfigAdditionalFlags.fromJson(
-            json['additionalFlags'] as Map<String, dynamic>,
-          ),
-  customizations:
-      json['customizations'] == null
+              json['additionalFlags'] as Map<String, dynamic>),
+      customizations: json['customizations'] == null
           ? null
           : CustomisationsInterface.fromJson(
-            json['customizations'] as Map<String, dynamic>,
-          ),
-  insertAsSibling: json['insertAsSibling'] as bool?,
-  contextMenuTrigger: $enumDecodeNullable(
-    _$ContextMenuTriggerOptionsEnumMap,
-    json['contextMenuTrigger'],
-  ),
-  linkOverride: json['linkOverride'] as bool?,
-  insertInToSlide: json['insertInToSlide'] as bool?,
-  usePrerenderedIfAvailable: json['usePrerenderedIfAvailable'] as bool?,
-  excludeRuntimeFiltersfromURL: json['excludeRuntimeFiltersfromURL'] as bool?,
-  hiddenTabs:
-      (json['hiddenTabs'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  visibleTabs:
-      (json['visibleTabs'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  preRenderId: json['preRenderId'] as String?,
-  doNotTrackPreRenderSize: json['doNotTrackPreRenderSize'] as bool?,
-  embedComponentType: json['embedComponentType'] as String?,
-  excludeRuntimeParametersfromURL:
-      json['excludeRuntimeParametersfromURL'] as bool?,
-  enableV2Shell_experimental: json['enableV2Shell_experimental'] as bool?,
-  collapseSearchBar: json['collapseSearchBar'] as bool?,
-  disableRedirectionLinksInNewTab:
-      json['disableRedirectionLinksInNewTab'] as bool?,
-  dataPanelV2: json['dataPanelV2'] as bool?,
-  enableCustomColumnGroups: json['enableCustomColumnGroups'] as bool?,
-  overrideOrgId: (json['overrideOrgId'] as num?)?.toInt(),
-);
+              json['customizations'] as Map<String, dynamic>),
+      insertAsSibling: json['insertAsSibling'] as bool?,
+      contextMenuTrigger: $enumDecodeNullable(
+          _$ContextMenuTriggerOptionsEnumMap, json['contextMenuTrigger']),
+      linkOverride: json['linkOverride'] as bool?,
+      insertInToSlide: json['insertInToSlide'] as bool?,
+      usePrerenderedIfAvailable: json['usePrerenderedIfAvailable'] as bool?,
+      excludeRuntimeFiltersfromURL:
+          json['excludeRuntimeFiltersfromURL'] as bool?,
+      hiddenTabs: (json['hiddenTabs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      visibleTabs: (json['visibleTabs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      preRenderId: json['preRenderId'] as String?,
+      doNotTrackPreRenderSize: json['doNotTrackPreRenderSize'] as bool?,
+      embedComponentType: json['embedComponentType'] as String?,
+      excludeRuntimeParametersfromURL:
+          json['excludeRuntimeParametersfromURL'] as bool?,
+      enableV2Shell_experimental: json['enableV2Shell_experimental'] as bool?,
+      collapseSearchBar: json['collapseSearchBar'] as bool?,
+      disableRedirectionLinksInNewTab:
+          json['disableRedirectionLinksInNewTab'] as bool?,
+      dataPanelV2: json['dataPanelV2'] as bool?,
+      enableCustomColumnGroups: json['enableCustomColumnGroups'] as bool?,
+      overrideOrgId: (json['overrideOrgId'] as num?)?.toInt(),
+    );
 
 Map<String, dynamic> _$LiveboardViewConfigToJson(
-  LiveboardViewConfig instance,
-) => <String, dynamic>{
-  if (instance.fullHeight case final value?) 'fullHeight': value,
-  if (instance.defaultHeight case final value?) 'defaultHeight': value,
-  if (instance.enableVizTransformations case final value?)
-    'enableVizTransformations': value,
-  if (instance.liveboardId case final value?) 'liveboardId': value,
-  if (instance.pinboardId case final value?) 'pinboardId': value,
-  if (instance.vizId case final value?) 'vizId': value,
-  if (instance.preventLiveboardFilterRemoval case final value?)
-    'preventLiveboardFilterRemoval': value,
-  if (instance.visibleVizs case final value?) 'visibleVizs': value,
-  if (instance.preventPinboardFilterRemoval case final value?)
-    'preventPinboardFilterRemoval': value,
-  if (instance.liveboardV2 case final value?) 'liveboardV2': value,
-  if (instance.activeTabId case final value?) 'activeTabId': value,
-  if (instance.hideTabPanel case final value?) 'hideTabPanel': value,
-  if (instance.hideLiveboardHeader case final value?)
-    'hideLiveboardHeader': value,
-  if (instance.showLiveboardTitle case final value?)
-    'showLiveboardTitle': value,
-  if (instance.showLiveboardDescription case final value?)
-    'showLiveboardDescription': value,
-  if (instance.isLiveboardHeaderSticky case final value?)
-    'isLiveboardHeaderSticky': value,
-  if (instance.enableAskSage case final value?) 'enableAskSage': value,
-  if (instance.enable2ColumnLayout case final value?)
-    'enable2ColumnLayout': value,
-  if (instance.showPreviewLoader case final value?) 'showPreviewLoader': value,
-  if (instance.isLiveboardCompactHeaderEnabled case final value?)
-    'isLiveboardCompactHeaderEnabled': value,
-  if (instance.showLiveboardVerifiedBadge case final value?)
-    'showLiveboardVerifiedBadge': value,
-  if (instance.showLiveboardReverifyBanner case final value?)
-    'showLiveboardReverifyBanner': value,
-  if (instance.hideIrrelevantChipsInLiveboardTabs case final value?)
-    'hideIrrelevantChipsInLiveboardTabs': value,
-  if (instance.oAuthPollingInterval case final value?)
-    'oAuthPollingInterval': value,
-  if (instance.isForceRedirect case final value?) 'isForceRedirect': value,
-  if (instance.dataSourceId case final value?) 'dataSourceId': value,
-  if (instance.layoutConfig?.toJson() case final value?) 'layoutConfig': value,
-  if (instance.frameParams?.toJson() case final value?) 'frameParams': value,
-  if (instance.theme case final value?) 'theme': value,
-  if (instance.styleSheet__unstable case final value?)
-    'styleSheet__unstable': value,
-  if (instance.disabledActions?.map((e) => _$ActionEnumMap[e]!).toList()
-      case final value?)
-    'disabledActions': value,
-  if (instance.disabledActionReason case final value?)
-    'disabledActionReason': value,
-  if (instance.hiddenActions?.map((e) => _$ActionEnumMap[e]!).toList()
-      case final value?)
-    'hiddenActions': value,
-  if (instance.visibleActions?.map((e) => _$ActionEnumMap[e]!).toList()
-      case final value?)
-    'visibleActions': value,
-  if (instance.showAlerts case final value?) 'showAlerts': value,
-  if (instance.runtimeFilters?.map((e) => e.toJson()).toList()
-      case final value?)
-    'runtimeFilters': value,
-  if (instance.runtimeParameters?.map((e) => e.toJson()).toList()
-      case final value?)
-    'runtimeParameters': value,
-  if (instance.locale case final value?) 'locale': value,
-  if (instance.additionalFlags?.toJson() case final value?)
-    'additionalFlags': value,
-  if (instance.customizations?.toJson() case final value?)
-    'customizations': value,
-  if (instance.insertAsSibling case final value?) 'insertAsSibling': value,
-  if (_$ContextMenuTriggerOptionsEnumMap[instance.contextMenuTrigger]
-      case final value?)
-    'contextMenuTrigger': value,
-  if (instance.linkOverride case final value?) 'linkOverride': value,
-  if (instance.insertInToSlide case final value?) 'insertInToSlide': value,
-  if (instance.usePrerenderedIfAvailable case final value?)
-    'usePrerenderedIfAvailable': value,
-  if (instance.excludeRuntimeFiltersfromURL case final value?)
-    'excludeRuntimeFiltersfromURL': value,
-  if (instance.hiddenTabs case final value?) 'hiddenTabs': value,
-  if (instance.visibleTabs case final value?) 'visibleTabs': value,
-  if (instance.preRenderId case final value?) 'preRenderId': value,
-  if (instance.doNotTrackPreRenderSize case final value?)
-    'doNotTrackPreRenderSize': value,
-  if (instance.embedComponentType case final value?)
-    'embedComponentType': value,
-  if (instance.excludeRuntimeParametersfromURL case final value?)
-    'excludeRuntimeParametersfromURL': value,
-  if (instance.enableV2Shell_experimental case final value?)
-    'enableV2Shell_experimental': value,
-  if (instance.collapseSearchBar case final value?) 'collapseSearchBar': value,
-  if (instance.disableRedirectionLinksInNewTab case final value?)
-    'disableRedirectionLinksInNewTab': value,
-  if (instance.dataPanelV2 case final value?) 'dataPanelV2': value,
-  if (instance.enableCustomColumnGroups case final value?)
-    'enableCustomColumnGroups': value,
-  if (instance.overrideOrgId case final value?) 'overrideOrgId': value,
-};
+        LiveboardViewConfig instance) =>
+    <String, dynamic>{
+      if (instance.fullHeight case final value?) 'fullHeight': value,
+      if (instance.defaultHeight case final value?) 'defaultHeight': value,
+      if (instance.enableVizTransformations case final value?)
+        'enableVizTransformations': value,
+      if (instance.liveboardId case final value?) 'liveboardId': value,
+      if (instance.pinboardId case final value?) 'pinboardId': value,
+      if (instance.vizId case final value?) 'vizId': value,
+      if (instance.preventLiveboardFilterRemoval case final value?)
+        'preventLiveboardFilterRemoval': value,
+      if (instance.visibleVizs case final value?) 'visibleVizs': value,
+      if (instance.preventPinboardFilterRemoval case final value?)
+        'preventPinboardFilterRemoval': value,
+      if (instance.liveboardV2 case final value?) 'liveboardV2': value,
+      if (instance.activeTabId case final value?) 'activeTabId': value,
+      if (instance.hideTabPanel case final value?) 'hideTabPanel': value,
+      if (instance.hideLiveboardHeader case final value?)
+        'hideLiveboardHeader': value,
+      if (instance.showLiveboardTitle case final value?)
+        'showLiveboardTitle': value,
+      if (instance.showLiveboardDescription case final value?)
+        'showLiveboardDescription': value,
+      if (instance.isLiveboardHeaderSticky case final value?)
+        'isLiveboardHeaderSticky': value,
+      if (instance.enableAskSage case final value?) 'enableAskSage': value,
+      if (instance.enable2ColumnLayout case final value?)
+        'enable2ColumnLayout': value,
+      if (instance.showPreviewLoader case final value?)
+        'showPreviewLoader': value,
+      if (instance.isLiveboardCompactHeaderEnabled case final value?)
+        'isLiveboardCompactHeaderEnabled': value,
+      if (instance.showLiveboardVerifiedBadge case final value?)
+        'showLiveboardVerifiedBadge': value,
+      if (instance.showLiveboardReverifyBanner case final value?)
+        'showLiveboardReverifyBanner': value,
+      if (instance.hideIrrelevantChipsInLiveboardTabs case final value?)
+        'hideIrrelevantChipsInLiveboardTabs': value,
+      if (instance.oAuthPollingInterval case final value?)
+        'oAuthPollingInterval': value,
+      if (instance.isForceRedirect case final value?) 'isForceRedirect': value,
+      if (instance.dataSourceId case final value?) 'dataSourceId': value,
+      if (instance.layoutConfig?.toJson() case final value?)
+        'layoutConfig': value,
+      if (instance.frameParams?.toJson() case final value?)
+        'frameParams': value,
+      if (instance.theme case final value?) 'theme': value,
+      if (instance.styleSheet__unstable case final value?)
+        'styleSheet__unstable': value,
+      if (instance.disabledActions?.map((e) => _$ActionEnumMap[e]!).toList()
+          case final value?)
+        'disabledActions': value,
+      if (instance.disabledActionReason case final value?)
+        'disabledActionReason': value,
+      if (instance.hiddenActions?.map((e) => _$ActionEnumMap[e]!).toList()
+          case final value?)
+        'hiddenActions': value,
+      if (instance.visibleActions?.map((e) => _$ActionEnumMap[e]!).toList()
+          case final value?)
+        'visibleActions': value,
+      if (instance.showAlerts case final value?) 'showAlerts': value,
+      if (instance.runtimeFilters?.map((e) => e.toJson()).toList()
+          case final value?)
+        'runtimeFilters': value,
+      if (instance.runtimeParameters?.map((e) => e.toJson()).toList()
+          case final value?)
+        'runtimeParameters': value,
+      if (instance.locale case final value?) 'locale': value,
+      if (instance.additionalFlags?.toJson() case final value?)
+        'additionalFlags': value,
+      if (instance.customizations?.toJson() case final value?)
+        'customizations': value,
+      if (instance.insertAsSibling case final value?) 'insertAsSibling': value,
+      if (_$ContextMenuTriggerOptionsEnumMap[instance.contextMenuTrigger]
+          case final value?)
+        'contextMenuTrigger': value,
+      if (instance.linkOverride case final value?) 'linkOverride': value,
+      if (instance.insertInToSlide case final value?) 'insertInToSlide': value,
+      if (instance.usePrerenderedIfAvailable case final value?)
+        'usePrerenderedIfAvailable': value,
+      if (instance.excludeRuntimeFiltersfromURL case final value?)
+        'excludeRuntimeFiltersfromURL': value,
+      if (instance.hiddenTabs case final value?) 'hiddenTabs': value,
+      if (instance.visibleTabs case final value?) 'visibleTabs': value,
+      if (instance.preRenderId case final value?) 'preRenderId': value,
+      if (instance.doNotTrackPreRenderSize case final value?)
+        'doNotTrackPreRenderSize': value,
+      if (instance.embedComponentType case final value?)
+        'embedComponentType': value,
+      if (instance.excludeRuntimeParametersfromURL case final value?)
+        'excludeRuntimeParametersfromURL': value,
+      if (instance.enableV2Shell_experimental case final value?)
+        'enableV2Shell_experimental': value,
+      if (instance.collapseSearchBar case final value?)
+        'collapseSearchBar': value,
+      if (instance.disableRedirectionLinksInNewTab case final value?)
+        'disableRedirectionLinksInNewTab': value,
+      if (instance.dataPanelV2 case final value?) 'dataPanelV2': value,
+      if (instance.enableCustomColumnGroups case final value?)
+        'enableCustomColumnGroups': value,
+      if (instance.overrideOrgId case final value?) 'overrideOrgId': value,
+    };
 
 const _$ActionEnumMap = {
   Action.Save: 'save',
@@ -367,12 +362,10 @@ customCssInterface _$customCssInterfaceFromJson(Map<String, dynamic> json) =>
       variables: (json['variables'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
-      rules_UNSTABLE:
-          json['rules_UNSTABLE'] == null
-              ? null
-              : CustomCssInterfaceRules_UNSTABLE.fromJson(
-                json['rules_UNSTABLE'] as Map<String, dynamic>,
-              ),
+      rules_UNSTABLE: json['rules_UNSTABLE'] == null
+          ? null
+          : CustomCssInterfaceRules_UNSTABLE.fromJson(
+              json['rules_UNSTABLE'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$customCssInterfaceToJson(customCssInterface instance) =>
@@ -383,14 +376,12 @@ Map<String, dynamic> _$customCssInterfaceToJson(customCssInterface instance) =>
     };
 
 CustomStyles _$CustomStylesFromJson(Map<String, dynamic> json) => CustomStyles(
-  customCSSUrl: json['customCSSUrl'] as String?,
-  customCSS:
-      json['customCSS'] == null
+      customCSSUrl: json['customCSSUrl'] as String?,
+      customCSS: json['customCSS'] == null
           ? null
-          : customCssInterface.fromJson(
-            json['customCSS'] as Map<String, dynamic>,
-          ),
-);
+          : customCssInterface
+              .fromJson(json['customCSS'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$CustomStylesToJson(CustomStyles instance) =>
     <String, dynamic>{
@@ -399,158 +390,152 @@ Map<String, dynamic> _$CustomStylesToJson(CustomStyles instance) =>
     };
 
 CustomisationsInterface _$CustomisationsInterfaceFromJson(
-  Map<String, dynamic> json,
-) => CustomisationsInterface(
-  style:
-      json['style'] == null
+        Map<String, dynamic> json) =>
+    CustomisationsInterface(
+      style: json['style'] == null
           ? null
           : CustomStyles.fromJson(json['style'] as Map<String, dynamic>),
-  content:
-      json['content'] == null
+      content: json['content'] == null
           ? null
           : CustomisationsInterfaceContent.fromJson(
-            json['content'] as Map<String, dynamic>,
-          ),
-  iconSpriteUrl: json['iconSpriteUrl'] as String?,
-);
+              json['content'] as Map<String, dynamic>),
+      iconSpriteUrl: json['iconSpriteUrl'] as String?,
+    );
 
 Map<String, dynamic> _$CustomisationsInterfaceToJson(
-  CustomisationsInterface instance,
-) => <String, dynamic>{
-  if (instance.style?.toJson() case final value?) 'style': value,
-  if (instance.content?.toJson() case final value?) 'content': value,
-  if (instance.iconSpriteUrl case final value?) 'iconSpriteUrl': value,
-};
+        CustomisationsInterface instance) =>
+    <String, dynamic>{
+      if (instance.style?.toJson() case final value?) 'style': value,
+      if (instance.content?.toJson() case final value?) 'content': value,
+      if (instance.iconSpriteUrl case final value?) 'iconSpriteUrl': value,
+    };
 
 EmbedConfig _$EmbedConfigFromJson(Map<String, dynamic> json) => EmbedConfig(
-  authType: $enumDecode(_$AuthTypeEnumMap, json['authType']),
-  thoughtSpotHost: json['thoughtSpotHost'] as String,
-  authEndpoint: json['authEndpoint'] as String?,
-  username: json['username'] as String?,
-  password: json['password'] as String?,
-  noRedirect: json['noRedirect'] as bool?,
-  inPopup: json['inPopup'] as bool?,
-  redirectPath: json['redirectPath'] as String?,
-  basepath: json['basepath'] as String?,
-  shouldEncodeUrlQueryParams: json['shouldEncodeUrlQueryParams'] as bool?,
-  suppressNoCookieAccessAlert: json['suppressNoCookieAccessAlert'] as bool?,
-  ignoreNoCookieAccess: json['ignoreNoCookieAccess'] as bool?,
-  autoLogin: json['autoLogin'] as bool?,
-  disableLoginRedirect: json['disableLoginRedirect'] as bool?,
-  loginFailedMessage: json['loginFailedMessage'] as String?,
-  callPrefetch: json['callPrefetch'] as bool?,
-  queueMultiRenders: json['queueMultiRenders'] as bool?,
-  detectCookieAccessSlow: json['detectCookieAccessSlow'] as bool?,
-  suppressSearchEmbedBetaWarning:
-      json['suppressSearchEmbedBetaWarning'] as bool?,
-  suppressSageEmbedBetaWarning: json['suppressSageEmbedBetaWarning'] as bool?,
-  customizations:
-      json['customizations'] == null
+      authType: $enumDecode(_$AuthTypeEnumMap, json['authType']),
+      thoughtSpotHost: json['thoughtSpotHost'] as String,
+      authEndpoint: json['authEndpoint'] as String?,
+      username: json['username'] as String?,
+      password: json['password'] as String?,
+      noRedirect: json['noRedirect'] as bool?,
+      inPopup: json['inPopup'] as bool?,
+      redirectPath: json['redirectPath'] as String?,
+      basepath: json['basepath'] as String?,
+      shouldEncodeUrlQueryParams: json['shouldEncodeUrlQueryParams'] as bool?,
+      suppressNoCookieAccessAlert: json['suppressNoCookieAccessAlert'] as bool?,
+      ignoreNoCookieAccess: json['ignoreNoCookieAccess'] as bool?,
+      autoLogin: json['autoLogin'] as bool?,
+      disableLoginRedirect: json['disableLoginRedirect'] as bool?,
+      loginFailedMessage: json['loginFailedMessage'] as String?,
+      callPrefetch: json['callPrefetch'] as bool?,
+      queueMultiRenders: json['queueMultiRenders'] as bool?,
+      detectCookieAccessSlow: json['detectCookieAccessSlow'] as bool?,
+      suppressSearchEmbedBetaWarning:
+          json['suppressSearchEmbedBetaWarning'] as bool?,
+      suppressSageEmbedBetaWarning:
+          json['suppressSageEmbedBetaWarning'] as bool?,
+      customizations: json['customizations'] == null
           ? null
           : CustomisationsInterface.fromJson(
-            json['customizations'] as Map<String, dynamic>,
-          ),
-  authTriggerContainer:
-      json['authTriggerContainer'] == null
+              json['customizations'] as Map<String, dynamic>),
+      authTriggerContainer: json['authTriggerContainer'] == null
           ? null
           : EmbedConfigAuthTriggerContainer.fromJson(
-            json['authTriggerContainer'] as String,
-          ),
-  useEventForSAMLPopup: json['useEventForSAMLPopup'] as bool?,
-  authTriggerText: json['authTriggerText'] as String?,
-  blockNonEmbedFullAppAccess: json['blockNonEmbedFullAppAccess'] as bool?,
-  hostConfig:
-      json['hostConfig'] == null
+              json['authTriggerContainer'] as String),
+      useEventForSAMLPopup: json['useEventForSAMLPopup'] as bool?,
+      authTriggerText: json['authTriggerText'] as String?,
+      blockNonEmbedFullAppAccess: json['blockNonEmbedFullAppAccess'] as bool?,
+      hostConfig: json['hostConfig'] == null
           ? null
           : EmbedConfigHostConfig.fromJson(
-            json['hostConfig'] as Map<String, dynamic>,
-          ),
-  pendoTrackingKey: json['pendoTrackingKey'] as String?,
-  suppressErrorAlerts: json['suppressErrorAlerts'] as bool?,
-  logLevel: $enumDecodeNullable(_$LogLevelEnumMap, json['logLevel']),
-  disableSDKTracking: json['disableSDKTracking'] as bool?,
-  dateFormatLocale: json['dateFormatLocale'] as String?,
-  numberFormatLocale: json['numberFormatLocale'] as String?,
-  currencyFormat: json['currencyFormat'] as String?,
-  disableTokenVerification: json['disableTokenVerification'] as bool?,
-  disableLoginFailurePage: json['disableLoginFailurePage'] as bool?,
-  additionalFlags:
-      json['additionalFlags'] == null
+              json['hostConfig'] as Map<String, dynamic>),
+      pendoTrackingKey: json['pendoTrackingKey'] as String?,
+      suppressErrorAlerts: json['suppressErrorAlerts'] as bool?,
+      logLevel: $enumDecodeNullable(_$LogLevelEnumMap, json['logLevel']),
+      disableSDKTracking: json['disableSDKTracking'] as bool?,
+      dateFormatLocale: json['dateFormatLocale'] as String?,
+      numberFormatLocale: json['numberFormatLocale'] as String?,
+      currencyFormat: json['currencyFormat'] as String?,
+      disableTokenVerification: json['disableTokenVerification'] as bool?,
+      disableLoginFailurePage: json['disableLoginFailurePage'] as bool?,
+      additionalFlags: json['additionalFlags'] == null
           ? null
           : EmbedConfigAdditionalFlags.fromJson(
-            json['additionalFlags'] as Map<String, dynamic>,
-          ),
-  customVariablesForThirdPartyTools:
-      json['customVariablesForThirdPartyTools'] == null
-          ? null
-          : EmbedConfigCustomVariablesForThirdPartyTools.fromJson(
-            json['customVariablesForThirdPartyTools'] as Map<String, dynamic>,
-          ),
-  disablePreauthCache: json['disablePreauthCache'] as bool?,
-);
+              json['additionalFlags'] as Map<String, dynamic>),
+      customVariablesForThirdPartyTools:
+          json['customVariablesForThirdPartyTools'] == null
+              ? null
+              : EmbedConfigCustomVariablesForThirdPartyTools.fromJson(
+                  json['customVariablesForThirdPartyTools']
+                      as Map<String, dynamic>),
+      disablePreauthCache: json['disablePreauthCache'] as bool?,
+    );
 
-Map<String, dynamic> _$EmbedConfigToJson(
-  EmbedConfig instance,
-) => <String, dynamic>{
-  'authType': _$AuthTypeEnumMap[instance.authType]!,
-  'thoughtSpotHost': instance.thoughtSpotHost,
-  if (instance.authEndpoint case final value?) 'authEndpoint': value,
-  if (instance.username case final value?) 'username': value,
-  if (instance.password case final value?) 'password': value,
-  if (instance.noRedirect case final value?) 'noRedirect': value,
-  if (instance.inPopup case final value?) 'inPopup': value,
-  if (instance.redirectPath case final value?) 'redirectPath': value,
-  if (instance.basepath case final value?) 'basepath': value,
-  if (instance.shouldEncodeUrlQueryParams case final value?)
-    'shouldEncodeUrlQueryParams': value,
-  if (instance.suppressNoCookieAccessAlert case final value?)
-    'suppressNoCookieAccessAlert': value,
-  if (instance.ignoreNoCookieAccess case final value?)
-    'ignoreNoCookieAccess': value,
-  if (instance.autoLogin case final value?) 'autoLogin': value,
-  if (instance.disableLoginRedirect case final value?)
-    'disableLoginRedirect': value,
-  if (instance.loginFailedMessage case final value?)
-    'loginFailedMessage': value,
-  if (instance.callPrefetch case final value?) 'callPrefetch': value,
-  if (instance.queueMultiRenders case final value?) 'queueMultiRenders': value,
-  if (instance.detectCookieAccessSlow case final value?)
-    'detectCookieAccessSlow': value,
-  if (instance.suppressSearchEmbedBetaWarning case final value?)
-    'suppressSearchEmbedBetaWarning': value,
-  if (instance.suppressSageEmbedBetaWarning case final value?)
-    'suppressSageEmbedBetaWarning': value,
-  if (instance.customizations?.toJson() case final value?)
-    'customizations': value,
-  if (instance.authTriggerContainer?.toJson() case final value?)
-    'authTriggerContainer': value,
-  if (instance.useEventForSAMLPopup case final value?)
-    'useEventForSAMLPopup': value,
-  if (instance.authTriggerText case final value?) 'authTriggerText': value,
-  if (instance.blockNonEmbedFullAppAccess case final value?)
-    'blockNonEmbedFullAppAccess': value,
-  if (instance.hostConfig?.toJson() case final value?) 'hostConfig': value,
-  if (instance.pendoTrackingKey case final value?) 'pendoTrackingKey': value,
-  if (instance.suppressErrorAlerts case final value?)
-    'suppressErrorAlerts': value,
-  if (_$LogLevelEnumMap[instance.logLevel] case final value?) 'logLevel': value,
-  if (instance.disableSDKTracking case final value?)
-    'disableSDKTracking': value,
-  if (instance.dateFormatLocale case final value?) 'dateFormatLocale': value,
-  if (instance.numberFormatLocale case final value?)
-    'numberFormatLocale': value,
-  if (instance.currencyFormat case final value?) 'currencyFormat': value,
-  if (instance.disableTokenVerification case final value?)
-    'disableTokenVerification': value,
-  if (instance.disableLoginFailurePage case final value?)
-    'disableLoginFailurePage': value,
-  if (instance.additionalFlags?.toJson() case final value?)
-    'additionalFlags': value,
-  if (instance.customVariablesForThirdPartyTools?.toJson() case final value?)
-    'customVariablesForThirdPartyTools': value,
-  if (instance.disablePreauthCache case final value?)
-    'disablePreauthCache': value,
-};
+Map<String, dynamic> _$EmbedConfigToJson(EmbedConfig instance) =>
+    <String, dynamic>{
+      'authType': _$AuthTypeEnumMap[instance.authType]!,
+      'thoughtSpotHost': instance.thoughtSpotHost,
+      if (instance.authEndpoint case final value?) 'authEndpoint': value,
+      if (instance.username case final value?) 'username': value,
+      if (instance.password case final value?) 'password': value,
+      if (instance.noRedirect case final value?) 'noRedirect': value,
+      if (instance.inPopup case final value?) 'inPopup': value,
+      if (instance.redirectPath case final value?) 'redirectPath': value,
+      if (instance.basepath case final value?) 'basepath': value,
+      if (instance.shouldEncodeUrlQueryParams case final value?)
+        'shouldEncodeUrlQueryParams': value,
+      if (instance.suppressNoCookieAccessAlert case final value?)
+        'suppressNoCookieAccessAlert': value,
+      if (instance.ignoreNoCookieAccess case final value?)
+        'ignoreNoCookieAccess': value,
+      if (instance.autoLogin case final value?) 'autoLogin': value,
+      if (instance.disableLoginRedirect case final value?)
+        'disableLoginRedirect': value,
+      if (instance.loginFailedMessage case final value?)
+        'loginFailedMessage': value,
+      if (instance.callPrefetch case final value?) 'callPrefetch': value,
+      if (instance.queueMultiRenders case final value?)
+        'queueMultiRenders': value,
+      if (instance.detectCookieAccessSlow case final value?)
+        'detectCookieAccessSlow': value,
+      if (instance.suppressSearchEmbedBetaWarning case final value?)
+        'suppressSearchEmbedBetaWarning': value,
+      if (instance.suppressSageEmbedBetaWarning case final value?)
+        'suppressSageEmbedBetaWarning': value,
+      if (instance.customizations?.toJson() case final value?)
+        'customizations': value,
+      if (instance.authTriggerContainer?.toJson() case final value?)
+        'authTriggerContainer': value,
+      if (instance.useEventForSAMLPopup case final value?)
+        'useEventForSAMLPopup': value,
+      if (instance.authTriggerText case final value?) 'authTriggerText': value,
+      if (instance.blockNonEmbedFullAppAccess case final value?)
+        'blockNonEmbedFullAppAccess': value,
+      if (instance.hostConfig?.toJson() case final value?) 'hostConfig': value,
+      if (instance.pendoTrackingKey case final value?)
+        'pendoTrackingKey': value,
+      if (instance.suppressErrorAlerts case final value?)
+        'suppressErrorAlerts': value,
+      if (_$LogLevelEnumMap[instance.logLevel] case final value?)
+        'logLevel': value,
+      if (instance.disableSDKTracking case final value?)
+        'disableSDKTracking': value,
+      if (instance.dateFormatLocale case final value?)
+        'dateFormatLocale': value,
+      if (instance.numberFormatLocale case final value?)
+        'numberFormatLocale': value,
+      if (instance.currencyFormat case final value?) 'currencyFormat': value,
+      if (instance.disableTokenVerification case final value?)
+        'disableTokenVerification': value,
+      if (instance.disableLoginFailurePage case final value?)
+        'disableLoginFailurePage': value,
+      if (instance.additionalFlags?.toJson() case final value?)
+        'additionalFlags': value,
+      if (instance.customVariablesForThirdPartyTools?.toJson()
+          case final value?)
+        'customVariablesForThirdPartyTools': value,
+      if (instance.disablePreauthCache case final value?)
+        'disablePreauthCache': value,
+    };
 
 const _$AuthTypeEnumMap = {
   AuthType.None: 'None',
@@ -582,19 +567,16 @@ Map<String, dynamic> _$LayoutConfigToJson(LayoutConfig instance) =>
     <String, dynamic>{};
 
 FrameParams _$FrameParamsFromJson(Map<String, dynamic> json) => FrameParams(
-  width:
-      json['width'] == null
+      width: json['width'] == null
           ? null
           : FrameParamsWidth.fromJson(json['width'] as String),
-  height:
-      json['height'] == null
+      height: json['height'] == null
           ? null
           : FrameParamsHeight.fromJson(json['height'] as String),
-  loading:
-      json['loading'] == null
+      loading: json['loading'] == null
           ? null
           : FrameParamsLoading.fromJson(json['loading'] as String),
-);
+    );
 
 Map<String, dynamic> _$FrameParamsToJson(FrameParams instance) =>
     <String, dynamic>{
@@ -604,165 +586,155 @@ Map<String, dynamic> _$FrameParamsToJson(FrameParams instance) =>
     };
 
 ViewConfig _$ViewConfigFromJson(Map<String, dynamic> json) => ViewConfig(
-  layoutConfig:
-      json['layoutConfig'] == null
+      layoutConfig: json['layoutConfig'] == null
           ? null
           : LayoutConfig.fromJson(json['layoutConfig'] as Map<String, dynamic>),
-  frameParams:
-      json['frameParams'] == null
+      frameParams: json['frameParams'] == null
           ? null
           : FrameParams.fromJson(json['frameParams'] as Map<String, dynamic>),
-  theme: json['theme'] as String?,
-  styleSheet__unstable: json['styleSheet__unstable'] as String?,
-  disabledActions:
-      (json['disabledActions'] as List<dynamic>?)
+      theme: json['theme'] as String?,
+      styleSheet__unstable: json['styleSheet__unstable'] as String?,
+      disabledActions: (json['disabledActions'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$ActionEnumMap, e))
           .toList(),
-  disabledActionReason: json['disabledActionReason'] as String?,
-  hiddenActions:
-      (json['hiddenActions'] as List<dynamic>?)
+      disabledActionReason: json['disabledActionReason'] as String?,
+      hiddenActions: (json['hiddenActions'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$ActionEnumMap, e))
           .toList(),
-  visibleActions:
-      (json['visibleActions'] as List<dynamic>?)
+      visibleActions: (json['visibleActions'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$ActionEnumMap, e))
           .toList(),
-  showAlerts: json['showAlerts'] as bool?,
-  runtimeFilters:
-      (json['runtimeFilters'] as List<dynamic>?)
+      showAlerts: json['showAlerts'] as bool?,
+      runtimeFilters: (json['runtimeFilters'] as List<dynamic>?)
           ?.map((e) => RuntimeFilter.fromJson(e as Map<String, dynamic>))
           .toList(),
-  runtimeParameters:
-      (json['runtimeParameters'] as List<dynamic>?)
+      runtimeParameters: (json['runtimeParameters'] as List<dynamic>?)
           ?.map((e) => RuntimeParameter.fromJson(e as Map<String, dynamic>))
           .toList(),
-  locale: json['locale'] as String?,
-  additionalFlags:
-      json['additionalFlags'] == null
+      locale: json['locale'] as String?,
+      additionalFlags: json['additionalFlags'] == null
           ? null
           : ViewConfigAdditionalFlags.fromJson(
-            json['additionalFlags'] as Map<String, dynamic>,
-          ),
-  customizations:
-      json['customizations'] == null
+              json['additionalFlags'] as Map<String, dynamic>),
+      customizations: json['customizations'] == null
           ? null
           : CustomisationsInterface.fromJson(
-            json['customizations'] as Map<String, dynamic>,
-          ),
-  insertAsSibling: json['insertAsSibling'] as bool?,
-  contextMenuTrigger: $enumDecodeNullable(
-    _$ContextMenuTriggerOptionsEnumMap,
-    json['contextMenuTrigger'],
-  ),
-  linkOverride: json['linkOverride'] as bool?,
-  insertInToSlide: json['insertInToSlide'] as bool?,
-  usePrerenderedIfAvailable: json['usePrerenderedIfAvailable'] as bool?,
-  excludeRuntimeFiltersfromURL: json['excludeRuntimeFiltersfromURL'] as bool?,
-  hiddenTabs:
-      (json['hiddenTabs'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  hiddenHomepageModules:
-      (json['hiddenHomepageModules'] as List<dynamic>?)
+              json['customizations'] as Map<String, dynamic>),
+      insertAsSibling: json['insertAsSibling'] as bool?,
+      contextMenuTrigger: $enumDecodeNullable(
+          _$ContextMenuTriggerOptionsEnumMap, json['contextMenuTrigger']),
+      linkOverride: json['linkOverride'] as bool?,
+      insertInToSlide: json['insertInToSlide'] as bool?,
+      usePrerenderedIfAvailable: json['usePrerenderedIfAvailable'] as bool?,
+      excludeRuntimeFiltersfromURL:
+          json['excludeRuntimeFiltersfromURL'] as bool?,
+      hiddenTabs: (json['hiddenTabs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      hiddenHomepageModules: (json['hiddenHomepageModules'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$HomepageModuleEnumMap, e))
           .toList(),
-  reorderedHomepageModules:
-      (json['reorderedHomepageModules'] as List<dynamic>?)
-          ?.map((e) => $enumDecode(_$HomepageModuleEnumMap, e))
+      reorderedHomepageModules:
+          (json['reorderedHomepageModules'] as List<dynamic>?)
+              ?.map((e) => $enumDecode(_$HomepageModuleEnumMap, e))
+              .toList(),
+      visibleTabs: (json['visibleTabs'] as List<dynamic>?)
+          ?.map((e) => e as String)
           .toList(),
-  visibleTabs:
-      (json['visibleTabs'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  hiddenHomeLeftNavItems:
-      (json['hiddenHomeLeftNavItems'] as List<dynamic>?)
+      hiddenHomeLeftNavItems: (json['hiddenHomeLeftNavItems'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$HomeLeftNavItemEnumMap, e))
           .toList(),
-  preRenderId: json['preRenderId'] as String?,
-  doNotTrackPreRenderSize: json['doNotTrackPreRenderSize'] as bool?,
-  embedComponentType: json['embedComponentType'] as String?,
-  excludeRuntimeParametersfromURL:
-      json['excludeRuntimeParametersfromURL'] as bool?,
-  enableV2Shell_experimental: json['enableV2Shell_experimental'] as bool?,
-  collapseSearchBar: json['collapseSearchBar'] as bool?,
-  disableRedirectionLinksInNewTab:
-      json['disableRedirectionLinksInNewTab'] as bool?,
-  dataPanelV2: json['dataPanelV2'] as bool?,
-  enableCustomColumnGroups: json['enableCustomColumnGroups'] as bool?,
-  overrideOrgId: (json['overrideOrgId'] as num?)?.toInt(),
-);
+      preRenderId: json['preRenderId'] as String?,
+      doNotTrackPreRenderSize: json['doNotTrackPreRenderSize'] as bool?,
+      embedComponentType: json['embedComponentType'] as String?,
+      excludeRuntimeParametersfromURL:
+          json['excludeRuntimeParametersfromURL'] as bool?,
+      enableV2Shell_experimental: json['enableV2Shell_experimental'] as bool?,
+      collapseSearchBar: json['collapseSearchBar'] as bool?,
+      disableRedirectionLinksInNewTab:
+          json['disableRedirectionLinksInNewTab'] as bool?,
+      dataPanelV2: json['dataPanelV2'] as bool?,
+      enableCustomColumnGroups: json['enableCustomColumnGroups'] as bool?,
+      overrideOrgId: (json['overrideOrgId'] as num?)?.toInt(),
+    );
 
-Map<String, dynamic> _$ViewConfigToJson(
-  ViewConfig instance,
-) => <String, dynamic>{
-  if (instance.layoutConfig?.toJson() case final value?) 'layoutConfig': value,
-  if (instance.frameParams?.toJson() case final value?) 'frameParams': value,
-  if (instance.theme case final value?) 'theme': value,
-  if (instance.styleSheet__unstable case final value?)
-    'styleSheet__unstable': value,
-  if (instance.disabledActions?.map((e) => _$ActionEnumMap[e]!).toList()
-      case final value?)
-    'disabledActions': value,
-  if (instance.disabledActionReason case final value?)
-    'disabledActionReason': value,
-  if (instance.hiddenActions?.map((e) => _$ActionEnumMap[e]!).toList()
-      case final value?)
-    'hiddenActions': value,
-  if (instance.visibleActions?.map((e) => _$ActionEnumMap[e]!).toList()
-      case final value?)
-    'visibleActions': value,
-  if (instance.showAlerts case final value?) 'showAlerts': value,
-  if (instance.runtimeFilters?.map((e) => e.toJson()).toList()
-      case final value?)
-    'runtimeFilters': value,
-  if (instance.runtimeParameters?.map((e) => e.toJson()).toList()
-      case final value?)
-    'runtimeParameters': value,
-  if (instance.locale case final value?) 'locale': value,
-  if (instance.additionalFlags?.toJson() case final value?)
-    'additionalFlags': value,
-  if (instance.customizations?.toJson() case final value?)
-    'customizations': value,
-  if (instance.insertAsSibling case final value?) 'insertAsSibling': value,
-  if (_$ContextMenuTriggerOptionsEnumMap[instance.contextMenuTrigger]
-      case final value?)
-    'contextMenuTrigger': value,
-  if (instance.linkOverride case final value?) 'linkOverride': value,
-  if (instance.insertInToSlide case final value?) 'insertInToSlide': value,
-  if (instance.usePrerenderedIfAvailable case final value?)
-    'usePrerenderedIfAvailable': value,
-  if (instance.excludeRuntimeFiltersfromURL case final value?)
-    'excludeRuntimeFiltersfromURL': value,
-  if (instance.hiddenTabs case final value?) 'hiddenTabs': value,
-  if (instance.hiddenHomepageModules
-          ?.map((e) => _$HomepageModuleEnumMap[e]!)
-          .toList()
-      case final value?)
-    'hiddenHomepageModules': value,
-  if (instance.reorderedHomepageModules
-          ?.map((e) => _$HomepageModuleEnumMap[e]!)
-          .toList()
-      case final value?)
-    'reorderedHomepageModules': value,
-  if (instance.visibleTabs case final value?) 'visibleTabs': value,
-  if (instance.hiddenHomeLeftNavItems
-          ?.map((e) => _$HomeLeftNavItemEnumMap[e]!)
-          .toList()
-      case final value?)
-    'hiddenHomeLeftNavItems': value,
-  if (instance.preRenderId case final value?) 'preRenderId': value,
-  if (instance.doNotTrackPreRenderSize case final value?)
-    'doNotTrackPreRenderSize': value,
-  if (instance.embedComponentType case final value?)
-    'embedComponentType': value,
-  if (instance.excludeRuntimeParametersfromURL case final value?)
-    'excludeRuntimeParametersfromURL': value,
-  if (instance.enableV2Shell_experimental case final value?)
-    'enableV2Shell_experimental': value,
-  if (instance.collapseSearchBar case final value?) 'collapseSearchBar': value,
-  if (instance.disableRedirectionLinksInNewTab case final value?)
-    'disableRedirectionLinksInNewTab': value,
-  if (instance.dataPanelV2 case final value?) 'dataPanelV2': value,
-  if (instance.enableCustomColumnGroups case final value?)
-    'enableCustomColumnGroups': value,
-  if (instance.overrideOrgId case final value?) 'overrideOrgId': value,
-};
+Map<String, dynamic> _$ViewConfigToJson(ViewConfig instance) =>
+    <String, dynamic>{
+      if (instance.layoutConfig?.toJson() case final value?)
+        'layoutConfig': value,
+      if (instance.frameParams?.toJson() case final value?)
+        'frameParams': value,
+      if (instance.theme case final value?) 'theme': value,
+      if (instance.styleSheet__unstable case final value?)
+        'styleSheet__unstable': value,
+      if (instance.disabledActions?.map((e) => _$ActionEnumMap[e]!).toList()
+          case final value?)
+        'disabledActions': value,
+      if (instance.disabledActionReason case final value?)
+        'disabledActionReason': value,
+      if (instance.hiddenActions?.map((e) => _$ActionEnumMap[e]!).toList()
+          case final value?)
+        'hiddenActions': value,
+      if (instance.visibleActions?.map((e) => _$ActionEnumMap[e]!).toList()
+          case final value?)
+        'visibleActions': value,
+      if (instance.showAlerts case final value?) 'showAlerts': value,
+      if (instance.runtimeFilters?.map((e) => e.toJson()).toList()
+          case final value?)
+        'runtimeFilters': value,
+      if (instance.runtimeParameters?.map((e) => e.toJson()).toList()
+          case final value?)
+        'runtimeParameters': value,
+      if (instance.locale case final value?) 'locale': value,
+      if (instance.additionalFlags?.toJson() case final value?)
+        'additionalFlags': value,
+      if (instance.customizations?.toJson() case final value?)
+        'customizations': value,
+      if (instance.insertAsSibling case final value?) 'insertAsSibling': value,
+      if (_$ContextMenuTriggerOptionsEnumMap[instance.contextMenuTrigger]
+          case final value?)
+        'contextMenuTrigger': value,
+      if (instance.linkOverride case final value?) 'linkOverride': value,
+      if (instance.insertInToSlide case final value?) 'insertInToSlide': value,
+      if (instance.usePrerenderedIfAvailable case final value?)
+        'usePrerenderedIfAvailable': value,
+      if (instance.excludeRuntimeFiltersfromURL case final value?)
+        'excludeRuntimeFiltersfromURL': value,
+      if (instance.hiddenTabs case final value?) 'hiddenTabs': value,
+      if (instance.hiddenHomepageModules
+              ?.map((e) => _$HomepageModuleEnumMap[e]!)
+              .toList()
+          case final value?)
+        'hiddenHomepageModules': value,
+      if (instance.reorderedHomepageModules
+              ?.map((e) => _$HomepageModuleEnumMap[e]!)
+              .toList()
+          case final value?)
+        'reorderedHomepageModules': value,
+      if (instance.visibleTabs case final value?) 'visibleTabs': value,
+      if (instance.hiddenHomeLeftNavItems
+              ?.map((e) => _$HomeLeftNavItemEnumMap[e]!)
+              .toList()
+          case final value?)
+        'hiddenHomeLeftNavItems': value,
+      if (instance.preRenderId case final value?) 'preRenderId': value,
+      if (instance.doNotTrackPreRenderSize case final value?)
+        'doNotTrackPreRenderSize': value,
+      if (instance.embedComponentType case final value?)
+        'embedComponentType': value,
+      if (instance.excludeRuntimeParametersfromURL case final value?)
+        'excludeRuntimeParametersfromURL': value,
+      if (instance.enableV2Shell_experimental case final value?)
+        'enableV2Shell_experimental': value,
+      if (instance.collapseSearchBar case final value?)
+        'collapseSearchBar': value,
+      if (instance.disableRedirectionLinksInNewTab case final value?)
+        'disableRedirectionLinksInNewTab': value,
+      if (instance.dataPanelV2 case final value?) 'dataPanelV2': value,
+      if (instance.enableCustomColumnGroups case final value?)
+        'enableCustomColumnGroups': value,
+      if (instance.overrideOrgId case final value?) 'overrideOrgId': value,
+    };
 
 const _$HomepageModuleEnumMap = {
   HomepageModule.Search: 'SEARCH',
@@ -785,10 +757,9 @@ const _$HomeLeftNavItemEnumMap = {
 
 RuntimeFilter _$RuntimeFilterFromJson(Map<String, dynamic> json) =>
     RuntimeFilter(
-      values:
-          (json['values'] as List<dynamic>)
-              .map((e) => RuntimeFilterValues.fromJson(e as String))
-              .toList(),
+      values: (json['values'] as List<dynamic>)
+          .map((e) => RuntimeFilterValues.fromJson(e as String))
+          .toList(),
       operator: $enumDecode(_$RuntimeFilterOpEnumMap, json['operator']),
       columnName: json['columnName'] as String,
     );
@@ -825,7 +796,10 @@ RuntimeParameter _$RuntimeParameterFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$RuntimeParameterToJson(RuntimeParameter instance) =>
-    <String, dynamic>{'value': instance.value.toJson(), 'name': instance.name};
+    <String, dynamic>{
+      'value': instance.value.toJson(),
+      'name': instance.name,
+    };
 
 AnswerServiceType _$AnswerServiceTypeFromJson(Map<String, dynamic> json) =>
     AnswerServiceType();
@@ -834,9 +808,10 @@ Map<String, dynamic> _$AnswerServiceTypeToJson(AnswerServiceType instance) =>
     <String, dynamic>{};
 
 ColumnValue _$ColumnValueFromJson(Map<String, dynamic> json) => ColumnValue(
-  value: ColumnValueValue.fromJson(json['value'] as String),
-  column: ColumnValueColumn.fromJson(json['column'] as Map<String, dynamic>),
-);
+      value: ColumnValueValue.fromJson(json['value'] as String),
+      column:
+          ColumnValueColumn.fromJson(json['column'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$ColumnValueToJson(ColumnValue instance) =>
     <String, dynamic>{
@@ -845,76 +820,67 @@ Map<String, dynamic> _$ColumnValueToJson(ColumnValue instance) =>
     };
 
 VizPoint _$VizPointFromJson(Map<String, dynamic> json) => VizPoint(
-  selectedMeasures:
-      (json['selectedMeasures'] as List<dynamic>)
+      selectedMeasures: (json['selectedMeasures'] as List<dynamic>)
           .map((e) => ColumnValue.fromJson(e as Map<String, dynamic>))
           .toList(),
-  selectedAttributes:
-      (json['selectedAttributes'] as List<dynamic>)
+      selectedAttributes: (json['selectedAttributes'] as List<dynamic>)
           .map((e) => ColumnValue.fromJson(e as Map<String, dynamic>))
           .toList(),
-);
+    );
 
 Map<String, dynamic> _$VizPointToJson(VizPoint instance) => <String, dynamic>{
-  'selectedMeasures': instance.selectedMeasures.map((e) => e.toJson()).toList(),
-  'selectedAttributes':
-      instance.selectedAttributes.map((e) => e.toJson()).toList(),
-};
+      'selectedMeasures':
+          instance.selectedMeasures.map((e) => e.toJson()).toList(),
+      'selectedAttributes':
+          instance.selectedAttributes.map((e) => e.toJson()).toList(),
+    };
 
 CustomActionPayload _$CustomActionPayloadFromJson(Map<String, dynamic> json) =>
     CustomActionPayload(
-      session: SessionInterface.fromJson(
-        json['session'] as Map<String, dynamic>,
-      ),
+      session:
+          SessionInterface.fromJson(json['session'] as Map<String, dynamic>),
       embedAnswerData: CustomActionPayloadEmbedAnswerData.fromJson(
-        json['embedAnswerData'] as Map<String, dynamic>,
-      ),
-      contextMenuPoints:
-          json['contextMenuPoints'] == null
-              ? null
-              : CustomActionPayloadContextMenuPoints.fromJson(
-                json['contextMenuPoints'] as Map<String, dynamic>,
-              ),
+          json['embedAnswerData'] as Map<String, dynamic>),
+      contextMenuPoints: json['contextMenuPoints'] == null
+          ? null
+          : CustomActionPayloadContextMenuPoints.fromJson(
+              json['contextMenuPoints'] as Map<String, dynamic>),
       vizId: json['vizId'] as String?,
     );
 
 Map<String, dynamic> _$CustomActionPayloadToJson(
-  CustomActionPayload instance,
-) => <String, dynamic>{
-  'session': instance.session.toJson(),
-  'embedAnswerData': instance.embedAnswerData.toJson(),
-  if (instance.contextMenuPoints?.toJson() case final value?)
-    'contextMenuPoints': value,
-  if (instance.vizId case final value?) 'vizId': value,
-};
+        CustomActionPayload instance) =>
+    <String, dynamic>{
+      'session': instance.session.toJson(),
+      'embedAnswerData': instance.embedAnswerData.toJson(),
+      if (instance.contextMenuPoints?.toJson() case final value?)
+        'contextMenuPoints': value,
+      if (instance.vizId case final value?) 'vizId': value,
+    };
 
 DefaultAppInitData _$DefaultAppInitDataFromJson(Map<String, dynamic> json) =>
     DefaultAppInitData(
       customVariablesForThirdPartyTools:
           DefaultAppInitDataCustomVariablesForThirdPartyTools.fromJson(
-            json['customVariablesForThirdPartyTools'] as Map<String, dynamic>,
-          ),
-      hiddenHomeLeftNavItems:
-          (json['hiddenHomeLeftNavItems'] as List<dynamic>)
-              .map((e) => e as String)
-              .toList(),
+              json['customVariablesForThirdPartyTools']
+                  as Map<String, dynamic>),
+      hiddenHomeLeftNavItems: (json['hiddenHomeLeftNavItems'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       hostConfig: DefaultAppInitDataHostConfig.fromJson(
-        json['hostConfig'] as Map<String, dynamic>,
-      ),
+          json['hostConfig'] as Map<String, dynamic>),
       reorderedHomepageModules:
           (json['reorderedHomepageModules'] as List<dynamic>)
               .map((e) => e as String)
               .toList(),
-      hiddenHomepageModules:
-          (json['hiddenHomepageModules'] as List<dynamic>)
-              .map((e) => $enumDecode(_$HomepageModuleEnumMap, e))
-              .toList(),
+      hiddenHomepageModules: (json['hiddenHomepageModules'] as List<dynamic>)
+          .map((e) => $enumDecode(_$HomepageModuleEnumMap, e))
+          .toList(),
       runtimeParameterParams: json['runtimeParameterParams'] as String,
       runtimeFilterParams: json['runtimeFilterParams'] as String,
       authToken: json['authToken'] as String,
       customisations: CustomisationsInterface.fromJson(
-        json['customisations'] as Map<String, dynamic>,
-      ),
+          json['customisations'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$DefaultAppInitDataToJson(DefaultAppInitData instance) =>
@@ -924,10 +890,9 @@ Map<String, dynamic> _$DefaultAppInitDataToJson(DefaultAppInitData instance) =>
       'hiddenHomeLeftNavItems': instance.hiddenHomeLeftNavItems,
       'hostConfig': instance.hostConfig.toJson(),
       'reorderedHomepageModules': instance.reorderedHomepageModules,
-      'hiddenHomepageModules':
-          instance.hiddenHomepageModules
-              .map((e) => _$HomepageModuleEnumMap[e]!)
-              .toList(),
+      'hiddenHomepageModules': instance.hiddenHomepageModules
+          .map((e) => _$HomepageModuleEnumMap[e]!)
+          .toList(),
       'runtimeParameterParams': instance.runtimeParameterParams,
       'runtimeFilterParams': instance.runtimeFilterParams,
       'authToken': instance.authToken,
@@ -935,121 +900,125 @@ Map<String, dynamic> _$DefaultAppInitDataToJson(DefaultAppInitData instance) =>
     };
 
 SessionInterfaceAcSession _$SessionInterfaceAcSessionFromJson(
-  Map<String, dynamic> json,
-) => SessionInterfaceAcSession(
-  genNo: (json['genNo'] as num).toInt(),
-  sessionId: json['sessionId'] as String,
-);
+        Map<String, dynamic> json) =>
+    SessionInterfaceAcSession(
+      genNo: (json['genNo'] as num).toInt(),
+      sessionId: json['sessionId'] as String,
+    );
 
 Map<String, dynamic> _$SessionInterfaceAcSessionToJson(
-  SessionInterfaceAcSession instance,
-) => <String, dynamic>{
-  'genNo': instance.genNo,
-  'sessionId': instance.sessionId,
-};
+        SessionInterfaceAcSession instance) =>
+    <String, dynamic>{
+      'genNo': instance.genNo,
+      'sessionId': instance.sessionId,
+    };
 
 LiveboardViewConfigAdditionalFlags _$LiveboardViewConfigAdditionalFlagsFromJson(
-  Map<String, dynamic> json,
-) => LiveboardViewConfigAdditionalFlags();
+        Map<String, dynamic> json) =>
+    LiveboardViewConfigAdditionalFlags();
 
 Map<String, dynamic> _$LiveboardViewConfigAdditionalFlagsToJson(
-  LiveboardViewConfigAdditionalFlags instance,
-) => <String, dynamic>{};
+        LiveboardViewConfigAdditionalFlags instance) =>
+    <String, dynamic>{};
 
 CustomCssInterfaceRules_UNSTABLE _$CustomCssInterfaceRules_UNSTABLEFromJson(
-  Map<String, dynamic> json,
-) => CustomCssInterfaceRules_UNSTABLE();
+        Map<String, dynamic> json) =>
+    CustomCssInterfaceRules_UNSTABLE();
 
 Map<String, dynamic> _$CustomCssInterfaceRules_UNSTABLEToJson(
-  CustomCssInterfaceRules_UNSTABLE instance,
-) => <String, dynamic>{};
+        CustomCssInterfaceRules_UNSTABLE instance) =>
+    <String, dynamic>{};
 
 CustomisationsInterfaceContentStrings
-_$CustomisationsInterfaceContentStringsFromJson(Map<String, dynamic> json) =>
-    CustomisationsInterfaceContentStrings();
+    _$CustomisationsInterfaceContentStringsFromJson(
+            Map<String, dynamic> json) =>
+        CustomisationsInterfaceContentStrings();
 
 Map<String, dynamic> _$CustomisationsInterfaceContentStringsToJson(
-  CustomisationsInterfaceContentStrings instance,
-) => <String, dynamic>{};
+        CustomisationsInterfaceContentStrings instance) =>
+    <String, dynamic>{};
 
 CustomisationsInterfaceContent _$CustomisationsInterfaceContentFromJson(
-  Map<String, dynamic> json,
-) => CustomisationsInterfaceContent(
-  strings:
-      json['strings'] == null
+        Map<String, dynamic> json) =>
+    CustomisationsInterfaceContent(
+      strings: json['strings'] == null
           ? null
           : CustomisationsInterfaceContentStrings.fromJson(
-            json['strings'] as Map<String, dynamic>,
-          ),
-);
+              json['strings'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$CustomisationsInterfaceContentToJson(
-  CustomisationsInterfaceContent instance,
-) => <String, dynamic>{
-  if (instance.strings?.toJson() case final value?) 'strings': value,
-};
+        CustomisationsInterfaceContent instance) =>
+    <String, dynamic>{
+      if (instance.strings?.toJson() case final value?) 'strings': value,
+    };
 
 EmbedConfigHostConfig _$EmbedConfigHostConfigFromJson(
-  Map<String, dynamic> json,
-) => EmbedConfigHostConfig(
-  hostClusterName: json['hostClusterName'] as String,
-  hostClusterId: json['hostClusterId'] as String,
-  hostUserGuid: json['hostUserGuid'] as String,
-);
+        Map<String, dynamic> json) =>
+    EmbedConfigHostConfig(
+      hostClusterName: json['hostClusterName'] as String,
+      hostClusterId: json['hostClusterId'] as String,
+      hostUserGuid: json['hostUserGuid'] as String,
+    );
 
 Map<String, dynamic> _$EmbedConfigHostConfigToJson(
-  EmbedConfigHostConfig instance,
-) => <String, dynamic>{
-  'hostClusterName': instance.hostClusterName,
-  'hostClusterId': instance.hostClusterId,
-  'hostUserGuid': instance.hostUserGuid,
-};
+        EmbedConfigHostConfig instance) =>
+    <String, dynamic>{
+      'hostClusterName': instance.hostClusterName,
+      'hostClusterId': instance.hostClusterId,
+      'hostUserGuid': instance.hostUserGuid,
+    };
 
 EmbedConfigAdditionalFlags _$EmbedConfigAdditionalFlagsFromJson(
-  Map<String, dynamic> json,
-) => EmbedConfigAdditionalFlags();
+        Map<String, dynamic> json) =>
+    EmbedConfigAdditionalFlags();
 
 Map<String, dynamic> _$EmbedConfigAdditionalFlagsToJson(
-  EmbedConfigAdditionalFlags instance,
-) => <String, dynamic>{};
+        EmbedConfigAdditionalFlags instance) =>
+    <String, dynamic>{};
 
 EmbedConfigCustomVariablesForThirdPartyTools
-_$EmbedConfigCustomVariablesForThirdPartyToolsFromJson(
-  Map<String, dynamic> json,
-) => EmbedConfigCustomVariablesForThirdPartyTools();
+    _$EmbedConfigCustomVariablesForThirdPartyToolsFromJson(
+            Map<String, dynamic> json) =>
+        EmbedConfigCustomVariablesForThirdPartyTools();
 
 Map<String, dynamic> _$EmbedConfigCustomVariablesForThirdPartyToolsToJson(
-  EmbedConfigCustomVariablesForThirdPartyTools instance,
-) => <String, dynamic>{};
+        EmbedConfigCustomVariablesForThirdPartyTools instance) =>
+    <String, dynamic>{};
 
 ViewConfigAdditionalFlags _$ViewConfigAdditionalFlagsFromJson(
-  Map<String, dynamic> json,
-) => ViewConfigAdditionalFlags();
+        Map<String, dynamic> json) =>
+    ViewConfigAdditionalFlags();
 
 Map<String, dynamic> _$ViewConfigAdditionalFlagsToJson(
-  ViewConfigAdditionalFlags instance,
-) => <String, dynamic>{};
+        ViewConfigAdditionalFlags instance) =>
+    <String, dynamic>{};
 
 ColumnValueValueType4V _$ColumnValueValueType4VFromJson(
-  Map<String, dynamic> json,
-) => ColumnValueValueType4V(
-  e: (json['e'] as num).toInt(),
-  s: (json['s'] as num).toInt(),
-);
+        Map<String, dynamic> json) =>
+    ColumnValueValueType4V(
+      e: (json['e'] as num).toInt(),
+      s: (json['s'] as num).toInt(),
+    );
 
 Map<String, dynamic> _$ColumnValueValueType4VToJson(
-  ColumnValueValueType4V instance,
-) => <String, dynamic>{'e': instance.e, 's': instance.s};
+        ColumnValueValueType4V instance) =>
+    <String, dynamic>{
+      'e': instance.e,
+      's': instance.s,
+    };
 
 ColumnValueValueType4 _$ColumnValueValueType4FromJson(
-  Map<String, dynamic> json,
-) => ColumnValueValueType4(
-  v: ColumnValueValueType4V.fromJson(json['v'] as Map<String, dynamic>),
-);
+        Map<String, dynamic> json) =>
+    ColumnValueValueType4(
+      v: ColumnValueValueType4V.fromJson(json['v'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$ColumnValueValueType4ToJson(
-  ColumnValueValueType4 instance,
-) => <String, dynamic>{'v': instance.v.toJson()};
+        ColumnValueValueType4 instance) =>
+    <String, dynamic>{
+      'v': instance.v.toJson(),
+    };
 
 ColumnValueColumn _$ColumnValueColumnFromJson(Map<String, dynamic> json) =>
     ColumnValueColumn(
@@ -1066,131 +1035,159 @@ Map<String, dynamic> _$ColumnValueColumnToJson(ColumnValueColumn instance) =>
     };
 
 CustomActionPayloadEmbedAnswerDataSourcesHeader
-_$CustomActionPayloadEmbedAnswerDataSourcesHeaderFromJson(
-  Map<String, dynamic> json,
-) => CustomActionPayloadEmbedAnswerDataSourcesHeader(
-  guid: json['guid'] as String,
-);
+    _$CustomActionPayloadEmbedAnswerDataSourcesHeaderFromJson(
+            Map<String, dynamic> json) =>
+        CustomActionPayloadEmbedAnswerDataSourcesHeader(
+          guid: json['guid'] as String,
+        );
 
 Map<String, dynamic> _$CustomActionPayloadEmbedAnswerDataSourcesHeaderToJson(
-  CustomActionPayloadEmbedAnswerDataSourcesHeader instance,
-) => <String, dynamic>{'guid': instance.guid};
+        CustomActionPayloadEmbedAnswerDataSourcesHeader instance) =>
+    <String, dynamic>{
+      'guid': instance.guid,
+    };
 
 CustomActionPayloadEmbedAnswerDataSources
-_$CustomActionPayloadEmbedAnswerDataSourcesFromJson(
-  Map<String, dynamic> json,
-) => CustomActionPayloadEmbedAnswerDataSources(
-  header: CustomActionPayloadEmbedAnswerDataSourcesHeader.fromJson(
-    json['header'] as Map<String, dynamic>,
-  ),
-);
+    _$CustomActionPayloadEmbedAnswerDataSourcesFromJson(
+            Map<String, dynamic> json) =>
+        CustomActionPayloadEmbedAnswerDataSources(
+          header: CustomActionPayloadEmbedAnswerDataSourcesHeader.fromJson(
+              json['header'] as Map<String, dynamic>),
+        );
 
 Map<String, dynamic> _$CustomActionPayloadEmbedAnswerDataSourcesToJson(
-  CustomActionPayloadEmbedAnswerDataSources instance,
-) => <String, dynamic>{'header': instance.header.toJson()};
+        CustomActionPayloadEmbedAnswerDataSources instance) =>
+    <String, dynamic>{
+      'header': instance.header.toJson(),
+    };
 
 CustomActionPayloadEmbedAnswerData _$CustomActionPayloadEmbedAnswerDataFromJson(
-  Map<String, dynamic> json,
-) => CustomActionPayloadEmbedAnswerData(
-  data: json['data'] as List<dynamic>,
-  columns: json['columns'] as List<dynamic>,
-  sources: CustomActionPayloadEmbedAnswerDataSources.fromJson(
-    json['sources'] as Map<String, dynamic>,
-  ),
-  id: json['id'] as String,
-  name: json['name'] as String,
-);
-
-Map<String, dynamic> _$CustomActionPayloadEmbedAnswerDataToJson(
-  CustomActionPayloadEmbedAnswerData instance,
-) => <String, dynamic>{
-  'data': instance.data,
-  'columns': instance.columns,
-  'sources': instance.sources.toJson(),
-  'id': instance.id,
-  'name': instance.name,
-};
-
-CustomActionPayloadContextMenuPoints
-_$CustomActionPayloadContextMenuPointsFromJson(Map<String, dynamic> json) =>
-    CustomActionPayloadContextMenuPoints(
-      selectedPoints:
-          (json['selectedPoints'] as List<dynamic>)
-              .map((e) => VizPoint.fromJson(e as Map<String, dynamic>))
-              .toList(),
-      clickedPoint: VizPoint.fromJson(
-        json['clickedPoint'] as Map<String, dynamic>,
-      ),
+        Map<String, dynamic> json) =>
+    CustomActionPayloadEmbedAnswerData(
+      data: json['data'] as List<dynamic>,
+      columns: json['columns'] as List<dynamic>,
+      sources: CustomActionPayloadEmbedAnswerDataSources.fromJson(
+          json['sources'] as Map<String, dynamic>),
+      id: json['id'] as String,
+      name: json['name'] as String,
     );
 
+Map<String, dynamic> _$CustomActionPayloadEmbedAnswerDataToJson(
+        CustomActionPayloadEmbedAnswerData instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+      'columns': instance.columns,
+      'sources': instance.sources.toJson(),
+      'id': instance.id,
+      'name': instance.name,
+    };
+
+CustomActionPayloadContextMenuPoints
+    _$CustomActionPayloadContextMenuPointsFromJson(Map<String, dynamic> json) =>
+        CustomActionPayloadContextMenuPoints(
+          selectedPoints: (json['selectedPoints'] as List<dynamic>)
+              .map((e) => VizPoint.fromJson(e as Map<String, dynamic>))
+              .toList(),
+          clickedPoint:
+              VizPoint.fromJson(json['clickedPoint'] as Map<String, dynamic>),
+        );
+
 Map<String, dynamic> _$CustomActionPayloadContextMenuPointsToJson(
-  CustomActionPayloadContextMenuPoints instance,
-) => <String, dynamic>{
-  'selectedPoints': instance.selectedPoints.map((e) => e.toJson()).toList(),
-  'clickedPoint': instance.clickedPoint.toJson(),
-};
+        CustomActionPayloadContextMenuPoints instance) =>
+    <String, dynamic>{
+      'selectedPoints': instance.selectedPoints.map((e) => e.toJson()).toList(),
+      'clickedPoint': instance.clickedPoint.toJson(),
+    };
 
 DefaultAppInitDataCustomVariablesForThirdPartyTools
-_$DefaultAppInitDataCustomVariablesForThirdPartyToolsFromJson(
-  Map<String, dynamic> json,
-) => DefaultAppInitDataCustomVariablesForThirdPartyTools();
+    _$DefaultAppInitDataCustomVariablesForThirdPartyToolsFromJson(
+            Map<String, dynamic> json) =>
+        DefaultAppInitDataCustomVariablesForThirdPartyTools();
 
 Map<String, dynamic>
-_$DefaultAppInitDataCustomVariablesForThirdPartyToolsToJson(
-  DefaultAppInitDataCustomVariablesForThirdPartyTools instance,
-) => <String, dynamic>{};
+    _$DefaultAppInitDataCustomVariablesForThirdPartyToolsToJson(
+            DefaultAppInitDataCustomVariablesForThirdPartyTools instance) =>
+        <String, dynamic>{};
 
 DefaultAppInitDataHostConfig _$DefaultAppInitDataHostConfigFromJson(
-  Map<String, dynamic> json,
-) => DefaultAppInitDataHostConfig();
+        Map<String, dynamic> json) =>
+    DefaultAppInitDataHostConfig();
 
 Map<String, dynamic> _$DefaultAppInitDataHostConfigToJson(
-  DefaultAppInitDataHostConfig instance,
-) => <String, dynamic>{};
+        DefaultAppInitDataHostConfig instance) =>
+    <String, dynamic>{};
 
 EmbedConfigAuthTriggerContainer _$EmbedConfigAuthTriggerContainerFromJson(
-  Map<String, dynamic> json,
-) => EmbedConfigAuthTriggerContainer(json['value'] as String);
+        Map<String, dynamic> json) =>
+    EmbedConfigAuthTriggerContainer(
+      json['value'] as String,
+    );
 
 Map<String, dynamic> _$EmbedConfigAuthTriggerContainerToJson(
-  EmbedConfigAuthTriggerContainer instance,
-) => <String, dynamic>{'value': instance.value};
+        EmbedConfigAuthTriggerContainer instance) =>
+    <String, dynamic>{
+      'value': instance.value,
+    };
 
 FrameParamsWidth _$FrameParamsWidthFromJson(Map<String, dynamic> json) =>
-    FrameParamsWidth(json['value'] as String);
+    FrameParamsWidth(
+      json['value'] as String,
+    );
 
 Map<String, dynamic> _$FrameParamsWidthToJson(FrameParamsWidth instance) =>
-    <String, dynamic>{'value': instance.value};
+    <String, dynamic>{
+      'value': instance.value,
+    };
 
 FrameParamsHeight _$FrameParamsHeightFromJson(Map<String, dynamic> json) =>
-    FrameParamsHeight(json['value'] as String);
+    FrameParamsHeight(
+      json['value'] as String,
+    );
 
 Map<String, dynamic> _$FrameParamsHeightToJson(FrameParamsHeight instance) =>
-    <String, dynamic>{'value': instance.value};
+    <String, dynamic>{
+      'value': instance.value,
+    };
 
 FrameParamsLoading _$FrameParamsLoadingFromJson(Map<String, dynamic> json) =>
-    FrameParamsLoading(json['value'] as String);
+    FrameParamsLoading(
+      json['value'] as String,
+    );
 
 Map<String, dynamic> _$FrameParamsLoadingToJson(FrameParamsLoading instance) =>
-    <String, dynamic>{'value': instance.value};
+    <String, dynamic>{
+      'value': instance.value,
+    };
 
 RuntimeFilterValues _$RuntimeFilterValuesFromJson(Map<String, dynamic> json) =>
-    RuntimeFilterValues(json['value'] as String);
+    RuntimeFilterValues(
+      json['value'] as String,
+    );
 
 Map<String, dynamic> _$RuntimeFilterValuesToJson(
-  RuntimeFilterValues instance,
-) => <String, dynamic>{'value': instance.value};
+        RuntimeFilterValues instance) =>
+    <String, dynamic>{
+      'value': instance.value,
+    };
 
 RuntimeParameterValue _$RuntimeParameterValueFromJson(
-  Map<String, dynamic> json,
-) => RuntimeParameterValue(json['value'] as String);
+        Map<String, dynamic> json) =>
+    RuntimeParameterValue(
+      json['value'] as String,
+    );
 
 Map<String, dynamic> _$RuntimeParameterValueToJson(
-  RuntimeParameterValue instance,
-) => <String, dynamic>{'value': instance.value};
+        RuntimeParameterValue instance) =>
+    <String, dynamic>{
+      'value': instance.value,
+    };
 
 ColumnValueValue _$ColumnValueValueFromJson(Map<String, dynamic> json) =>
-    ColumnValueValue(json['value'] as String);
+    ColumnValueValue(
+      json['value'] as String,
+    );
 
 Map<String, dynamic> _$ColumnValueValueToJson(ColumnValueValue instance) =>
-    <String, dynamic>{'value': instance.value};
+    <String, dynamic>{
+      'value': instance.value,
+    };

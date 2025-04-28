@@ -1,0 +1,54 @@
+name: Flutter Tests and Coverage
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-coverage:
+    name: Run Tests and Generate Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.29.3"
+          channel: "stable"
+
+      - name: Log Flutter Version
+        run: flutter --version
+
+      - name: Install Flutter Dependencies
+        run: |
+          flutter pub get
+          flutter pub global activate build_runner
+          flutter pub global activate mockito
+          flutter pub global activate analyzer 6.4.0
+
+      - name: Generate Mocks
+        run: |
+          chmod +x scripts/generate.sh
+          flutter pub run build_runner clean
+          flutter pub run build_runner build --delete-conflicting-outputs
+      
+      - name: Install System Dependencies
+        run: sudo apt-get update && sudo apt-get install -y lcov bc
+
+     
+      - name: Run Tests with Coverage
+        run: |
+          chmod +x scripts/test.sh
+          ./scripts/test.sh --coverage
+
+      - name: Upload Coverage Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/html
