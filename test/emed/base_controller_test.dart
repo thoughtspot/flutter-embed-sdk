@@ -60,6 +60,10 @@ void main() {
       contains('"embedType":"Liveboard"'),
       contains('"viewConfig":{"liveboardId":"abc123"}'),
     )))).called(1);
+
+    verify(mockWebViewController.loadRequest(Uri.parse(
+      'https://mobile-embed-shell.vercel.app',
+    ))).called(1);
   });
 
   /// Tests that when the WebView is not ready:

@@ -13,7 +13,7 @@ part './liveboard_embed.dart';
 
 abstract class BaseController {
   final EmbedConfig embedConfig;
-  final String _url = 'http://localhost:8080';
+  final String _url = 'https://mobile-embed-shell.vercel.app';
   final Logger _logger = Logger();
 
   late final WebViewController _webViewController;
