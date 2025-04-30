@@ -39,6 +39,4 @@ coverage/
 *.info
 
 # Generated files
-*.mocks.dart
-*.g.dart
-*.freezed.dart
+test/**/*.mocks.dart
