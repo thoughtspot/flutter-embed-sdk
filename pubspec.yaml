@@ -1,6 +1,6 @@
 name: flutter_embed_sdk
 description: "ThoughtSpot's Flutter Embed SDK"
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/thoughtspot/flutter-embed-sdk
 
 environment:
@@ -21,5 +21,8 @@ dev_dependencies:
   json_serializable: ^6.9.4
   mockito: ^5.4.4
   coverage: ^1.12.0
+
+exclude:
+  - scripts/
 
 flutter:

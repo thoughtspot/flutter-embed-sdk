@@ -38,6 +38,7 @@ abstract class BaseController {
   }
 
   WebViewController _setWebViewController(WebViewController controller) {
+
     controller
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..addJavaScriptChannel(
@@ -153,7 +154,7 @@ abstract class BaseController {
 
   Future<Map<String, dynamic>> trigger(
     HostEvent event, [
-    Map<String, dynamic>? data,
+    dynamic? data,
   ]) async {
     _logger.error("message");
     _logger.debug('Triggering event: $event');
