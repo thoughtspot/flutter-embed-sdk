@@ -5,8 +5,8 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_embed_sdk/flutter_embed_sdk.dart';
 import 'package:flutter_embed_sdk/src/types/common-types.dart';
 
-import './mocks.mocks.dart';
-import './liveboard_controller_test.dart';
+import 'mocks.mocks.dart';
+import 'liveboard_controller_test.dart';
 
 void main() {
   late MockWebViewController mockWebViewController;

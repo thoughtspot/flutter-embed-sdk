@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:flutter_embed_sdk/flutter_embed_sdk.dart';
-import './mocks.mocks.dart';
+import 'mocks.mocks.dart';
 
 class FakeLiveboardViewConfig extends LiveboardViewConfig {
   @override

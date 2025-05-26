@@ -1,16 +1,15 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'types.g.dart';
-
+  
 /**
  * The authentication mechanism for allowing access to the
  * the embedded app
  * @group Authentication / Init
  */
-
 @JsonEnum(valueField: 'value')
 enum AuthType {
     /**
-     * No authentication on the SDK. Pass-through to the embedded App. Alias for
+     * No authentication on the SDK. Passthrough to the embedded App. Alias for
      * `Passthrough`.
      * @example
      * ```js
@@ -163,7 +162,6 @@ enum AuthType {
   final String value;
   const AuthType(this.value);
 }
-
 /**
  *
  * This option does not apply to the classic homepage experience.
@@ -172,7 +170,6 @@ enum AuthType {
  * (available as Early Access feature in 9.12.5.cl).
  *
  */
-
 @JsonEnum(valueField: 'value')
 enum HomeLeftNavItem {
     /**
@@ -207,11 +204,9 @@ enum HomeLeftNavItem {
   final String value;
   const HomeLeftNavItem(this.value);
 }
-
 /**
  * A map of the supported runtime filter operations
  */
-
 @JsonEnum(valueField: 'value')
 enum RuntimeFilterOp {
     /**
@@ -278,15 +273,13 @@ enum RuntimeFilterOp {
   final String value;
   const RuntimeFilterOp(this.value);
 }
-
 /**
  * Home page module that can be hidden.
  * **Note**: This option does not apply to the classic homepage.
  * To access the updated modular homepage, set
  * `modularHomeExperience` to `true` (available as Early Access feature in 9.12.5.cl).
- * @version SDK: 1.28.0 | ThoughtSpot: 9.12.5.cl, 10.1.0.sw
+ * @version SDK: 1.28.0 | Thoughtspot: 9.12.5.cl
  */
-
 @JsonEnum(valueField: 'value')
 enum HomepageModule {
     /**
@@ -317,7 +310,6 @@ enum HomepageModule {
   final String value;
   const HomepageModule(this.value);
 }
-
 /**
  * Event types emitted by the embedded ThoughtSpot application.
  *
@@ -357,7 +349,6 @@ enum HomepageModule {
  * ```
  * @group Events
  */
-
 @JsonEnum(valueField: 'value')
 enum EmbedEvent {
     /**
@@ -400,8 +391,8 @@ enum EmbedEvent {
      */
   Load("load"), 
     /**
-     * Data pertaining to an Answer or Liveboard is received
-     * @return data - The Answer or Liveboard data
+     * Data pertaining to answer or Liveboard is received
+     * @return data - The answer or Liveboard data
      * @version SDK: 1.1.0 | ThoughtSpot: ts7.may.cl, 8.4.1.sw
      * @example
      *```js
@@ -575,7 +566,7 @@ enum EmbedEvent {
      */
   Alert("alert"), 
     /**
-     * The ThoughtSpot authentication session has expired.
+     * The ThoughtSpot auth session has expired.
      * @version SDK: 1.4.0 | ThoughtSpot: ts7.sep.cl, 8.4.1.sw
      * @example
      *```js
@@ -592,11 +583,6 @@ enum EmbedEvent {
      * @hidden
      */
   AuthFailure("ThoughtspotAuthFailure"), 
-    /**
-     * ThoughtSpot failed to re validate the auth session.
-     * @hidden
-     */
-  IdleSessionTimeout("IdleSessionTimeout"), 
     /**
      * ThoughtSpot failed to validate the auth session.
      * @hidden
@@ -645,7 +631,7 @@ enum EmbedEvent {
     /**
      * Emitted when the embed does not have cookie access. This happens
      * when Safari and other Web browsers block third-party cookies
-     * are blocked by default. `NoCookieAccess` can trigger.
+     * are blocked by default. `NoCookieAccess` can trigger
      * @example
      *```js
      * appEmbed.on(EmbedEvent.NoCookieAccess)
@@ -733,7 +719,7 @@ enum EmbedEvent {
      */
   Save("save"), 
     /**
-     * Emitted when the download action is triggered on an Answer.
+     * Emitted when the download action is triggered on an answer
      *
      * **Note**: This event is deprecated in v1.21.0.
      * To fire an event when a download action is initiated on a chart or table,
@@ -749,7 +735,7 @@ enum EmbedEvent {
      */
   Download("download"), 
     /**
-     * Emitted when the download action is triggered on an Answer.
+     * Emitted when the download action is triggered on an answer
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.4.0.sw
      * @example
      *```js
@@ -763,7 +749,7 @@ enum EmbedEvent {
      */
   DownloadAsPng("downloadAsPng"), 
     /**
-     * Emitted when the Download as PDF action is triggered on an Answer
+     * Emitted when the Download as PDF action is triggered on an answer
      * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      * @example
      *```js
@@ -777,7 +763,7 @@ enum EmbedEvent {
      */
   DownloadAsPdf("downloadAsPdf"), 
     /**
-     * Emitted when the Download as CSV action is triggered on an Answer.
+     * Emitted when the Download as CSV action is triggered on an answer
      * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      * @example
      *```js
@@ -791,7 +777,7 @@ enum EmbedEvent {
      */
   DownloadAsCsv("downloadAsCsv"), 
     /**
-     * Emitted when the Download as XLSX action is triggered on an Answer.
+     * Emitted when the Download as XLSX action is triggered on an answer
      * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      * @example
      *```js
@@ -819,8 +805,7 @@ enum EmbedEvent {
      */
   AnswerDelete("answerDelete"), 
     /**
-     * Emitted when a user initiates the Pin action to
-     *  add an Answer to a Liveboard.
+     * Emitted when an answer is pinned to a Liveboard
      * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      * @example
      *```js
@@ -958,7 +943,7 @@ enum EmbedEvent {
      */
   SaveAsView("saveAsView"), 
     /**
-     * Emitted when the user creates a copy of an Answer.
+     * Emitted when the user creates a copy of an Answer
      * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      * @example
      *```js
@@ -972,7 +957,7 @@ enum EmbedEvent {
      */
   CopyAEdit("copyAEdit"), 
     /**
-     * Emitted when a user clicks *Show underlying data* on an Answer.
+     * Emitted when a user clicks Show underlying data on an Answer
      * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      * @example
      *```js
@@ -983,7 +968,7 @@ enum EmbedEvent {
      */
   ShowUnderlyingData("showUnderlyingData"), 
     /**
-     * Emitted when an Answer is switched to a chart or table view.
+     * Emitted when an answer is switched to a chart or table view.
      * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      * @example
      *```js
@@ -1107,7 +1092,7 @@ enum EmbedEvent {
      */
   Explore("explore"), 
     /**
-     * Emitted when a user clicks **Copy link** action on a visualization.
+     * Emitted when a user clicks **Copy link** action on a visualization
      * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      * @example
      *```js
@@ -1117,12 +1102,11 @@ enum EmbedEvent {
      */
   CopyLink("embedDocument"), 
     /**
-     * Emitted when a user interacts with cross filters on a
-     * visualization or Liveboard.
+     * Emitted when a user interacts with cross filters on a visualization or Liveboard
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.0.sw
      * @example
      *```js
-     * liveboardEmbed.on(EmbedEvent.CrossFilterChanged, {
+     * liveboardEmbed.trigger(HostEvent.CrossFilterChanged, {
      *    vizId: '730496d6-6903-4601-937e-2c691821af3c'})
      *```
      */
@@ -1158,26 +1142,23 @@ enum EmbedEvent {
      */
   FilterChanged("filterChanged"), 
     /**
-     *  Emitted when a user clicks the **Go** button to initiate
-     *  a Natural Language Search query
-     * @version SDK : 1.26.0 | ThoughtSpot: 9.7.0.cl, 9.8.0.sw
+     *  Emitted when a user clicks the **Go** button on the sage embed
+     * @version SDK : 1.26.0 | Thoughtspot: 9.7.0.cl, 9.8.0.sw
      */
   SageEmbedQuery("sageEmbedQuery"), 
     /**
-     * Emitted when a user selects a data source on the embedded
-     * Natural Language Search interface.
-     *
-     * @version SDK : 1.26.0 | ThoughtSpot: 9.7.0.cl, 9.8.0.sw
+     * Emitted when a user selects a data source on the sage embed
+     * @version SDK : 1.26.0 | Thoughtspot: 9.7.0.cl, 9.8.0.sw
      */
   SageWorksheetUpdated("sageWorksheetUpdated"), 
     /**
      * Emitted when a user updates a connection on the **Data** page
-     * @version SDK : 1.27.0 | ThoughtSpot: 9.8.0.cl, 9.8.0.sw
+     * @version SDK : 1.27.0 | Thoughtspot: 9.8.0.cl, 9.8.0.sw
      */
   UpdateConnection("updateConnection"), 
     /**
      * Emitted when a user updates a connection on the **Data** page
-     * @version SDK : 1.27.0 | ThoughtSpot: 9.8.0.cl, 9.8.0.sw
+     * @version SDK : 1.27.0 | Thoughtspot: 9.8.0.cl, 9.8.0.sw
      */
   CreateConnection("createConnection"), 
     /**
@@ -1187,7 +1168,7 @@ enum EmbedEvent {
      * @returns viewId: string
      * @returns liveboardId: string
      * @returns isPublic: boolean
-     * @version SDK : 1.26.0 | ThoughtSpot: 9.7.0.cl, 9.8.0.sw
+     * @version SDK : 1.26.0 | Thoughtspot: 9.7.0.cl, 9.8.0.sw
      */
   UpdatePersonalisedView("updatePersonalisedView"), 
     /**
@@ -1196,7 +1177,7 @@ enum EmbedEvent {
      * @returns viewId: string
      * @returns liveboardId: string
      * @returns isPublic: boolean
-     * @version SDK : 1.26.0 | ThoughtSpot: 9.7.0.cl, 9.8.0.sw
+     * @version SDK : 1.26.0 | Thoughtspot: 9.7.0.cl, 9.8.0.sw
      */
   SavePersonalisedView("savePersonalisedView"), 
     /**
@@ -1205,33 +1186,33 @@ enum EmbedEvent {
      * @returns viewId: string
      * @returns liveboardId: string
      * @returns isPublic: boolean
-     * @version SDK : 1.26.0 | ThoughtSpot: 9.7.0.cl, 9.8.0.sw
+     * @version SDK : 1.26.0 | Thoughtspot: 9.7.0.cl, 9.8.0.sw
      */
   ResetLiveboard("resetLiveboard"), 
     /**
      * Emitted when a PersonalisedView is deleted.
      * @returns views: string[]
      * @returns liveboardId: string
-     * @version SDK : 1.26.0 | ThoughtSpot: 9.7.0.cl, 9.8.0.sw
+     * @version SDK : 1.26.0 | Thoughtspot: 9.7.0.cl, 9.8.0.sw
      */
   DeletePersonalisedView("deletePersonalisedView"), 
     /**
-     * Emitted when a user creates a Worksheet.
-     * @version SDK : 1.27.0 | ThoughtSpot: 9.8.0.cl, 9.8.0.sw
+     * Emitted when a user creates a new worksheet
+     * @version SDK : 1.27.0 | Thoughtspot: 9.8.0.cl
      */
   CreateWorksheet("createWorksheet"), 
     /**
-     * Emitted when the *Ask Sage* is initialized.
+     * Emitted when Ask Sage is initialized.
      * @returns viewName: string
      * @returns viewId: string
      * @returns liveboardId: string
      * @returns isPublic: boolean
-     * @version SDK : 1.29.0 | ThoughtSpot Cloud: 9.12.0.cl
+     * @version SDK : 1.29.0 | Thoughtspot: 9.12.0.cl
      */
   AskSageInit("AskSageInit"), 
     /**
-     * Emitted when a Liveboard or visualization is renamed.
-     * @version SDK : 1.28.0 | ThoughtSpot: 9.10.5.cl, 10.1.0.sw
+     * Emitted when a LB/viz is renamed
+     * @version SDK : 1.28.0 | ThoughtSpot: 9.10.5.cl
      */
   Rename("rename"), 
     /**
@@ -1254,7 +1235,7 @@ enum EmbedEvent {
      *
      * error: Developers can customize the error message text when `execute`
      * returns `false` using the error parameter in responder.
-     * @version SDK : 1.29.0 | ThoughtSpot : 10.3.0.cl
+     * @version SDK : 1.29.0 | Thoughtspot : 10.3.0.cl
      * @example
      *```js
      * .on(EmbedEvent.OnBeforeGetVizDataIntercept,
@@ -1295,50 +1276,20 @@ enum EmbedEvent {
   OnBeforeGetVizDataIntercept("onBeforeGetVizDataIntercept"), 
     /**
      * Emitted when parameter changes in an Answer
-     * or Liveboard.
+     * or Liveboard
+     *
      * ```js
      * liveboardEmbed.on(EmbedEvent.ParameterChanged, (payload) => {
      *     console.log('payload', payload);
      * })
      *```
-     * @version SDK : 1.29.0 | ThoughtSpot : 10.3.0.cl
+     * @version SDK : 1.29.0 | Thoughtspot : 10.3.0.cl
      */
-  ParameterChanged("parameterChanged"), 
-    /**
-     * Emitted when the table viz renders.
-     * You can use this event as a hook to trigger
-     * other events on the rendered table viz data.
-     * @example
-     * ```js
-     * searchEmbed.on(EmbedEvent.TableVizRendered, (payload) => {
-     *       console.log(payload);
-     *       const columnDataLite = payload.data.data.columnDataLite;
-     *       columnDataLite[0].dataValue[0]="new fob";
-     *       console.log('>>> new Data', columnDataLite);
-     *       searchEmbed.trigger(HostEvent.TransformTableVizData, columnDataLite);
-     * })
-     * ```
-     * @version SDK: 1.35.12 | ThoughtSpot: 10.7.0.cl
-     */
-  TableVizRendered("TableVizRendered"), 
-    /**
-     * Emitted when the liveboard is created from pin modal or Liveboard list page.
-     * You can use this event as a hook to trigger
-     * other events on liveboard creation.
-     *
-     * ```js
-     * liveboardEmbed.on(EmbedEvent.CreateLiveboard, (payload) => {
-     *     console.log('payload', payload);
-     * })
-     *```
-     * @version SDK : 1.36.0 | ThoughtSpot : 10.8.0.cl
-     */
-  CreateLiveboard("createLiveboard");
+  ParameterChanged("parameterChanged");
 
   final String value;
   const EmbedEvent(this.value);
 }
-
 /**
  * Event types that can be triggered by the host application
  * to the embedded ThoughtSpot app.
@@ -1392,7 +1343,6 @@ enum EmbedEvent {
  * ```
  * @group Events
  */
-
 @JsonEnum(valueField: 'value')
 enum HostEvent {
     /**
@@ -1471,7 +1421,7 @@ enum HostEvent {
      */
   Filter("filter"), 
     /**
-     * Reload the Answer or visualization
+     * Reload the answer or visualization
      * @hidden
      */
   Reload("reload"), 
@@ -1484,7 +1434,7 @@ enum HostEvent {
      * const url = embed.trigger(HostEvent.GetIframeUrl);
      * console.log("iFrameURL",url);
      * ```
-     * @version SDK: 1.35.0 | ThoughtSpot: 10.4.0.cl
+     * @version SDK: 1.35.0 | Thoughtspot: 10.4.0.cl
      */
   GetIframeUrl("GetIframeUrl"), 
     /**
@@ -1517,26 +1467,22 @@ enum HostEvent {
      * attributes passed with this event are appended to the existing runtime
      * filters applied on a Liveboard.
      *
-     * **Note**: `HostEvent.UpdateRuntimeFilters` is supported in `LiveboardEmbed`
-     * and `AppEmbed` only. In full application embedding, this event updates
-     * the runtime filters applied on the Liveboard and saved Answer objects.
+     * Pass an array of runtime filters with the following attributes:
      *
-     * @param - Pass an array of {@link RuntimeFilter} with the following attributes:
      * `columnName` - _String_. The name of the column to filter on.
      *
-     * `operator` - {@link RuntimeFilterOp} to apply. For more information,
+     * `operator` - Runtime filter operator to apply. For more information,
      * see link:https://developers.thoughtspot.com/docs/?pageid=runtime-filters#rtOperator[Developer Documentation].
      *
      * `values` - List of operands. Some operators such as EQ and LE allow a
      * single value, whereas BW and IN accept multiple values.
      *
-     * **Note**: Updating runtime filters resets the ThoughtSpot
-     * object to its original state and applies new filter conditions.
-     * Any user changes (like drilling into a visualization)
-     * will be cleared, restoring the original visualization
-     * with the updated filters.
+     * **Note**: `HostEvent.UpdateRuntimeFilters` is supported in `LiveboardEmbed`
+     * and `AppEmbed` only. In full application embedding, this event updates
+     * the runtime filters applied on the Liveboard and saved Answer objects.
      *
-
+     * @param - {@link RuntimeFilter}[] an array of {@link RuntimeFilter} Types.
+     *
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.UpdateRuntimeFilters, [
@@ -1550,7 +1496,7 @@ enum HostEvent {
   UpdateRuntimeFilters("UpdateRuntimeFilters"), 
     /**
      * Navigate to a specific page in the embedded ThoughtSpot application.
-     * This is the same as calling `appEmbed.navigateToPage(path, true)`.
+     * This is the same as calling `appEmbed.navigateToPage(path, true)`
      * @param - `path` - the path to navigate to to go forward or back. The path value can
      * be a number; for example, `1`, `-1`.
      * @example
@@ -1614,63 +1560,16 @@ enum HostEvent {
      */
   getExportRequestForCurrentPinboard("getExportRequestForCurrentPinboard"), 
     /**
-     * Trigger **Pin** action on an embedded object.
-     * If no parameters are defined, the pin action is triggered
-     * for the Answer that the user is currently on
-     * and a modal opens for Liveboard selection.
-     * To add an Answer or visualization to a Liveboard programmatically without
-     * showing requiring additional user input via *Pin to Liveboard* modal, define
-     * the following parameters:
-     *
-     * @param
-     * `vizId`-  GUID of the saved Answer or visualization to pin to a Liveboard.
-     *  Optional when pinning a new chart or table generated from a Search query.
-     * @param
-     * `liveboardID` - GUID of the Liveboard to pin an Answer. If there is no Liveboard,
-     *  specify the `newLiveboardName` parameter to create a new Liveboard.
-     * @param
-     * `tabId` - GUID of the Liveboard tab. Adds the Answer to the Liveboard tab
-     *  specified in the code.
-     * @param
-     * `newVizName` - Name string for the Answer or visualization. If defined,
-     *  this parameter adds a new visualization object or creates a copy of the
-     *  Answer or visualization specified in `vizId`.
-     *  Required attribute.
-     * @param
-     * `newLiveboardName` - Name string for the Liveboard.
-     *  Creates a new Liveboard object with the specified name.
-     * @param
-     * `newTabName` - Name of the tab. Adds a new tab Liveboard specified
-     *  in the code.
-     *
-     * @example
-     * ```js
-     * const pinResponse = await appEmbed.trigger(HostEvent.Pin, {
-     *     vizId: "123",
-     *     newVizName: "Sales by region",
-     *     liveboardId: "123",
-     *     tabId: "123"
-     *  });
-     * ```
-     * @example
-     * ```js
-     * const pinResponse = await appEmbed.trigger(HostEvent.Pin, {
-     *     newVizName: "Total sales of Jackets",
-     *     liveboardId: "123"
-     *  });
-     * ```
-     *
-     * @example
-     * ```js
-     * const pinResponse = await searchEmbed.trigger(HostEvent.Pin, {
-     *     newVizName: "Sales by state",
-     *     newLiveboardName: "Sales",
-     *     newTabName: "Products"
-     *  });
-     * ```
+     * Trigger the **Pin** action on an embedded object
+     * @param - Liveboard embed takes the `vizId` as a
+     * key. Can be left undefined when embedding Search, full app, or
+     * a visualization.
      * @example
      * ```js
      * appEmbed.trigger(HostEvent.Pin)
+     * ```
+     * ```js
+     * searchEmbed.trigger(HostEvent.Pin)
      * ```
      * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
@@ -1775,11 +1674,6 @@ enum HostEvent {
      * appEmbed.trigger(HostEvent.Remove)
      * ```
      * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
-     * * @example
-     * ```js
-     * liveboardEmbed.trigger(HostEvent.Remove)
-     * ```
-     * @version SDK: 1.37.0 | ThoughtSpot: 10.8.0.cl, 10.10.0.sw
      */
   Remove("delete"), 
     /**
@@ -1798,7 +1692,7 @@ enum HostEvent {
      * @param - an object with `vizId` as a key
      * @example
      * ```js
-     * liveboardEmbed.trigger(HostEvent.CreateMonitor, {
+     * liveboardEmbed.trigger(HostEvent.CreateMonitor {
      *  vizId: '730496d6-6903-4601-937e-2c691821af3c'
      * })
      * ```
@@ -1897,9 +1791,7 @@ enum HostEvent {
      */
   GetTML("getTML"), 
     /**
-     * Trigger the **Show underlying data** action on a
-     * chart or table.
-     *
+     * Trigger the **Show underlying data** action on visualization or search
      * @param - an object with vizId as a key
      * @example
      * ```js
@@ -1933,8 +1825,8 @@ enum HostEvent {
      */
   Delete("onDeleteAnswer"), 
     /**
-     * Trigger the **SpotIQ analyze** action on a
-     * chart or table.
+     * Trigger the **SpotIQ analyze** action on visualization
+     * or search.
      * @param - Liveboard embed takes `vizId` as a
      * key. Can be left undefined when embedding Search or
      * visualization.
@@ -2190,7 +2082,7 @@ enum HostEvent {
      * ```js
      * liveboardEmbed.trigger(HostEvent.GetTabs).then((tabDetails) => {
      *   console.log(
-     *      tabDetails // TabDetails of current Liveboard
+     *      tabDetails // TabDetails of current LB
      *   );
      * })
      * ```
@@ -2207,7 +2099,7 @@ enum HostEvent {
      *  '430496d6-6903-4601-937e-2c691821af3c',
      *  'f547ec54-2a37-4516-a222-2b06719af726'])
      * ```
-     * @version SDK: 1.26.0 | ThoughtSpot: 9.7.0.cl, 9.8.0.sw
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
   SetVisibleTabs("SetPinboardVisibleTabs"), 
     /**
@@ -2220,7 +2112,7 @@ enum HostEvent {
      *  '630496d6-6903-4601-937e-2c691821af3c',
      *  'i547ec54-2a37-4516-a222-2b06719af726'])
      * ```
-     * @version SDK: 1.26.0 | ThoughtSpot: 9.7.0.cl, 9.8.0.sw
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
   SetHiddenTabs("SetPinboardHiddenTabs"), 
     /**
@@ -2234,11 +2126,11 @@ enum HostEvent {
      *  executeSearch: true,
      * })
      * ```
-     * @version SDK: 1.26.0 | ThoughtSpot: 9.8.0.cl, 9.8.0.sw
+     * @version SDK: 1.26.0 | Thoughtspot: 9.8.0.cl, 9.8.0.sw
      */
   UpdateSageQuery("updateSageQuery"), 
     /**
-     * Get the Answer session for a Search or
+     * Get the answer session for a Search or
      * Liveboard visualization.
      * @example
      * ```js
@@ -2251,22 +2143,21 @@ enum HostEvent {
      * ```js
      * const {session} = await embed.trigger( HostEvent.GetAnswerSession )
      * ```
-     * @version SDK: 1.26.0 | ThoughtSpot: 9.10.0.cl, 10.1.0.sw
+     * @version SDK: 1.26.0 | Thoughtspot: 9.10.0.cl
      */
   GetAnswerSession("getAnswerSession"), 
     /**
-     * Trigger the *Ask Sage* action for visualizations
+     * Trigger Ask Sage for viz
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.AskSage,
      * {vizId:'730496d6-6903-4601-937e-2c691821af3c'})
      * ```
-     * @version SDK: 1.29.0 | ThoughtSpot Cloud: 9.12.0.cl
+     * @version SDK: 1.29.0 | Thoughtspot: 9.12.0.cl
      */
   AskSage("AskSage"), 
     /**
-     * Trigger cross filter update action on a Liveboard.
-     *
+     * Trigger cross filter update action on a Liveboard
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.UpdateCrossFilter, {
@@ -2277,7 +2168,7 @@ enum HostEvent {
      *    ],
      * });
      * ```
-     * @version SDK: 1.29.0 | ThoughtSpot Cloud: 10.0.0.cl, 10.1.0.sw
+     * @version SDK: 1.29.0 | Thoughtspot: 10.0.0.cl
      */
   UpdateCrossFilter("UpdateCrossFilter"), 
     /**
@@ -2286,13 +2177,11 @@ enum HostEvent {
      * ```js
      * liveboardEmbed.trigger(HostEvent.ResetLiveboardPersonalisedView);
      * ```
-     * @version SDK: 1.29.0 | ThoughtSpot Cloud: 10.1.0.cl, 10.1.0.sw
+     * @version SDK: 1.29.0 | Thoughtspot: 10.1.0.cl
      */
   ResetLiveboardPersonalisedView("ResetLiveboardPersonalisedView"), 
     /**
-     * Triggers an action to update Parameter values on embedded
-     * Answers and Liveboard.
-     *
+     * Triggers an event to Update Parameter values for Answers and Liveboard
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.UpdateParameters, [{
@@ -2300,92 +2189,45 @@ enum HostEvent {
      * value: "almond"
      * }])
      *
-     * @version SDK: 1.29.0 | ThoughtSpot: 10.1.0.cl, 10.1.0.sw
+     * @version SDK: 1.29.0 | Thoughtspot: 10.1.0.cl
      */
   UpdateParameters("UpdateParameters"), 
     /**
-     * Triggers GetParameters to fetch the runtime Parameters.
+     * Triggers GetParameters to fetch the runtime parameters
      * ```js
      * liveboardEmbed.trigger(HostEvent.GetParameters).then((parameter) => {
      *  console.log('parameters', parameter);
      * });
      *```
-     * @version SDK: 1.29.0 | ThoughtSpot: 10.1.0.cl, 10.1.0.sw
+     * @version SDK: 1.29.0 | Thoughtspot: 10.1.0.cl
      */
   GetParameters("GetParameters"), 
     /**
-     * Triggers an event to update a personalized view of a Liveboard.
+     * Triggers an event to update a persoanlised view of a Liveboard
      * ```js
      * liveboardEmbed.trigger(HostEvent.UpdatePersonalisedView, {viewId: '1234'})
      * ```
-     * @version SDK: 1.36.0 | ThoughtSpot: 10.6.0.cl
+     * @version SDK: 1.36.0 | Thoughtspot: 10.6.0.cl
      */
   UpdatePersonalisedView("UpdatePersonalisedView"), 
     /**
-     * @hidden
-     * Notify when info call is completed successfully
-     * ```js
-     * liveboardEmbed.trigger(HostEvent.InfoSuccess, data);
-     *```
+     * Triggers the action to get the current view of the liveboard
      * @version SDK: 1.36.0 | Thoughtspot: 10.6.0.cl
-     */
-  InfoSuccess("InfoSuccess"), 
-    /**
-     * Trigger the save action for an Answer.
-     * To programmatically save an answer without opening the
-     * *Describe your Answer* modal, define the `name` and `description`
-     * properties.
-     * If no parameters are specified, the save action is
-     * triggered with a modal to prompt users to
-     * add a name and description for the Answer.
-     * @param - optional attributes to set Answer properties.
-     *  `name` - Name string for the Answer.
-     *  `description` - Description text for the Answer.
-     *
-     * @example
-     * ```js
-     * const saveAnswerResponse = await searchEmbed.trigger(HostEvent.SaveAnswer, {
-     *      name: "Sales by states",
-     *      description: "Total sales by states in MidWest"
-     *   });
-     * ```
-     * @version SDK: 1.36.0 | ThoughtSpot: 10.6.0.cl
      */
   SaveAnswer("saveAnswer"), 
     /**
      * EmbedApi
      * @hidden
      */
-  UIPassthrough("UiPassthrough"), 
-    /**
-     * Triggers the table viz rerender with the updated data.
-     * Includes the following properties:
-     * @param - columnDataLite - an array of object containing data
-     * transformed from data picked from TableVizRendered event.
-     * For example, { columnDataLite: []}
-     * @example
-     * ```js
-     * searchEmbed.on(EmbedEvent.TableVizRendered, (payload) => {
-     *       console.log(payload);
-     *       const columnDataLite = payload.data.data.columnDataLite;
-     *       columnDataLite[0].dataValue[0]="new fob";
-     *       console.log('>>> new Data', columnDataLite);
-     *       searchEmbed.trigger(HostEvent.TransformTableVizData, columnDataLite);
-     * })
-     * ```
-     * @version SDK: 1.35.12 | ThoughtSpot: 10.7.0.cl
-     */
-  TransformTableVizData("TransformTableVizData");
+  UIPassthrough("UiPassthrough");
 
   final String value;
   const HostEvent(this.value);
 }
-
 /**
  * The different visual modes that the data sources panel within
  * search could appear in, such as hidden, collapsed, or expanded.
  */
-
 @JsonEnum(valueField: 'value')
 enum DataSourceVisualMode {
     /**
@@ -2404,12 +2246,10 @@ enum DataSourceVisualMode {
   final String value;
   const DataSourceVisualMode(this.value);
 }
-
 /**
  * The query params passed down to the embedded ThoughtSpot app
  * containing configuration and/or visual information.
  */
-
 @JsonEnum(valueField: 'value')
 enum Param {
   EmbedApp("embedApp"), 
@@ -2425,11 +2265,9 @@ enum Param {
   HostAppUrl("hostAppUrl"), 
   EnableVizTransformations("enableVizTransform"), 
   EnableSearchAssist("enableSearchAssist"), 
-  EnablePendoHelp("enablePendoHelp"), 
   HideResult("hideResult"), 
   UseLastSelectedDataSource("useLastSelectedSources"), 
   Tag("tag"), 
-  AutoLogin("autoLogin"), 
   searchTokenString("searchTokenString"), 
   executeSearch("executeSearch"), 
   fullHeight("isFullHeightPinboard"), 
@@ -2451,7 +2289,7 @@ enum Param {
   AuthType("authType"), 
   IconSpriteUrl("iconSprite"), 
   cookieless("cookieless"), 
-  ContextMenuTrigger("contextMenuEnabledOnWhichClick"), 
+  ContextMenuTrigger("isContextMenuEnabledOnLeftClick"), 
   LinkOverride("linkOverride"), 
   blockNonEmbedFullAppAccess("blockNonEmbedFullAppAccess"), 
   ShowInsertToSlide("insertInToSlide"), 
@@ -2506,16 +2344,14 @@ enum Param {
   SpotterEnabled("isSpotterExperienceEnabled"), 
   IsUnifiedSearchExperienceEnabled("isUnifiedSearchExperienceEnabled"), 
   OverrideOrgId("orgId"), 
+  EnableFlipTooltipToContextMenu("flipTooltipToContextMenuEnabled"), 
   OauthPollingInterval("oAuthPollingInterval"), 
   IsForceRedirect("isForceRedirect"), 
-  DataSourceId("dataSourceId"), 
-  preAuthCache("preAuthCache"), 
-  ShowSpotterLimitations("showSpotterLimitations");
+  DataSourceId("dataSourceId");
 
   final String value;
   const Param(this.value);
 }
-
 /**
  * ThoughtSpot application pages include actions and menu commands
  * for various user-initiated operations. These actions are represented
@@ -2542,7 +2378,6 @@ enum Param {
  * })
  * ```
  */
-
 @JsonEnum(valueField: 'value')
 enum Action {
     /**
@@ -2609,8 +2444,7 @@ enum Action {
   ResetLayout("resetLayout"), 
     /**
      * The **Schedule** menu action on a Liveboard.
-     * Allows scheduling a Liveboard job, for example,
-     * sending periodic notifications.
+     * Allows scheduling a Liveboard notification.
      * @example
      * ```js
      * disabledActions: [Action.Schedule]
@@ -2652,42 +2486,20 @@ enum Action {
      * ```js
      * disabledActions: [Action.AddDataPanelObjects]
      * ```
-     * @version SDK: 1.32.0 | ThoughtSpot: 10.0.0.cl, 10.1.0.sw
+     * @version SDK: 1.32.0 | Thoughtspot: 10.0.0.cl
      */
   AddDataPanelObjects("addDataPanelObjects"), 
     /**
-     * The filter configuration options for a Liveboard.
-     * The configuration options are available when adding
-     * filters on a Liveboard.
-     *
+     * Filter configuration options on a Liveboard page.
+     * Allows configuring filters on a
+     * Liveboard.
      * @example
      * ```js
      * disabledActions: [Action.ConfigureFilter]
      * ```
      */
   ConfigureFilter("configureFilter"), 
-    /**
-    * The **Collapse data sources** icon on the Search page.
-    * Collapses the panel showing data sources.
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.CollapseDataPanel]
-    * ```
-    * @version: SDK: 1.1.0 | ThoughtSpot Cloud: ts7.may.cl, 8.4.1.sw
-    */
   CollapseDataSources("collapseDataSources"), 
-    /**
-    * The **Collapse data panel** icon on the Search page.
-    * Collapses the data panel view.
-    *
-    * @version: SDK: 1.34.0 | ThoughtSpot Cloud: 10.3.0.cl, 10.7.0.sw
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.CollapseDataPanel]
-    * ```
-    */
   CollapseDataPanel("collapseDataPanel"), 
     /**
      * The **Choose sources** button on Search page.
@@ -2723,7 +2535,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AddColumnSet]
      * ```
-     * @version SDK: 1.32.0 | ThoughtSpot: 10.0.0.cl, 10.1.0.sw
+     * @version SDK: 1.32.0 | Thoughtspot: 10.0.0.cl
      */
   AddColumnSet("addSimpleCohort"), 
     /**
@@ -2733,7 +2545,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AddQuerySet]
      * ```
-     * @version SDK: 1.32.0 | ThoughtSpot: 10.0.0.cl, 10.1.0.sw
+     * @version SDK: 1.32.0 | Thoughtspot: 10.0.0.cl
      */
   AddQuerySet("addAdvancedCohort"), 
     /**
@@ -2757,19 +2569,14 @@ enum Action {
      * @hidden
      */
   SpotIQFollow("spotIQFollow"), 
-    /**
-     * The Share action for a Liveboard visualization.
-     */
   ShareViz("shareViz"), 
     /**
      * @hidden
      */
   ReplaySearch("replaySearch"), 
     /**
-     * The **Show underlying data** menu action on a
-     * visualization or Answer page.
-     * Displays detailed information and raw data
-     * for a given visualization.
+     * The **Show underlying data** menu action on a visualization or
+     * Answer page.
      * @example
      * ```js
      * disabledActions: [Action.ShowUnderlyingData]
@@ -2777,8 +2584,8 @@ enum Action {
      */
   ShowUnderlyingData("showUnderlyingData"), 
     /**
-     * The **Download** menu action on Liveboard
-     * visualizations and Answers.
+     * The **Download** menu action on Liveboard visualizations
+     * and Answers.
      * Allows downloading a visualization or Answer.
      * @example
      * ```js
@@ -2799,10 +2606,11 @@ enum Action {
     /**
      *
      *The **Download PDF** action that downloads a Liveboard,
-     * visualization, or Answer as a PDF file.
+     *visualization, or Answer as a PDF file.
      *
-     * **NOTE**: The **Download** > **PDF** option is available for
-     * tables in visualizations and Answers.
+     *
+     ***NOTE**: The **Download** > **PDF** action is available on
+     *visualizations and Answers if the data is in tabular format.
      * @example
      * ```js
      * disabledActions: [Action.DownloadAsPdf]
@@ -2834,11 +2642,9 @@ enum Action {
      */
   DownloadTrace("downloadTrace"), 
     /**
-     * The **Export TML** menu action on a Liveboard, Answer, and
-     * the Data Workspace pages for data objects and connections.
-     *
-     * Allows exporting an object as a TML file.
-     *
+     * The **Export TML** menu action on Liveboard, Answers
+     * Worksheets and Data Connections page.
+     * Exports an object as a TML file.
      * @example
      * ```js
      * disabledActions: [Action.ExportTML]
@@ -2846,8 +2652,7 @@ enum Action {
      */
   ExportTML("exportTSL"), 
     /**
-     * The **Import TML** menu action on the
-     * *Data Workspace* > *Utilities* page.
+     * The **Import TML** menu action for Liveboards and Answers.
      * Imports TML representation of ThoughtSpot objects.
      * @example
      * ```js
@@ -2857,7 +2662,7 @@ enum Action {
   ImportTML("importTSL"), 
     /**
      * The **Update TML** menu action for Liveboards and Answers.
-     * Updates TML representation of ThoughtSpot objects.
+     * Update TML representation of ThoughtSpot objects.
      * @example
      * ```js
      * disabledActions: [Action.UpdateTML]
@@ -2884,11 +2689,8 @@ enum Action {
      */
   Present("present"), 
     /**
-     * The visualization tile resize option.
-     * Also available via More `...` options menu on a visualization.
-     * Allows resizing visualization tiles and switching
-     * between different preset layout option.
-     *
+     * The tile resize options in the visualization menu.
+     * Allows switching between different preset layouts.
      * @example
      * ```js
      * disabledActions: [Action.ToggleSize]
@@ -2914,9 +2716,8 @@ enum Action {
      */
   EditTitle("editTitle"), 
     /**
-     * The **Delete** action on a Liveboard, *Liveboards* and
-     * *Answers* list pages in full application embedding.
-     *
+     * The **Delete** menu action on Liveboards and visualizations.
+     * Deletes a Liveboard or a visualization from a Liveboard.
      * @example
      * ```js
      * disabledActions: [Action.Remove]
@@ -2977,7 +2778,6 @@ enum Action {
   AnalysisInfo("analysisInfo"), 
     /**
      * The **Schedule** menu action on a Liveboard.
-     * Allows scheduling a Liveboard job.
      * @example
      * ```js
      * disabledActions: [Action.Subscription]
@@ -2993,9 +2793,8 @@ enum Action {
      */
   Explore("explore"), 
     /**
-     * The contextual menu action to include a specific data point
-     * when drilling down a table or chart on an Answer.
-     *
+     * The action to include data points on a drilled-down Answer
+     * or visualization
      * @example
      * ```js
      * disabledActions: [Action.DrillInclude]
@@ -3003,8 +2802,8 @@ enum Action {
      */
   DrillInclude("context-menu-item-include"), 
     /**
-     * The contextual menu action to exclude a specific data point
-     * when drilling down a table or chart on an Answer.
+     * The action to exclude data points on a drilled-down Answer
+     * or visualization
      * @example
      * ```js
      * disabledActions: [Action.DrillInclude]
@@ -3048,13 +2847,8 @@ enum Action {
      */
   RequestAccess("requestAccess"), 
     /**
-     * The **Query visualizer** and **Query SQL** buttons in
-     * Query details panel of the Answer page.
-     *
-     * **Query visualizer** - Displays the tables
-     * and filters used in a search query.
-     * **Query SQL** - Displays the SQL statements used
-     * in a search query to fetch data.
+     * The **Query visualizer** and **Query SQL** buttons in Query details panel
+     * of the Answer page
      * @example
      * ```js
      * disabledActions: [Action.QueryDetailsButtons]
@@ -3072,10 +2866,7 @@ enum Action {
      */
   AnswerDelete("onDeleteAnswer"), 
     /**
-     * The chart switcher icon on Answer page and
-     * visualizations in edit mode.
-     * Allows switching to the table or chart mode
-     * when editing a visualization.
+     * The Chart switcher icon on Answer and visualization pages.
      * @example
      * ```js
      * disabledActions: [Action.AnswerChartSwitcher]
@@ -3084,10 +2875,7 @@ enum Action {
      */
   AnswerChartSwitcher("answerChartSwitcher"), 
     /**
-     * The Favorites icon (*) for Answers,
-     * Liveboard, and data objects like Worksheet, Model,
-     * Tables and Views.
-     * Allows adding an object to the user’s favorites list.
+     * Favorites icon (*) on Answers, Liveboard, and Data pages
      * @example
      * ```js
      * disabledActions: [Action.AddToFavorites]
@@ -3105,9 +2893,7 @@ enum Action {
      */
   EditDetails("editDetails"), 
     /**
-     * The *Create alert* action for KPI charts.
-     * Allows users to schedule threshold-based alerts
-     * for KPI charts.
+     * The Create alert action on KPI charts.
      * @example
      * ```js
      * disabledActions: [Action.CreateMonitor]
@@ -3151,7 +2937,7 @@ enum Action {
      * Allows users to manage data sync pipelines to third-party apps.
      * @example
      * ```js
-     * disabledActions: [Action.ManagePipelines]
+     * disabledActions: [Action.SyncToOtherApps]
      * ```
      * @version SDK: 1.18.0| ThoughtSpot: 8.10.0.cl, 9.0.1.sw
      */
@@ -3163,7 +2949,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.CrossFilter]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.8.0.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   CrossFilter("context-menu-item-cross-filter"), 
     /**
@@ -3173,7 +2959,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.SyncToSlack]
      * ```
-     * @version @version SDK : 1.32.0 | ThoughtSpot Cloud: 10.1.0.cl
+     * @version @version SDK : 1.32.0 | Thoughtspot: 10.1.0.cl
      */
   SyncToSlack("syncToSlack"), 
     /**
@@ -3183,7 +2969,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.SyncToTeams]
      * ```
-     * @version @version SDK : 1.32.0 | ThoughtSpot Cloud: 10.1.0.cl
+     * @version @version SDK : 1.32.0 | Thoughtspot: 10.1.0.cl
      */
   SyncToTeams("syncToTeams"), 
     /**
@@ -3194,7 +2980,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.RemoveCrossFilter]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   RemoveCrossFilter("context-menu-item-remove-cross-filter"), 
     /**
@@ -3205,7 +2991,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AxisMenuAggregate]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuAggregate("axisMenuAggregate"), 
     /**
@@ -3216,19 +3002,17 @@ enum Action {
      * ```js
      * disabledActions: [Action.AxisMenuTimeBucket]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuTimeBucket("axisMenuTimeBucket"), 
     /**
      * The **Filter** action in the chart axis or table column
      * customization menu.
-     * Allows adding, editing, or removing filters.
-     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuFilter]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuFilter("axisMenuFilter"), 
     /**
@@ -3239,7 +3023,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AxisMenuConditionalFormat]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuConditionalFormat("axisMenuConditionalFormat"), 
     /**
@@ -3250,7 +3034,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AxisMenuConditionalFormat]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuSort("axisMenuSort"), 
     /**
@@ -3262,7 +3046,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AxisMenuGroup]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuGroup("axisMenuGroup"), 
     /**
@@ -3273,7 +3057,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AxisMenuPosition]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuPosition("axisMenuPosition"), 
     /**
@@ -3283,7 +3067,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AxisMenuRename]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuRename("axisMenuRename"), 
     /**
@@ -3294,7 +3078,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AxisMenuEdit]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuEdit("axisMenuEdit"), 
     /**
@@ -3304,7 +3088,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AxisMenuNumberFormat]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuNumberFormat("axisMenuNumberFormat"), 
     /**
@@ -3314,7 +3098,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AxisMenuTextWrapping]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuTextWrapping("axisMenuTextWrapping"), 
     /**
@@ -3326,7 +3110,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AxisMenuRemove]
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.5.1.sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
   AxisMenuRemove("axisMenuRemove"), 
     /**
@@ -3340,27 +3124,26 @@ enum Action {
      * ```js
      * disabledActions: [Action.RenameModalTitleDescription]
      * ```
-     * @version SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl, 9.8.0.sw
+     * @version SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl
      */
   RenameModalTitleDescription("renameModalTitleDescription"), 
     /**
-     * The *Request verification* action on a Liveboard.
-     * Initiates a request for Liveboard verification.
+     *
      * @example
      * ```js
      * disabledActions: [Action.RequestVerification]
      * ```
-     * @version SDK: 1.25.0 | ThoughtSpot: 9.6.0.cl, 10.1.0.sw
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
      */
   RequestVerification("requestVerification"), 
     /**
      *
-     * Allows users to mark a Liveboard as verified.
+     *Allows users to mark a Liveboard as verified.
      * @example
      * ```js
      * disabledActions: [Action.MarkAsVerified]
      * ```
-     * @version SDK: 1.25.0 | ThoughtSpot: 9.6.0.cl, 10.1.0.sw
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
      */
   MarkAsVerified("markAsVerified"), 
     /**
@@ -3370,7 +3153,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.AddTab]
      * ```
-     * @version SDK: 1.26.0 | ThoughtSpot: 9.7.0.cl, 9.8.0.sw
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
   AddTab("addTab"), 
     /**
@@ -3380,42 +3163,35 @@ enum Action {
      * ```js
      * disabledActions: [Action.EnableContextualChangeAnalysis]
      * ```
-     * @version SDK: 1.25.0 | ThoughtSpot Cloud: 9.6.0.cl
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
      */
   EnableContextualChangeAnalysis("enableContextualChangeAnalysis"), 
     /**
-     * Action ID to hide or disable Natural Language Search query.
      *
      * @example
      * ```js
      * disabledActions: [Action.ShowSageQuery]
      * ```
-     * @version SDK: 1.26.0 | ThoughtSpot Cloud: 9.7.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
   ShowSageQuery("showSageQuery"), 
     /**
-     *
-     * Action ID to hide or disable the edit option for the
-     * results generated from the
-     * Natural Language Search query.
      *
      * @example
      * ```js
      * disabledActions: [Action.EditSageAnswer]
      * ```
-     * @version SDK: 1.26.0 | ThoughtSpot Cloud: 9.7.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
   EditSageAnswer("editSageAnswer"), 
     /**
-     * The feedback widget for AI-generated Answers.
-     * Allows users to send feedback on the Answers generated
-     * from a Natural Language Search query.
      *
+     *This action allows users to send feedback on AI-generated Answers.
      * @example
      * ```js
      * disabledActions: [Action.SageAnswerFeedback]
      * ```
-     * @version SDK: 1.26.0 | ThoughtSpot: 9.7.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
   SageAnswerFeedback("sageAnswerFeedback"), 
     /**
@@ -3424,7 +3200,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.ModifySageAnswer]
      * ```
-     * @version SDK: 1.26.0 | ThoughtSpot: 9.7.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
   ModifySageAnswer("modifySageAnswer"), 
     /**
@@ -3437,10 +3213,7 @@ enum Action {
      */
   MoveToTab("onContainerMove"), 
     /**
-     * The **Manage Alerts** menu action on KPI visualizations.
-     * Allows creating, viewing, and editing monitor
-     * alerts for a KPI chart.
-     *
+     * The **Manage Alertsb** menu action on KPI visualizations.
      * @example
      * ```js
      * disabledActions: [Action.ManageMonitor]
@@ -3448,29 +3221,27 @@ enum Action {
      */
   ManageMonitor("manageMonitor"), 
     /**
-     * The Liveboard Personalised Views dropdown.
-     * Allows navigating to a personalized Liveboard View.
+     * Action ID for Liveboard Personalised Views dropdown
      *  @example
      * ```js
      * disabledActions: [Action.PersonalisedViewsDropdown]
      * ```
-     *  @version SDK : 1.26.0 | ThoughtSpot: 9.7.0.cl, 10.1.0.sw
+     *  @version SDK : 1.26.0 | Thoughtspot: 9.7.0.cl
      */
   PersonalisedViewsDropdown("personalisedViewsDropdown"), 
     /**
-     * Action ID for show or hide the user details on a
-     * Liveboard (Recently visited / social proof)
+     * Action ID for Liveboard Users ( Recently Visited / social proof )
      *  @example
      * ```js
      * disabledActions: [Action.LiveboardUsers]
      * ```
-     *  @version SDK : 1.26.0 | ThoughtSpot: 9.7.0.cl, 10.1.0.sw
+     *  @version SDK : 1.26.0 | Thoughtspot: 9.7.0.cl
      */
   LiveboardUsers("liveboardUsers"), 
     /**
      * Action ID for the Parent TML action
      * The parent action **TML** must be included to access TML-related options
-     * within the cascading menu (specific to the Answer page)
+     * within the cascading menu (specific to the answer page)
      * @example
      * ```js
      * // to include specific TML actions
@@ -3482,126 +3253,108 @@ enum Action {
      * hiddenAction: [Action.TML] // hide all TML actions
      * disabledActions: [Action.TML] // to disable all TML actions
      * ```
-     * @version SDK : 1.28.3 | ThoughtSpot: 9.12.0.cl, 10.1.0.sw
+     * @version SDK : 1.28.3 | Thoughtspot: 9.12.0.cl
      */
   TML("tml"), 
     /**
-     * The **Create Liveboard* action on
-     * the Liveboards page and the Pin modal.
-     * Allows users to create a Liveboard.
-     *
+     * Action ID for the create Liveboard option on the Liveboard list page
+     * and Pin modal
      * @example
      * ```js
      * hiddenAction: [Action.CreateLiveboard]
      * disabledActions: [Action.CreateLiveboard]
      * ```
-     * @version SDK: 1.32.0 | ThoughtSpot: 10.1.0.cl, 10.1.0.sw
+     * @version SDK: 1.32.0 | Thoughtspot: 10.1.0.cl
      */
   CreateLiveboard("createLiveboard"), 
     /**
-     * Action ID for to hide or disable the
-     * Verified Liveboard banner.
+     * Action ID for to hide Verified Liveboard Banner
      *  @example
      * ```js
      * hiddenAction: [Action.VerifiedLiveboard]
      * ```
-     *  @version SDK: 1.29.0 | ThoughtSpot: 9.10.0.cl, 10.1.0.sw
+     *  @version SDK: 1.29.0 | Thoughtspot: 9.10.0.cl
      */
   VerifiedLiveboard("verifiedLiveboard"), 
     /**
-     * Action ID for the *Ask Sage* In Natural Language Search embed,
-     * *Spotter* in Liveboard, full app, and Spotter embed.
-     *
-     * Allows initiating a conversation with ThoughtSpot AI analyst.
-     *
+     * Action ID for ask sage button
      *  @example
      * ```js
      * hiddenAction: [Action.AskAi]
      * ```
-     *  @version SDK: 1.29.0 | ThoughtSpot Cloud: 9.12.0.cl
+     *  @version SDK: 1.29.0 | Thoughtspot: 9.12.0.cl
      */
   AskAi("AskAi"), 
     /**
      * The **Add KPI to Watchlist** action on Home page watchlist.
-     * Adds a KPI chart to the watchlist on the Home page.
      * @example
      * ```js
      * disabledActions: [Action.AddToWatchlist]
      * ```
-     * @version SDK : 1.27.9 | ThoughtSpot Cloud: 9.12.5.cl
+     * @version SDK : 1.27.9 | Thoughtspot: 9.12.5.cl
      */
   AddToWatchlist("addToWatchlist"), 
     /**
      * The **Remove from watchlist** menu action on KPI watchlist.
-     * Removes a KPI chart from the watchlist on the Home page.
      * @example
      * ```js
      * disabledActions: [Action.RemoveFromWatchlist]
      * ```
-     * @version SDK : 1.27.9 | ThoughtSpot: 9.12.5.cl
+     * @version SDK : 1.27.9 | Thoughtspot: 9.12.5.cl
      */
   RemoveFromWatchlist("removeFromWatchlist"), 
     /**
-     * The **Organize Favourites** action on Homepage
-     * *Favorites* module.
-     *
+     * The **Organise Favourites** action on Homepage Favourite Module.
      * @example
      * ```js
      * disabledActions: [Action.OrganiseFavourites]
      * ```
-     * @version SDK : 1.32.0 | ThoughtSpot: 10.0.0.cl
+     * @version SDK : 1.32.0 | Thoughtspot: 10.0.0.cl
      */
   OrganiseFavourites("organiseFavourites"), 
     /**
-     * The **AI Highlights** action on a Liveboard.
-     *
+     * Action ID for AI Highlights button
      *  @example
      * ```js
      * hiddenAction: [Action.AIHighlights]
      * ```
-     *  @version SDK: 1.27.10 | ThoughtSpot Cloud: 9.12.5.cl
+     *  @version SDK: 1.27.10 | Thoughtspot: 9.12.5.cl
      */
   AIHighlights("AIHighlights"), 
     /**
-     * The *Edit* action on the *Liveboard Schedules* page
-     * (new Homepage experience).
-     * Allows editing Liveboard schedules.
-     *
+     * Action ID for edit the schedule action on schedule on homepage
      * @example
      * ```js
      * disabledActions: [Action.EditScheduleHomepage]
      * ```
-     *  @version SDK: 1.34.0 | ThoughtSpot Cloud: 10.3.0.cl
+     *  @version SDK: 1.34.0 | Thoughtspot: 10.3.0.cl
      */
   EditScheduleHomepage("editScheduleHomepage"), 
     /**
-     * The *Pause* action on the *Liveboard Schedules* page
-     * Pauses a scheduled Liveboard job.
+     * Action ID for pause schedule action on schedule on homepage
      * @example
      * ```js
      * disabledActions: [Action.PauseScheduleHomepage]
      * ```
-     *  @version SDK: 1.34.0 | ThoughtSpot Cloud: 10.3.0.cl
+     *  @version SDK: 1.34.0 | Thoughtspot: 10.3.0.cl
      */
   PauseScheduleHomepage("pauseScheduleHomepage"), 
     /**
-     * The **View run history** action **Liveboard Schedules** page.
-     * Allows viewing schedule run history.
+     * Action ID for view schedule run action on schedule on homepage
      * @example
      * ```js
      * disabledActions: [Action.ViewScheduleRunHomepage]
      * ```
-     *  @version SDK: 1.34.0 | ThoughtSpot: 10.3.0.cl
+     *  @version SDK: 1.34.0 | Thoughtspot: 10.3.0.cl
      */
   ViewScheduleRunHomepage("viewScheduleRunHomepage"), 
     /**
-     * Action ID to hide or disable the
-     * unsubscribe option for Liveboard schedules.
+     * Action ID for unsubscribe schedule action on schedule on homepage
      * @example
      * ```js
      * disabledActions: [Action.UnsubscribeScheduleHomepage]
      * ```
-     *  @version SDK: 1.34.0 | ThoughtSpot: 10.3.0.cl
+     *  @version SDK: 1.34.0 | Thoughtspot: 10.3.0.cl
      */
   UnsubscribeScheduleHomepage("unsubscribeScheduleHomepage"), 
     /**
@@ -3610,17 +3363,16 @@ enum Action {
      * ```js
      * disabledActions: [Action.ManageTags]
      * ```
-     * @version SDK : 1.34.0 | ThoughtSpot Cloud: 10.3.0.cl
+     * @version SDK : 1.34.0 | Thoughtspot: 10.3.0.cl
      */
   ManageTags("manageTags"), 
     /**
-     * The **Delete** action on the **Liveboard Schedules* page.
-     * Deletes a Liveboard schedule.
+     * Action ID for delete schedule action on schedule on homepage
      * @example
      * ```js
      * disabledActions: [Action.DeleteScheduleHomepage]
      * ```
-     *  @version SDK: 1.34.0 | ThoughtSpot: 10.3.0.cl
+     *  @version SDK: 1.34.0 | Thoughtspot: 10.3.0.cl
      */
   DeleteScheduleHomepage("deleteScheduleHomepage"), 
     /**
@@ -3629,7 +3381,7 @@ enum Action {
      * ```js
      * disabledActions: [Action.KPIAnalysisCTA]
      * ```
-     *  @version SDK: 1.34.0 | ThoughtSpot Cloud: 10.3.0.cl
+     *  @version SDK: 1.34.0 | Thoughtspot: 10.3.0.cl
      */
   KPIAnalysisCTA("kpiAnalysisCTA"), 
     /**
@@ -3638,92 +3390,76 @@ enum Action {
      * ```js
      * const disabledActions = [Action.DisableChipReorder]
      * ```
-     * @version SDK: 1.36.0 | ThoughtSpot Cloud: 10.6.0.cl
+     * @version SDK: 1.36.0 | Thoughtspot: 10.6.0.cl
      */
   DisableChipReorder("disableChipReorder"), 
     /**
-     * Action ID to show, hide, or disable filters
-     * in a Liveboard tab.
-     *
+     * Action ID for Hide Irrelevant filters button
      *  @example
      * ```js
      * hiddenAction: [Action.ChangeFilterVisibilityInTab]
      * ```
-     *  @version SDK: 1.36.0 | ThoughtSpot Cloud: 10.6.0.cl
+     *  @version SDK: 1.36.0 | Thoughtspot: 10.6.0.cl
      */
   ChangeFilterVisibilityInTab("changeFilterVisibilityInTab"), 
     /**
-     * The **Preview data** button on the Spotter interface.
-     * Allows previewing the data used for Spotter queries.
-     *
+     * Action ID for hide/disable Preview data button in spotter
      *  @example
      * ```js
      * hiddenAction: [Action.PreviewDataSpotter]
      * ```
-     *  @version SDK: 1.36.0 | ThoughtSpot Cloud: 10.6.0.cl
+     *  @version SDK: 1.36.0 | Thoughtspot: 10.6.0.cl
      */
   PreviewDataSpotter("previewDataSpotter"), 
     /**
-     * The **Reset** link on the Spotter interface.
-     * Resets the conversation with Spotter.
-     *
+     * Action ID for hide/disable reset button in spotter
      *  @example
      * ```js
      * hiddenAction: [Action.ResetSpotterChat]
      * ```
-     *  @version SDK: 1.36.0 | ThoughtSpot Cloud: 10.6.0.cl
+     *  @version SDK: 1.36.0 | Thoughtspot: 10.6.0.cl
      */
   ResetSpotterChat("resetSpotterChat"), 
     /**
-     * Action ID for hide or disable the
-     * Spotter feedback widget.
-     *
+     * Action ID for hide/disable feedback in spotter
      *  @example
      * ```js
      * hiddenAction: [Action.SpotterFeedback]
      * ```
-     *  @version SDK: 1.36.0 | ThoughtSpot Cloud: 10.6.0.cl
+     *  @version SDK: 1.36.0 | Thoughtspot: 10.6.0.cl
      */
   SpotterFeedback("spotterFeedback"), 
     /**
-     * Action ID for hide or disable
-     * the previous prompt edit option in Spotter.
-     *
+     * Action ID for hide/disable editing previous prompt in spotter
      *  @example
      * ```js
      * hiddenAction: [Action.EditPreviousPrompt]
      * ```
-     *  @version SDK: 1.36.0 | ThoughtSpot Cloud: 10.6.0.cl
+     *  @version SDK: 1.36.0 | Thoughtspot: 10.6.0.cl
      */
   EditPreviousPrompt("editPreviousPrompt"), 
     /**
-     * Action ID for hide or disable
-     * the previous prompt deletion option in Spotter.
-     *
+     * Action ID for hide/disable deleting previous prompt in spotter
      *  @example
      * ```js
      * hiddenAction: [Action.DeletePreviousPrompt]
      * ```
-     *  @version SDK: 1.36.0 | ThoughtSpot Cloud: 10.6.0.cl
+     *  @version SDK: 1.36.0 | Thoughtspot: 10.6.0.cl
      */
   DeletePreviousPrompt("deletePreviousPrompt"), 
     /**
-     * Action ID for hide or disable editing tokens generated from
-     * Spotter results.
+     * Action ID for hide/disable edit of tokens on spotter results.
      *  @example
      * ```js
      * hiddenAction: [Action.EditTokens]
      * ```
-     *  @version SDK: 1.36.0 | ThoughtSpot Cloud: 10.6.0.cl
+     *  @version SDK: 1.36.0 | Thoughtspot: 10.6.0.cl
      */
   EditTokens("editTokens");
 
   final String value;
   const Action(this.value);
 }
-
-
-
 @JsonEnum(valueField: 'value')
 enum PrefetchFeatures {
   FullApp("FullApp"), 
@@ -3734,34 +3470,21 @@ enum PrefetchFeatures {
   final String value;
   const PrefetchFeatures(this.value);
 }
-
 /**
  * Enum for options to change context trigger
- * BOTH_CLICKS option is introduced in 10.7
  */
-
 @JsonEnum(valueField: 'value')
 enum ContextMenuTriggerOptions {
   LEFT_CLICK("left-click"), 
-  RIGHT_CLICK("right-click"), 
-  BOTH_CLICKS("both-clicks");
+  RIGHT_CLICK("right-click");
 
   final String value;
   const ContextMenuTriggerOptions(this.value);
 }
-
-/**
- * Enum options to show or suppress Visual Embed SDK and
- * ThoughtSpot application logs in the console output.
- * This attribute doesn't support suppressing
- * browser warnings or errors.
- */
-
 @JsonEnum(valueField: 'value')
 enum LogLevel {
     /**
-     * No application or SDK-related logs will be logged
-     * in the console output.
+     * No logs will be logged in the console.
      * @example
      * ```js
      * init({
@@ -3769,11 +3492,11 @@ enum LogLevel {
      *  logLevel: LogLevel.SILENT,
      * })
      * ```
-     * @version SDK: 1.26.7 | ThoughtSpot Cloud: 9.10.0.cl
+     * @version SDK: 1.26.7 | Thoughtspot: 9.10.0.cl
      */
   SILENT("SILENT"), 
     /**
-     * Log only errors in the console output.
+     * Only ERROR logs will be logged in the console.
      * @example
      * ```js
      * init({
@@ -3781,11 +3504,11 @@ enum LogLevel {
      *  logLevel: LogLevel.ERROR,
      * })
      * ```
-     * @version SDK: 1.26.7 | ThoughtSpot Cloud: 9.10.0.cl
+     * @version SDK: 1.26.7 | Thoughtspot: 9.10.0.cl
      */
   ERROR("ERROR"), 
     /**
-     * Log only warnings and errors in the console output.
+     * Only WARN and ERROR logs will be logged in the console.
      * @example
      * ```js
      * init({
@@ -3793,12 +3516,11 @@ enum LogLevel {
      *  logLevel: LogLevel.WARN,
      * })
      * ```
-     * @version SDK: 1.26.7 | ThoughtSpot Cloud: 9.10.0.cl
+     * @version SDK: 1.26.7 | Thoughtspot: 9.10.0.cl
      */
   WARN("WARN"), 
     /**
-     * Log only the information alerts, warnings, and errors
-     * in the console output.
+     * Only INFO, WARN, and ERROR logs will be logged in the console.
      * @example
      * ```js
      * init({
@@ -3806,12 +3528,11 @@ enum LogLevel {
      *  logLevel: LogLevel.INFO,
      * })
      * ```
-     * @version SDK: 1.26.7 | ThoughtSpot Cloud: 9.10.0.cl
+     * @version SDK: 1.26.7 | Thoughtspot: 9.10.0.cl
      */
   INFO("INFO"), 
     /**
-     * Log debug messages, warnings, information alerts,
-     * and errors in the console output.
+     * Only DEBUG, INFO, WARN, and ERROR logs will be logged in the console.
      * @example
      * ```js
      * init({
@@ -3819,11 +3540,11 @@ enum LogLevel {
      *  logLevel: LogLevel.DEBUG,
      * })
      * ```
-     * @version SDK: 1.26.7 | ThoughtSpot Cloud: 9.10.0.cl
+     * @version SDK: 1.26.7 | Thoughtspot: 9.10.0.cl
      */
   DEBUG("DEBUG"), 
     /**
-     * All logs will be logged in the browser console.
+     * All logs will be logged in the console.
      * @example
      * ```js
      * init({
@@ -3831,165 +3552,752 @@ enum LogLevel {
      *  logLevel: LogLevel.TRACE,
      * })
      * ```
-     * @version SDK: 1.26.7 | ThoughtSpot Cloud: 9.10.0.cl
+     * @version SDK: 1.26.7 | Thoughtspot: 9.10.0.cl
      */
   TRACE("TRACE");
 
   final String value;
   const LogLevel(this.value);
 }
+@JsonEnum(valueField: 'value')
+enum OperationType {
+  GetChartWithData("GetChartWithData"), 
+  GetTableWithHeadlineData("GetTableWithHeadlineData");
 
-
-
-
+  final String value;
+  const OperationType(this.value);
+}
+/**
+ * inline customCSS within the {@link CustomisationsInterface}.
+ * Use {@link CustomCssVariables} or css rules.
+ */
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class SessionInterface {
-    
-  SessionInterfaceAcSession acSession;
-    
-  int genNo;
-    
-  String sessionId;
+class customCssInterface {
 
-  SessionInterface(
+  
+  Map<String, dynamic>? variables;
+  
+  Map<String, dynamic>? rules_UNSTABLE;
+
+  customCssInterface(
     {
     
-    required this.acSession,
+     this.variables,
     
-    required this.genNo,
-    
-    required this.sessionId
+     this.rules_UNSTABLE
     }
   );
 
-    factory SessionInterface.fromJson(Map<String, dynamic> json) => _$SessionInterfaceFromJson(json);
-
-    Map<String, dynamic> toJson() => _$SessionInterfaceToJson(this);
+    factory customCssInterface.fromJson(Map<String, dynamic> json) => _$customCssInterfaceFromJson(json);
+    Map<String, dynamic> toJson() => _$customCssInterfaceToJson(this);
 }
+/**
+ * Styles within the {@link CustomisationsInterface}.
+ */
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class CustomStyles {
 
+  
+  String? customCSSUrl;
+  
+  customCssInterface? customCSS;
+
+  CustomStyles(
+    {
+    
+     this.customCSSUrl,
+    
+     this.customCSS
+    }
+  );
+
+    factory CustomStyles.fromJson(Map<String, dynamic> json) => _$CustomStylesFromJson(json);
+    Map<String, dynamic> toJson() => _$CustomStylesToJson(this);
+}
+/**
+ * Configuration to define the customization on the Embedded
+ * Thoughtspot components.
+ * You can customize styles, text strings, and icons.
+ * For more information, see https://developers.thoughtspot.com/docs/custom-css.
+ * @example
+ * ```js
+ *  init({
+ *    // ...
+ *    customizations: {
+ *     style: {
+ *       customCSS: {
+ *         variables: {},
+ *         rules_UNSTABLE: {}
+ *       }
+ *     },
+ *     content: {
+ *      strings: {
+ *        'LIVEBOARDS': 'Dashboards',
+ *        'ANSWERS': 'Visualizations',
+ *        'Edit': 'Modify',
+ *        'Show underlying data': 'Show source data',
+ *        'SpotIQ': 'Insights',
+ *        'Monitor': 'Alerts',
+ *      }
+ *     },
+ *     iconSpriteUrl: 'https://my-custom-icon-sprite.svg'
+ *    }
+ *  })
+ * ```
+ */
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class CustomisationsInterface {
+
+  
+  CustomStyles? style;
+  
+  CustomisationsInterfaceContent? content;
+  
+  String? iconSpriteUrl;
+
+  CustomisationsInterface(
+    {
+    
+     this.style,
+    
+     this.content,
+    
+     this.iconSpriteUrl
+    }
+  );
+
+    factory CustomisationsInterface.fromJson(Map<String, dynamic> json) => _$CustomisationsInterfaceFromJson(json);
+    Map<String, dynamic> toJson() => _$CustomisationsInterfaceToJson(this);
+}
+/**
+ * The configuration object for embedding ThoughtSpot content.
+ * It includes the ThoughtSpot hostname or IP address,
+ * the type of authentication, and the authentication endpoint
+ * if a trusted authentication server is used.
+ * @group Authentication / Init
+ */
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class EmbedConfig {
+
+  
+  AuthType authType;
+  
+  String thoughtSpotHost;
+  
+  String? authEndpoint;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  EmbedConfigGetAuthToken? getAuthToken;
+  
+  String? username;
+  
+  String? password;
+  
+  bool? noRedirect;
+  
+  bool? inPopup;
+  
+  String? redirectPath;
+  
+  String? basepath;
+  
+  bool? shouldEncodeUrlQueryParams;
+  
+  bool? suppressNoCookieAccessAlert;
+  
+  bool? ignoreNoCookieAccess;
+  
+  bool? autoLogin;
+  
+  bool? disableLoginRedirect;
+  
+  String? loginFailedMessage;
+  
+  bool? callPrefetch;
+  
+  bool? queueMultiRenders;
+  
+  bool? detectCookieAccessSlow;
+  
+  bool? suppressSearchEmbedBetaWarning;
+  
+  bool? suppressSageEmbedBetaWarning;
+  
+  CustomisationsInterface? customizations;
+  
+  EmbedConfigAuthTriggerContainer? authTriggerContainer;
+  
+  bool? useEventForSAMLPopup;
+  
+  String? authTriggerText;
+  
+  bool? blockNonEmbedFullAppAccess;
+  
+  EmbedConfigHostConfig? hostConfig;
+  
+  String? pendoTrackingKey;
+  
+  bool? suppressErrorAlerts;
+  
+  LogLevel? logLevel;
+  
+  bool? disableSDKTracking;
+  
+  String? dateFormatLocale;
+  
+  String? numberFormatLocale;
+  
+  String? currencyFormat;
+  
+  bool? disableTokenVerification;
+  
+  bool? disableLoginFailurePage;
+  
+  Map<String, dynamic>? additionalFlags;
+
+  EmbedConfig(
+    {
+    
+    required this.authType,
+    
+    required this.thoughtSpotHost,
+    
+     this.authEndpoint,
+    
+     this.getAuthToken,
+    
+     this.username,
+    
+     this.password,
+    
+     this.noRedirect,
+    
+     this.inPopup,
+    
+     this.redirectPath,
+    
+     this.basepath,
+    
+     this.shouldEncodeUrlQueryParams,
+    
+     this.suppressNoCookieAccessAlert,
+    
+     this.ignoreNoCookieAccess,
+    
+     this.autoLogin,
+    
+     this.disableLoginRedirect,
+    
+     this.loginFailedMessage,
+    
+     this.callPrefetch,
+    
+     this.queueMultiRenders,
+    
+     this.detectCookieAccessSlow,
+    
+     this.suppressSearchEmbedBetaWarning,
+    
+     this.suppressSageEmbedBetaWarning,
+    
+     this.customizations,
+    
+     this.authTriggerContainer,
+    
+     this.useEventForSAMLPopup,
+    
+     this.authTriggerText,
+    
+     this.blockNonEmbedFullAppAccess,
+    
+     this.hostConfig,
+    
+     this.pendoTrackingKey,
+    
+     this.suppressErrorAlerts,
+    
+     this.logLevel,
+    
+     this.disableSDKTracking,
+    
+     this.dateFormatLocale,
+    
+     this.numberFormatLocale,
+    
+     this.currencyFormat,
+    
+     this.disableTokenVerification,
+    
+     this.disableLoginFailurePage,
+    
+     this.additionalFlags
+    }
+  );
+
+    factory EmbedConfig.fromJson(Map<String, dynamic> json) => _$EmbedConfigFromJson(json);
+    Map<String, dynamic> toJson() => _$EmbedConfigToJson(this);
+}
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class LayoutConfig {
+
+
+  LayoutConfig(
+    
+  );
+
+    factory LayoutConfig.fromJson(Map<String, dynamic> json) => _$LayoutConfigFromJson(json);
+    Map<String, dynamic> toJson() => _$LayoutConfigToJson(this);
+}
+/**
+ * Embedded iframe configuration
+ * @group Embed components
+ */
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class FrameParams {
+
+  
+  FrameParamsWidth? width;
+  
+  FrameParamsHeight? height;
+  
+  FrameParamsLoading? loading;
+
+  FrameParams(
+    {
+    
+     this.width,
+    
+     this.height,
+    
+     this.loading
+    }
+  );
+
+    factory FrameParams.fromJson(Map<String, dynamic> json) => _$FrameParamsFromJson(json);
+    Map<String, dynamic> toJson() => _$FrameParamsToJson(this);
+}
+/**
+ * The configuration object for an embedded view.
+ */
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ViewConfig {
+
+  
+  LayoutConfig? layoutConfig;
+  
+  FrameParams? frameParams;
+  
+  String? theme;
+  
+  String? styleSheet__unstable;
+  
+  List<Action>? disabledActions;
+  
+  String? disabledActionReason;
+  
+  List<Action>? hiddenActions;
+  
+  List<Action>? visibleActions;
+  
+  bool? showAlerts;
+  
+  List<RuntimeFilter>? runtimeFilters;
+  
+  List<RuntimeParameter>? runtimeParameters;
+  
+  String? locale;
+  
+  Map<String, dynamic>? additionalFlags;
+  
+  CustomisationsInterface? customizations;
+  
+  bool? insertAsSibling;
+  
+  ContextMenuTriggerOptions? contextMenuTrigger;
+  
+  bool? linkOverride;
+  
+  bool? insertInToSlide;
+  
+  bool? usePrerenderedIfAvailable;
+  
+  bool? excludeRuntimeFiltersfromURL;
+  
+  List<String>? hiddenTabs;
+  
+  List<HomepageModule>? hiddenHomepageModules;
+  
+  List<HomepageModule>? reorderedHomepageModules;
+  
+  List<String>? visibleTabs;
+  
+  List<HomeLeftNavItem>? hiddenHomeLeftNavItems;
+  
+  String? preRenderId;
+  
+  bool? doNotTrackPreRenderSize;
+  
+  String? embedComponentType;
+  
+  bool? excludeRuntimeParametersfromURL;
+  
+  bool? enableV2Shell_experimental;
+  
+  bool? collapseSearchBar;
+  
+  bool? disableRedirectionLinksInNewTab;
+  
+  bool? dataPanelV2;
+  
+  bool? enableCustomColumnGroups;
+  
+  int? overrideOrgId;
+  
+  bool? enableFlipTooltipToContextMenu;
+
+  ViewConfig(
+    {
+    
+     this.layoutConfig,
+    
+     this.frameParams,
+    
+     this.theme,
+    
+     this.styleSheet__unstable,
+    
+     this.disabledActions,
+    
+     this.disabledActionReason,
+    
+     this.hiddenActions,
+    
+     this.visibleActions,
+    
+     this.showAlerts,
+    
+     this.runtimeFilters,
+    
+     this.runtimeParameters,
+    
+     this.locale,
+    
+     this.additionalFlags,
+    
+     this.customizations,
+    
+     this.insertAsSibling,
+    
+     this.contextMenuTrigger,
+    
+     this.linkOverride,
+    
+     this.insertInToSlide,
+    
+     this.usePrerenderedIfAvailable,
+    
+     this.excludeRuntimeFiltersfromURL,
+    
+     this.hiddenTabs,
+    
+     this.hiddenHomepageModules,
+    
+     this.reorderedHomepageModules,
+    
+     this.visibleTabs,
+    
+     this.hiddenHomeLeftNavItems,
+    
+     this.preRenderId,
+    
+     this.doNotTrackPreRenderSize,
+    
+     this.embedComponentType,
+    
+     this.excludeRuntimeParametersfromURL,
+    
+     this.enableV2Shell_experimental,
+    
+     this.collapseSearchBar,
+    
+     this.disableRedirectionLinksInNewTab,
+    
+     this.dataPanelV2,
+    
+     this.enableCustomColumnGroups,
+    
+     this.overrideOrgId,
+    
+     this.enableFlipTooltipToContextMenu
+    }
+  );
+
+    factory ViewConfig.fromJson(Map<String, dynamic> json) => _$ViewConfigFromJson(json);
+    Map<String, dynamic> toJson() => _$ViewConfigToJson(this);
+}
+/**
+ * A filter that can be applied to ThoughtSpot answers, Liveboards, or
+ * visualizations at runtime.
+ */
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class RuntimeFilter {
+
+  
+  List<RuntimeFilterValues> values;
+  
+  RuntimeFilterOp operator;
+  
+  String columnName;
+
+  RuntimeFilter(
+    {
+    
+    required this.values,
+    
+    required this.operator,
+    
+    required this.columnName
+    }
+  );
+
+    factory RuntimeFilter.fromJson(Map<String, dynamic> json) => _$RuntimeFilterFromJson(json);
+    Map<String, dynamic> toJson() => _$RuntimeFilterToJson(this);
+}
+/**
+ * A filter that can be applied to ThoughtSpot Answers, Liveboards, or
+ * visualizations at runtime.
+ */
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class RuntimeParameter {
+
+  
+  RuntimeParameterValue value;
+  
+  String name;
+
+  RuntimeParameter(
+    {
+    
+    required this.value,
+    
+    required this.name
+    }
+  );
+
+    factory RuntimeParameter.fromJson(Map<String, dynamic> json) => _$RuntimeParameterFromJson(json);
+    Map<String, dynamic> toJson() => _$RuntimeParameterToJson(this);
+}
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class AnswerServiceType {
+
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  AnswerServiceTypeGetAnswer? getAnswer;
+
+  AnswerServiceType(
+    {
+    
+     this.getAnswer
+    }
+  );
+
+    factory AnswerServiceType.fromJson(Map<String, dynamic> json) => _$AnswerServiceTypeFromJson(json);
+    Map<String, dynamic> toJson() => _$AnswerServiceTypeToJson(this);
+}
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ColumnValue {
+
+  
+  ColumnValueValue value;
+  
+  ColumnValueColumn column;
+
+  ColumnValue(
+    {
+    
+    required this.value,
+    
+    required this.column
+    }
+  );
+
+    factory ColumnValue.fromJson(Map<String, dynamic> json) => _$ColumnValueFromJson(json);
+    Map<String, dynamic> toJson() => _$ColumnValueToJson(this);
+}
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class VizPoint {
+
+  
+  List<ColumnValue> selectedMeasures;
+  
+  List<ColumnValue> selectedAttributes;
+
+  VizPoint(
+    {
+    
+    required this.selectedMeasures,
+    
+    required this.selectedAttributes
+    }
+  );
+
+    factory VizPoint.fromJson(Map<String, dynamic> json) => _$VizPointFromJson(json);
+    Map<String, dynamic> toJson() => _$VizPointToJson(this);
+}
+/**
+ * @group Events
+ */
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class CustomActionPayload {
+
+  
+  SessionInterface session;
+  
+  CustomActionPayloadEmbedAnswerData embedAnswerData;
+  
+  CustomActionPayloadContextMenuPoints? contextMenuPoints;
+  
+  String? vizId;
+
+  CustomActionPayload(
+    {
+    
+    required this.session,
+    
+    required this.embedAnswerData,
+    
+     this.contextMenuPoints,
+    
+     this.vizId
+    }
+  );
+
+    factory CustomActionPayload.fromJson(Map<String, dynamic> json) => _$CustomActionPayloadFromJson(json);
+    Map<String, dynamic> toJson() => _$CustomActionPayloadToJson(this);
+}
 /**
  * The configuration for the embedded Liveboard or visualization page view.
  * @group Embed components
  */
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class LiveboardViewConfig {
-    
+
+  
   bool? fullHeight;
-    
+  
   int? defaultHeight;
-    
+  
   bool? enableVizTransformations;
-    
+  
   String? liveboardId;
-    
+  
   String? pinboardId;
-    
+  
   String? vizId;
-    
+  
   bool? preventLiveboardFilterRemoval;
-    
+  
   List<String>? visibleVizs;
-    
+  
   bool? preventPinboardFilterRemoval;
-    
+  
   bool? liveboardV2;
-    
+  
   String? activeTabId;
-    
+  
   bool? hideTabPanel;
-    
+  
   bool? hideLiveboardHeader;
-    
+  
   bool? showLiveboardTitle;
-    
+  
   bool? showLiveboardDescription;
-    
+  
   bool? isLiveboardHeaderSticky;
-    
+  
   bool? enableAskSage;
-    
+  
   bool? enable2ColumnLayout;
-    
+  
   bool? showPreviewLoader;
-    
+  
   bool? isLiveboardCompactHeaderEnabled;
-    
+  
   bool? showLiveboardVerifiedBadge;
-    
+  
   bool? showLiveboardReverifyBanner;
-    
+  
   bool? hideIrrelevantChipsInLiveboardTabs;
-    
+  
   int? oAuthPollingInterval;
-    
+  
   bool? isForceRedirect;
-    
+  
   String? dataSourceId;
-    
+  
   LayoutConfig? layoutConfig;
-    
+  
   FrameParams? frameParams;
-    
+  
   String? theme;
-    
+  
   String? styleSheet__unstable;
-    
+  
   List<Action>? disabledActions;
-    
+  
   String? disabledActionReason;
-    
+  
   List<Action>? hiddenActions;
-    
+  
   List<Action>? visibleActions;
-    
+  
   bool? showAlerts;
-    
+  
   List<RuntimeFilter>? runtimeFilters;
-    
+  
   List<RuntimeParameter>? runtimeParameters;
-    
+  
   String? locale;
-    
-  LiveboardViewConfigAdditionalFlags? additionalFlags;
-    
+  
+  Map<String, dynamic>? additionalFlags;
+  
   CustomisationsInterface? customizations;
-    
+  
   bool? insertAsSibling;
-    
+  
   ContextMenuTriggerOptions? contextMenuTrigger;
-    
+  
   bool? linkOverride;
-    
+  
   bool? insertInToSlide;
-    
+  
   bool? usePrerenderedIfAvailable;
-    
+  
   bool? excludeRuntimeFiltersfromURL;
-    
+  
   List<String>? hiddenTabs;
-    
+  
   List<String>? visibleTabs;
-    
+  
   String? preRenderId;
-    
+  
   bool? doNotTrackPreRenderSize;
-    
+  
   String? embedComponentType;
-    
+  
   bool? excludeRuntimeParametersfromURL;
-    
+  
   bool? enableV2Shell_experimental;
-    
+  
   bool? collapseSearchBar;
-    
+  
   bool? disableRedirectionLinksInNewTab;
-    
+  
   bool? dataPanelV2;
-    
+  
   bool? enableCustomColumnGroups;
-    
+  
   int? overrideOrgId;
+  
+  bool? enableFlipTooltipToContextMenu;
 
   LiveboardViewConfig(
     {
@@ -4108,717 +4416,29 @@ class LiveboardViewConfig {
     
      this.enableCustomColumnGroups,
     
-     this.overrideOrgId
+     this.overrideOrgId,
+    
+     this.enableFlipTooltipToContextMenu
     }
   );
 
     factory LiveboardViewConfig.fromJson(Map<String, dynamic> json) => _$LiveboardViewConfigFromJson(json);
-
     Map<String, dynamic> toJson() => _$LiveboardViewConfigToJson(this);
 }
-
-/**
- * inline customCSS within the {@link CustomisationsInterface}.
- * Use {@link CustomCssVariables} or css rules.
- */
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class customCssInterface {
-    
-  Map<String, String>? variables;
-    
-  CustomCssInterfaceRules_UNSTABLE? rules_UNSTABLE;
-
-  customCssInterface(
-    {
-    
-     this.variables,
-    
-     this.rules_UNSTABLE
-    }
-  );
-
-    factory customCssInterface.fromJson(Map<String, dynamic> json) => _$customCssInterfaceFromJson(json);
-
-    Map<String, dynamic> toJson() => _$customCssInterfaceToJson(this);
-}
-
-/**
- * Styles within the {@link CustomisationsInterface}.
- */
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CustomStyles {
-    
-  String? customCSSUrl;
-    
-  customCssInterface? customCSS;
-
-  CustomStyles(
-    {
-    
-     this.customCSSUrl,
-    
-     this.customCSS
-    }
-  );
-
-    factory CustomStyles.fromJson(Map<String, dynamic> json) => _$CustomStylesFromJson(json);
-
-    Map<String, dynamic> toJson() => _$CustomStylesToJson(this);
-}
-
-/**
- * Configuration to define the customization on the Embedded
- * ThoughtSpot components.
- * You can customize styles, text strings, and icons.
- * For more information, see https://developers.thoughtspot.com/docs/custom-css.
- * @example
- * ```js
- *  init({
- *    // ...
- *    customizations: {
- *     style: {
- *       customCSS: {
- *         variables: {},
- *         rules_UNSTABLE: {}
- *       }
- *     },
- *     content: {
- *      strings: {
- *        'LIVEBOARDS': 'Dashboards',
- *        'ANSWERS': 'Visualizations',
- *        'Edit': 'Modify',
- *        'Show underlying data': 'Show source data',
- *        'SpotIQ': 'Insights',
- *        'Monitor': 'Alerts',
- *      }
- *     },
- *     iconSpriteUrl: 'https://my-custom-icon-sprite.svg'
- *    }
- *  })
- * ```
- */
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CustomisationsInterface {
-    
-  CustomStyles? style;
-    
-  CustomisationsInterfaceContent? content;
-    
-  String? iconSpriteUrl;
-
-  CustomisationsInterface(
-    {
-    
-     this.style,
-    
-     this.content,
-    
-     this.iconSpriteUrl
-    }
-  );
-
-    factory CustomisationsInterface.fromJson(Map<String, dynamic> json) => _$CustomisationsInterfaceFromJson(json);
-
-    Map<String, dynamic> toJson() => _$CustomisationsInterfaceToJson(this);
-}
-
-/**
- * The configuration object for embedding ThoughtSpot content.
- * It includes the ThoughtSpot hostname or IP address,
- * the type of authentication, and the authentication endpoint
- * if a trusted authentication server is used.
- * @group Authentication / Init
- */
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class EmbedConfig {
-    
-  AuthType authType;
-    
-  String thoughtSpotHost;
-    
-  String? authEndpoint;
-  @JsonKey(ignore: true)  
-  EmbedConfigGetAuthToken? getAuthToken;
-    
-  String? username;
-    
-  String? password;
-    
-  bool? noRedirect;
-    
-  bool? inPopup;
-    
-  String? redirectPath;
-    
-  String? basepath;
-    
-  bool? shouldEncodeUrlQueryParams;
-    
-  bool? suppressNoCookieAccessAlert;
-    
-  bool? ignoreNoCookieAccess;
-    
-  bool? autoLogin;
-    
-  bool? disableLoginRedirect;
-    
-  String? loginFailedMessage;
-    
-  bool? callPrefetch;
-    
-  bool? queueMultiRenders;
-    
-  bool? detectCookieAccessSlow;
-    
-  bool? suppressSearchEmbedBetaWarning;
-    
-  bool? suppressSageEmbedBetaWarning;
-    
-  CustomisationsInterface? customizations;
-    
-  EmbedConfigAuthTriggerContainer? authTriggerContainer;
-    
-  bool? useEventForSAMLPopup;
-    
-  String? authTriggerText;
-    
-  bool? blockNonEmbedFullAppAccess;
-    
-  EmbedConfigHostConfig? hostConfig;
-    
-  String? pendoTrackingKey;
-    
-  bool? suppressErrorAlerts;
-    
-  LogLevel? logLevel;
-    
-  bool? disableSDKTracking;
-    
-  String? dateFormatLocale;
-    
-  String? numberFormatLocale;
-    
-  String? currencyFormat;
-    
-  bool? disableTokenVerification;
-    
-  bool? disableLoginFailurePage;
-    
-  EmbedConfigAdditionalFlags? additionalFlags;
-    
-  EmbedConfigCustomVariablesForThirdPartyTools? customVariablesForThirdPartyTools;
-    
-  bool? disablePreauthCache;
-
-  EmbedConfig(
-    {
-    
-    required this.authType,
-    
-    required this.thoughtSpotHost,
-    
-     this.authEndpoint,
-    
-     this.getAuthToken,
-    
-     this.username,
-    
-     this.password,
-    
-     this.noRedirect,
-    
-     this.inPopup,
-    
-     this.redirectPath,
-    
-     this.basepath,
-    
-     this.shouldEncodeUrlQueryParams,
-    
-     this.suppressNoCookieAccessAlert,
-    
-     this.ignoreNoCookieAccess,
-    
-     this.autoLogin,
-    
-     this.disableLoginRedirect,
-    
-     this.loginFailedMessage,
-    
-     this.callPrefetch,
-    
-     this.queueMultiRenders,
-    
-     this.detectCookieAccessSlow,
-    
-     this.suppressSearchEmbedBetaWarning,
-    
-     this.suppressSageEmbedBetaWarning,
-    
-     this.customizations,
-    
-     this.authTriggerContainer,
-    
-     this.useEventForSAMLPopup,
-    
-     this.authTriggerText,
-    
-     this.blockNonEmbedFullAppAccess,
-    
-     this.hostConfig,
-    
-     this.pendoTrackingKey,
-    
-     this.suppressErrorAlerts,
-    
-     this.logLevel,
-    
-     this.disableSDKTracking,
-    
-     this.dateFormatLocale,
-    
-     this.numberFormatLocale,
-    
-     this.currencyFormat,
-    
-     this.disableTokenVerification,
-    
-     this.disableLoginFailurePage,
-    
-     this.additionalFlags,
-    
-     this.customVariablesForThirdPartyTools,
-    
-     this.disablePreauthCache
-    }
-  );
-
-    factory EmbedConfig.fromJson(Map<String, dynamic> json) => _$EmbedConfigFromJson(json);
-
-    Map<String, dynamic> toJson() => _$EmbedConfigToJson(this);
-}
-
-
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class LayoutConfig {
-
-  LayoutConfig(
-    
-  );
-
-    factory LayoutConfig.fromJson(Map<String, dynamic> json) => _$LayoutConfigFromJson(json);
-
-    Map<String, dynamic> toJson() => _$LayoutConfigToJson(this);
-}
-
-/**
- * Embedded iframe configuration
- * @group Embed components
- */
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class FrameParams {
-    
-  FrameParamsWidth? width;
-    
-  FrameParamsHeight? height;
-    
-  FrameParamsLoading? loading;
-
-  FrameParams(
-    {
-    
-     this.width,
-    
-     this.height,
-    
-     this.loading
-    }
-  );
-
-    factory FrameParams.fromJson(Map<String, dynamic> json) => _$FrameParamsFromJson(json);
-
-    Map<String, dynamic> toJson() => _$FrameParamsToJson(this);
-}
-
-/**
- * The configuration object for an embedded view.
- */
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class ViewConfig {
-    
-  LayoutConfig? layoutConfig;
-    
-  FrameParams? frameParams;
-    
-  String? theme;
-    
-  String? styleSheet__unstable;
-    
-  List<Action>? disabledActions;
-    
-  String? disabledActionReason;
-    
-  List<Action>? hiddenActions;
-    
-  List<Action>? visibleActions;
-    
-  bool? showAlerts;
-    
-  List<RuntimeFilter>? runtimeFilters;
-    
-  List<RuntimeParameter>? runtimeParameters;
-    
-  String? locale;
-    
-  ViewConfigAdditionalFlags? additionalFlags;
-    
-  CustomisationsInterface? customizations;
-    
-  bool? insertAsSibling;
-    
-  ContextMenuTriggerOptions? contextMenuTrigger;
-    
-  bool? linkOverride;
-    
-  bool? insertInToSlide;
-    
-  bool? usePrerenderedIfAvailable;
-    
-  bool? excludeRuntimeFiltersfromURL;
-    
-  List<String>? hiddenTabs;
-    
-  List<HomepageModule>? hiddenHomepageModules;
-    
-  List<HomepageModule>? reorderedHomepageModules;
-    
-  List<String>? visibleTabs;
-    
-  List<HomeLeftNavItem>? hiddenHomeLeftNavItems;
-    
-  String? preRenderId;
-    
-  bool? doNotTrackPreRenderSize;
-    
-  String? embedComponentType;
-    
-  bool? excludeRuntimeParametersfromURL;
-    
-  bool? enableV2Shell_experimental;
-    
-  bool? collapseSearchBar;
-    
-  bool? disableRedirectionLinksInNewTab;
-    
-  bool? dataPanelV2;
-    
-  bool? enableCustomColumnGroups;
-    
-  int? overrideOrgId;
-
-  ViewConfig(
-    {
-    
-     this.layoutConfig,
-    
-     this.frameParams,
-    
-     this.theme,
-    
-     this.styleSheet__unstable,
-    
-     this.disabledActions,
-    
-     this.disabledActionReason,
-    
-     this.hiddenActions,
-    
-     this.visibleActions,
-    
-     this.showAlerts,
-    
-     this.runtimeFilters,
-    
-     this.runtimeParameters,
-    
-     this.locale,
-    
-     this.additionalFlags,
-    
-     this.customizations,
-    
-     this.insertAsSibling,
-    
-     this.contextMenuTrigger,
-    
-     this.linkOverride,
-    
-     this.insertInToSlide,
-    
-     this.usePrerenderedIfAvailable,
-    
-     this.excludeRuntimeFiltersfromURL,
-    
-     this.hiddenTabs,
-    
-     this.hiddenHomepageModules,
-    
-     this.reorderedHomepageModules,
-    
-     this.visibleTabs,
-    
-     this.hiddenHomeLeftNavItems,
-    
-     this.preRenderId,
-    
-     this.doNotTrackPreRenderSize,
-    
-     this.embedComponentType,
-    
-     this.excludeRuntimeParametersfromURL,
-    
-     this.enableV2Shell_experimental,
-    
-     this.collapseSearchBar,
-    
-     this.disableRedirectionLinksInNewTab,
-    
-     this.dataPanelV2,
-    
-     this.enableCustomColumnGroups,
-    
-     this.overrideOrgId
-    }
-  );
-
-    factory ViewConfig.fromJson(Map<String, dynamic> json) => _$ViewConfigFromJson(json);
-
-    Map<String, dynamic> toJson() => _$ViewConfigToJson(this);
-}
-
-/**
- * A filter that can be applied to ThoughtSpot answers, Liveboards, or
- * visualizations at runtime.
- */
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class RuntimeFilter {
-    
-  List<RuntimeFilterValues> values;
-    
-  RuntimeFilterOp operator;
-    
-  String columnName;
-
-  RuntimeFilter(
-    {
-    
-    required this.values,
-    
-    required this.operator,
-    
-    required this.columnName
-    }
-  );
-
-    factory RuntimeFilter.fromJson(Map<String, dynamic> json) => _$RuntimeFilterFromJson(json);
-
-    Map<String, dynamic> toJson() => _$RuntimeFilterToJson(this);
-}
-
-/**
- * A filter that can be applied to ThoughtSpot Answers, Liveboards, or
- * visualizations at runtime.
- */
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class RuntimeParameter {
-    
-  RuntimeParameterValue value;
-    
-  String name;
-
-  RuntimeParameter(
-    {
-    
-    required this.value,
-    
-    required this.name
-    }
-  );
-
-    factory RuntimeParameter.fromJson(Map<String, dynamic> json) => _$RuntimeParameterFromJson(json);
-
-    Map<String, dynamic> toJson() => _$RuntimeParameterToJson(this);
-}
-
-
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class AnswerServiceType {
-  @JsonKey(ignore: true)  
-  AnswerServiceTypeGetAnswer? getAnswer;
-
-  AnswerServiceType(
-    {
-    
-     this.getAnswer
-    }
-  );
-
-    factory AnswerServiceType.fromJson(Map<String, dynamic> json) => _$AnswerServiceTypeFromJson(json);
-
-    Map<String, dynamic> toJson() => _$AnswerServiceTypeToJson(this);
-}
-
-
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class ColumnValue {
-    
-  ColumnValueValue value;
-    
-  ColumnValueColumn column;
-
-  ColumnValue(
-    {
-    
-    required this.value,
-    
-    required this.column
-    }
-  );
-
-    factory ColumnValue.fromJson(Map<String, dynamic> json) => _$ColumnValueFromJson(json);
-
-    Map<String, dynamic> toJson() => _$ColumnValueToJson(this);
-}
-
-
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class VizPoint {
-    
-  List<ColumnValue> selectedMeasures;
-    
-  List<ColumnValue> selectedAttributes;
-
-  VizPoint(
-    {
-    
-    required this.selectedMeasures,
-    
-    required this.selectedAttributes
-    }
-  );
-
-    factory VizPoint.fromJson(Map<String, dynamic> json) => _$VizPointFromJson(json);
-
-    Map<String, dynamic> toJson() => _$VizPointToJson(this);
-}
-
-/**
- * @group Events
- */
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CustomActionPayload {
-    
-  SessionInterface session;
-    
-  CustomActionPayloadEmbedAnswerData embedAnswerData;
-    
-  CustomActionPayloadContextMenuPoints? contextMenuPoints;
-    
-  String? vizId;
-
-  CustomActionPayload(
-    {
-    
-    required this.session,
-    
-    required this.embedAnswerData,
-    
-     this.contextMenuPoints,
-    
-     this.vizId
-    }
-  );
-
-    factory CustomActionPayload.fromJson(Map<String, dynamic> json) => _$CustomActionPayloadFromJson(json);
-
-    Map<String, dynamic> toJson() => _$CustomActionPayloadToJson(this);
-}
-
-
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class DefaultAppInitData {
-    
-  DefaultAppInitDataCustomVariablesForThirdPartyTools customVariablesForThirdPartyTools;
-    
-  List<String> hiddenHomeLeftNavItems;
-    
-  DefaultAppInitDataHostConfig hostConfig;
-    
-  List<String> reorderedHomepageModules;
-    
-  List<HomepageModule> hiddenHomepageModules;
-    
-  String runtimeParameterParams;
-    
-  String runtimeFilterParams;
-    
-  String authToken;
-    
-  CustomisationsInterface customisations;
-
-  DefaultAppInitData(
-    {
-    
-    required this.customVariablesForThirdPartyTools,
-    
-    required this.hiddenHomeLeftNavItems,
-    
-    required this.hostConfig,
-    
-    required this.reorderedHomepageModules,
-    
-    required this.hiddenHomepageModules,
-    
-    required this.runtimeParameterParams,
-    
-    required this.runtimeFilterParams,
-    
-    required this.authToken,
-    
-    required this.customisations
-    }
-  );
-
-    factory DefaultAppInitData.fromJson(Map<String, dynamic> json) => _$DefaultAppInitDataFromJson(json);
-
-    Map<String, dynamic> toJson() => _$DefaultAppInitDataToJson(this);
-}
-
-
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class SessionInterfaceAcSession {
-    
+class SessionInterface {
+
+  
+  SessionInterfaceAcSession acSession;
+  
   int genNo;
-    
+  
   String sessionId;
 
-  SessionInterfaceAcSession(
+  SessionInterface(
     {
+    
+    required this.acSession,
     
     required this.genNo,
     
@@ -4826,58 +4446,44 @@ class SessionInterfaceAcSession {
     }
   );
 
-    factory SessionInterfaceAcSession.fromJson(Map<String, dynamic> json) => _$SessionInterfaceAcSessionFromJson(json);
-
-    Map<String, dynamic> toJson() => _$SessionInterfaceAcSessionToJson(this);
+    factory SessionInterface.fromJson(Map<String, dynamic> json) => _$SessionInterfaceFromJson(json);
+    Map<String, dynamic> toJson() => _$SessionInterfaceToJson(this);
 }
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class LiveboardViewConfigAdditionalFlags {
+class UnderlyingDataPoint {
 
-  LiveboardViewConfigAdditionalFlags(
+  
+  dynamic dataValue;
+  
+  String columnId;
+
+  UnderlyingDataPoint(
+    {
     
+    required this.dataValue,
+    
+    required this.columnId
+    }
   );
 
-    factory LiveboardViewConfigAdditionalFlags.fromJson(Map<String, dynamic> json) => _$LiveboardViewConfigAdditionalFlagsFromJson(json);
-
-    Map<String, dynamic> toJson() => _$LiveboardViewConfigAdditionalFlagsToJson(this);
+    factory UnderlyingDataPoint.fromJson(Map<String, dynamic> json) => _$UnderlyingDataPointFromJson(json);
+    Map<String, dynamic> toJson() => _$UnderlyingDataPointToJson(this);
 }
-
-
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CustomCssInterfaceRules_UNSTABLE {
-
-  CustomCssInterfaceRules_UNSTABLE(
-    
-  );
-
-    factory CustomCssInterfaceRules_UNSTABLE.fromJson(Map<String, dynamic> json) => _$CustomCssInterfaceRules_UNSTABLEFromJson(json);
-
-    Map<String, dynamic> toJson() => _$CustomCssInterfaceRules_UNSTABLEToJson(this);
-}
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CustomisationsInterfaceContentStrings {
+
 
   CustomisationsInterfaceContentStrings(
     
   );
 
     factory CustomisationsInterfaceContentStrings.fromJson(Map<String, dynamic> json) => _$CustomisationsInterfaceContentStringsFromJson(json);
-
     Map<String, dynamic> toJson() => _$CustomisationsInterfaceContentStringsToJson(this);
 }
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CustomisationsInterfaceContent {
-    
+
+  
   CustomisationsInterfaceContentStrings? strings;
 
   CustomisationsInterfaceContent(
@@ -4888,19 +4494,16 @@ class CustomisationsInterfaceContent {
   );
 
     factory CustomisationsInterfaceContent.fromJson(Map<String, dynamic> json) => _$CustomisationsInterfaceContentFromJson(json);
-
     Map<String, dynamic> toJson() => _$CustomisationsInterfaceContentToJson(this);
 }
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class EmbedConfigHostConfig {
-    
+
+  
   String hostClusterName;
-    
+  
   String hostClusterId;
-    
+  
   String hostUserGuid;
 
   EmbedConfigHostConfig(
@@ -4915,59 +4518,14 @@ class EmbedConfigHostConfig {
   );
 
     factory EmbedConfigHostConfig.fromJson(Map<String, dynamic> json) => _$EmbedConfigHostConfigFromJson(json);
-
     Map<String, dynamic> toJson() => _$EmbedConfigHostConfigToJson(this);
 }
-
-
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class EmbedConfigAdditionalFlags {
-
-  EmbedConfigAdditionalFlags(
-    
-  );
-
-    factory EmbedConfigAdditionalFlags.fromJson(Map<String, dynamic> json) => _$EmbedConfigAdditionalFlagsFromJson(json);
-
-    Map<String, dynamic> toJson() => _$EmbedConfigAdditionalFlagsToJson(this);
-}
-
-
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class EmbedConfigCustomVariablesForThirdPartyTools {
-
-  EmbedConfigCustomVariablesForThirdPartyTools(
-    
-  );
-
-    factory EmbedConfigCustomVariablesForThirdPartyTools.fromJson(Map<String, dynamic> json) => _$EmbedConfigCustomVariablesForThirdPartyToolsFromJson(json);
-
-    Map<String, dynamic> toJson() => _$EmbedConfigCustomVariablesForThirdPartyToolsToJson(this);
-}
-
-
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class ViewConfigAdditionalFlags {
-
-  ViewConfigAdditionalFlags(
-    
-  );
-
-    factory ViewConfigAdditionalFlags.fromJson(Map<String, dynamic> json) => _$ViewConfigAdditionalFlagsFromJson(json);
-
-    Map<String, dynamic> toJson() => _$ViewConfigAdditionalFlagsToJson(this);
-}
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ColumnValueValueType4V {
-    
+
+  
   int e;
-    
+  
   int s;
 
   ColumnValueValueType4V(
@@ -4980,15 +4538,12 @@ class ColumnValueValueType4V {
   );
 
     factory ColumnValueValueType4V.fromJson(Map<String, dynamic> json) => _$ColumnValueValueType4VFromJson(json);
-
     Map<String, dynamic> toJson() => _$ColumnValueValueType4VToJson(this);
 }
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ColumnValueValueType4 {
-    
+
+  
   ColumnValueValueType4V v;
 
   ColumnValueValueType4(
@@ -4999,19 +4554,16 @@ class ColumnValueValueType4 {
   );
 
     factory ColumnValueValueType4.fromJson(Map<String, dynamic> json) => _$ColumnValueValueType4FromJson(json);
-
     Map<String, dynamic> toJson() => _$ColumnValueValueType4ToJson(this);
 }
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ColumnValueColumn {
-    
+
+  
   String dataType;
-    
+  
   String name;
-    
+  
   String id;
 
   ColumnValueColumn(
@@ -5026,15 +4578,12 @@ class ColumnValueColumn {
   );
 
     factory ColumnValueColumn.fromJson(Map<String, dynamic> json) => _$ColumnValueColumnFromJson(json);
-
     Map<String, dynamic> toJson() => _$ColumnValueColumnToJson(this);
 }
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CustomActionPayloadEmbedAnswerDataSourcesHeader {
-    
+
+  
   String guid;
 
   CustomActionPayloadEmbedAnswerDataSourcesHeader(
@@ -5045,15 +4594,12 @@ class CustomActionPayloadEmbedAnswerDataSourcesHeader {
   );
 
     factory CustomActionPayloadEmbedAnswerDataSourcesHeader.fromJson(Map<String, dynamic> json) => _$CustomActionPayloadEmbedAnswerDataSourcesHeaderFromJson(json);
-
     Map<String, dynamic> toJson() => _$CustomActionPayloadEmbedAnswerDataSourcesHeaderToJson(this);
 }
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CustomActionPayloadEmbedAnswerDataSources {
-    
+
+  
   CustomActionPayloadEmbedAnswerDataSourcesHeader header;
 
   CustomActionPayloadEmbedAnswerDataSources(
@@ -5064,23 +4610,20 @@ class CustomActionPayloadEmbedAnswerDataSources {
   );
 
     factory CustomActionPayloadEmbedAnswerDataSources.fromJson(Map<String, dynamic> json) => _$CustomActionPayloadEmbedAnswerDataSourcesFromJson(json);
-
     Map<String, dynamic> toJson() => _$CustomActionPayloadEmbedAnswerDataSourcesToJson(this);
 }
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CustomActionPayloadEmbedAnswerData {
-    
+
+  
   List<dynamic> data;
-    
+  
   List<dynamic> columns;
-    
+  
   CustomActionPayloadEmbedAnswerDataSources sources;
-    
+  
   String id;
-    
+  
   String name;
 
   CustomActionPayloadEmbedAnswerData(
@@ -5099,17 +4642,14 @@ class CustomActionPayloadEmbedAnswerData {
   );
 
     factory CustomActionPayloadEmbedAnswerData.fromJson(Map<String, dynamic> json) => _$CustomActionPayloadEmbedAnswerDataFromJson(json);
-
     Map<String, dynamic> toJson() => _$CustomActionPayloadEmbedAnswerDataToJson(this);
 }
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CustomActionPayloadContextMenuPoints {
-    
+
+  
   List<VizPoint> selectedPoints;
-    
+  
   VizPoint clickedPoint;
 
   CustomActionPayloadContextMenuPoints(
@@ -5122,46 +4662,49 @@ class CustomActionPayloadContextMenuPoints {
   );
 
     factory CustomActionPayloadContextMenuPoints.fromJson(Map<String, dynamic> json) => _$CustomActionPayloadContextMenuPointsFromJson(json);
-
     Map<String, dynamic> toJson() => _$CustomActionPayloadContextMenuPointsToJson(this);
 }
-
-
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class DefaultAppInitDataCustomVariablesForThirdPartyTools {
+class SessionInterfaceAcSession {
 
-  DefaultAppInitDataCustomVariablesForThirdPartyTools(
+  
+  int genNo;
+  
+  String sessionId;
+
+  SessionInterfaceAcSession(
+    {
     
+    required this.genNo,
+    
+    required this.sessionId
+    }
   );
 
-    factory DefaultAppInitDataCustomVariablesForThirdPartyTools.fromJson(Map<String, dynamic> json) => _$DefaultAppInitDataCustomVariablesForThirdPartyToolsFromJson(json);
-
-    Map<String, dynamic> toJson() => _$DefaultAppInitDataCustomVariablesForThirdPartyToolsToJson(this);
+    factory SessionInterfaceAcSession.fromJson(Map<String, dynamic> json) => _$SessionInterfaceAcSessionFromJson(json);
+    Map<String, dynamic> toJson() => _$SessionInterfaceAcSessionToJson(this);
 }
-
-
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class DefaultAppInitDataHostConfig {
-
-  DefaultAppInitDataHostConfig(
-    
+abstract class getGuidsFromColumnNames {
+  Set operate(
+    List<String> colNames,
+    dynamic sourceDetail
   );
-
-    factory DefaultAppInitDataHostConfig.fromJson(Map<String, dynamic> json) => _$DefaultAppInitDataHostConfigFromJson(json);
-
-    Map<String, dynamic> toJson() => _$DefaultAppInitDataHostConfigToJson(this);
 }
-
-
-
+abstract class getSelectedPointsForUnderlyingDataQuery {
+  UnderlyingDataPoint operate(
+    List<VizPoint> selectedPoints
+  );
+}
+abstract class getDisplayedViz {
+  dynamic operate(
+    String displayMode,
+    List<dynamic> visualizations
+  );
+}
 abstract class EmbedConfigGetAuthToken {
   Future<dynamic> operate(
   );
 }
-
-
 abstract class AnswerServiceTypeGetAnswer {
   dynamic operate(
     int batchSize,
@@ -5174,81 +4717,67 @@ class EmbedConfigAuthTriggerContainer {
 
   EmbedConfigAuthTriggerContainer(this.value);
 
-  factory EmbedConfigAuthTriggerContainer.fromJson(String json) => EmbedConfigAuthTriggerContainer(json);
 
-  String toJson() => value;
-
+    factory EmbedConfigAuthTriggerContainer.fromJson(Map<String, dynamic> json) => _$EmbedConfigAuthTriggerContainerFromJson(json);
+    Map<String, dynamic> toJson() => _$EmbedConfigAuthTriggerContainerToJson(this);
 }
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class FrameParamsWidth {
   String value;
 
   FrameParamsWidth(this.value);
 
-  factory FrameParamsWidth.fromJson(String json) => FrameParamsWidth(json);
 
-  String toJson() => value;
-
+    factory FrameParamsWidth.fromJson(Map<String, dynamic> json) => _$FrameParamsWidthFromJson(json);
+    Map<String, dynamic> toJson() => _$FrameParamsWidthToJson(this);
 }
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class FrameParamsHeight {
   String value;
 
   FrameParamsHeight(this.value);
 
-  factory FrameParamsHeight.fromJson(String json) => FrameParamsHeight(json);
 
-  String toJson() => value;
-
+    factory FrameParamsHeight.fromJson(Map<String, dynamic> json) => _$FrameParamsHeightFromJson(json);
+    Map<String, dynamic> toJson() => _$FrameParamsHeightToJson(this);
 }
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class FrameParamsLoading {
   String value;
 
   FrameParamsLoading(this.value);
 
-  factory FrameParamsLoading.fromJson(String json) => FrameParamsLoading(json);
 
-  String toJson() => value;
-
+    factory FrameParamsLoading.fromJson(Map<String, dynamic> json) => _$FrameParamsLoadingFromJson(json);
+    Map<String, dynamic> toJson() => _$FrameParamsLoadingToJson(this);
 }
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RuntimeFilterValues {
   String value;
 
   RuntimeFilterValues(this.value);
 
-  factory RuntimeFilterValues.fromJson(String json) => RuntimeFilterValues(json);
 
-  String toJson() => value;
-
+    factory RuntimeFilterValues.fromJson(Map<String, dynamic> json) => _$RuntimeFilterValuesFromJson(json);
+    Map<String, dynamic> toJson() => _$RuntimeFilterValuesToJson(this);
 }
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RuntimeParameterValue {
   String value;
 
   RuntimeParameterValue(this.value);
 
-  factory RuntimeParameterValue.fromJson(String json) => RuntimeParameterValue(json);
 
-  String toJson() => value;
-
+    factory RuntimeParameterValue.fromJson(Map<String, dynamic> json) => _$RuntimeParameterValueFromJson(json);
+    Map<String, dynamic> toJson() => _$RuntimeParameterValueToJson(this);
 }
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ColumnValueValue {
   String value;
 
   ColumnValueValue(this.value);
 
-  factory ColumnValueValue.fromJson(String json) => ColumnValueValue(json);
 
-  String toJson() => value;
-
+    factory ColumnValueValue.fromJson(Map<String, dynamic> json) => _$ColumnValueValueFromJson(json);
+    Map<String, dynamic> toJson() => _$ColumnValueValueToJson(this);
 }
-
