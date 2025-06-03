@@ -13,7 +13,7 @@ part './liveboard_embed.dart';
 
 abstract class BaseController {
   final EmbedConfig embedConfig;
-  final String _url = 'https://mobile-embed-shell.vercel.app';
+  final String _defaultMobileShellUrl = 'https://mobile-embed-shell.vercel.app';
   final Logger _logger = Logger();
 
   late final WebViewController _webViewController;
@@ -37,19 +37,45 @@ abstract class BaseController {
     );
   }
 
-  WebViewController _setWebViewController(WebViewController controller) {
+  bool _isShellDebugMode() {
+    return embedConfig.additionalFlags?['shell_debug_mode'] ?? false;
+  }
 
+  String _getMobileShellUrl() {
+    if (_isShellDebugMode()) {
+      String shellDebugFlags =
+          embedConfig.additionalFlags?['shell_debug_flags']?.toString() ?? '';
+
+      String mobileShellUrl =
+          embedConfig.additionalFlags?['mobile_shell_url'] ??
+              _defaultMobileShellUrl;
+
+      String finalUrl = mobileShellUrl;
+
+      if (shellDebugFlags.isNotEmpty) {
+        finalUrl += '?$shellDebugFlags';
+      }
+
+      _logger.info('mobileShellUrl: $finalUrl');
+      return finalUrl;
+    }
+    return _defaultMobileShellUrl;
+  }
+
+  WebViewController _setWebViewController(WebViewController controller) {
+    final mobileShellUrl = _getMobileShellUrl();
     controller
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..addJavaScriptChannel(
         'ReactNativeWebView',
         onMessageReceived: _handleMessage,
       )
-      ..loadRequest(Uri.parse(_url));
+      ..loadRequest(Uri.parse(mobileShellUrl));
     return controller;
   }
 
   void _sendJsonMessageToShell(Map<String, dynamic> message) {
+    _logger.debug('Sending message to shell: ${jsonEncode(message)}');
     _webViewController.runJavaScript(
       'window.postMessage(${jsonEncode(message)}, "*");',
     );
