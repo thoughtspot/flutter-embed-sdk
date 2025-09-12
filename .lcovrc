@@ -1,0 +1,14 @@
+# LCOV configuration file
+
+# Ignore unused pattern warnings
+ignore-errors = unused
+
+# Files to exclude from coverage
+exclude = lib/**/*.g.dart
+exclude = lib/**/generated/*.dart
+
+# Output format
+output = coverage/lcov.info
+
+# HTML report directory
+html-dir = coverage/html 
